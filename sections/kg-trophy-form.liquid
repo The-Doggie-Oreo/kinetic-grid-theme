@@ -1,0 +1,212 @@
+<div
+  id="trophy-request"
+  class="kg-quote kg-trophy-form {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-18 col-desktop-14">
+        <div class="kg-card p-7 p-desktop-10">
+          {% unless section.settings.title == blank %}
+            <h2 class="kg-section-title h3 mb-4">{{ section.settings.title | escape }}</h2>
+          {% endunless %}
+          {% unless section.settings.subtitle == blank %}
+            <p class="mb-8">{{ section.settings.subtitle | escape }}</p>
+          {% endunless %}
+
+          {% form 'contact', class: 'kg-trophy-request-form' %}
+            {% if form.posted_successfully? %}
+              <p class="alert alert-success mb-6" role="status">
+                {{ 'kinetic_grid.trophy.success' | t }}
+              </p>
+            {% endif %}
+            {{ form.errors | default_errors }}
+
+            <input type="hidden" name="contact[request_type]" value="Custom Trophy Request">
+
+            <div class="row g-6">
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-name">
+                  {{ 'kinetic_grid.trophy.name' | t }}
+                </label>
+                <input
+                  id="kg-trophy-name"
+                  class="form-control"
+                  type="text"
+                  name="contact[name]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-email">
+                  {{ 'kinetic_grid.trophy.email' | t }}
+                </label>
+                <input
+                  id="kg-trophy-email"
+                  class="form-control"
+                  type="email"
+                  name="contact[email]"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  required
+                >
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-phone">
+                  {{ 'kinetic_grid.trophy.phone' | t }}
+                </label>
+                <input
+                  id="kg-trophy-phone"
+                  class="form-control"
+                  type="tel"
+                  name="contact[phone]"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                  autocomplete="tel"
+                >
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-event">
+                  {{ 'kinetic_grid.trophy.event' | t }}
+                </label>
+                <input
+                  id="kg-trophy-event"
+                  class="form-control"
+                  type="text"
+                  name="contact[event_or_league]"
+                  placeholder="{{ 'kinetic_grid.trophy.event_placeholder' | t }}"
+                >
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-style">
+                  {{ 'kinetic_grid.trophy.style' | t }}
+                </label>
+                <select id="kg-trophy-style" class="form-select" name="contact[trophy_style]" required>
+                  <option value="">{{ 'kinetic_grid.trophy.style_placeholder' | t }}</option>
+                  <option value="3D topper + engraved plaque">{{ 'kinetic_grid.trophy.style_hybrid' | t }}</option>
+                  <option value="3D figure only">{{ 'kinetic_grid.trophy.style_figure' | t }}</option>
+                  <option value="Laser plaque only">{{ 'kinetic_grid.trophy.style_plaque' | t }}</option>
+                  <option value="Full custom design">{{ 'kinetic_grid.trophy.style_full' | t }}</option>
+                </select>
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-trophy-qty">
+                  {{ 'kinetic_grid.trophy.quantity' | t }}
+                </label>
+                <input
+                  id="kg-trophy-qty"
+                  class="form-control"
+                  type="number"
+                  name="contact[quantity]"
+                  min="1"
+                  step="1"
+                  value="1"
+                  required
+                >
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-trophy-plaque">
+                  {{ 'kinetic_grid.trophy.plaque' | t }}
+                </label>
+                <input
+                  id="kg-trophy-plaque"
+                  class="form-control"
+                  type="text"
+                  name="contact[plaque_text]"
+                  placeholder="{{ 'kinetic_grid.trophy.plaque_placeholder' | t }}"
+                >
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-trophy-details">
+                  {{ 'kinetic_grid.trophy.details' | t }}
+                </label>
+                <textarea
+                  id="kg-trophy-details"
+                  class="form-control"
+                  name="contact[body]"
+                  required
+                  placeholder="{{ 'kinetic_grid.trophy.details_placeholder' | t }}"
+                >{{ form.body }}</textarea>
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-trophy-reference">
+                  {{ 'kinetic_grid.trophy.reference' | t }}
+                </label>
+                <input
+                  id="kg-trophy-reference"
+                  class="form-control"
+                  type="url"
+                  name="contact[reference_image_link]"
+                  placeholder="{{ 'kinetic_grid.trophy.reference_placeholder' | t }}"
+                  inputmode="url"
+                >
+                <p class="form-text mb-0 mt-3">
+                  {{ 'kinetic_grid.trophy.reference_help' | t }}
+                </p>
+              </div>
+              <div class="col-18">
+                <button type="submit" class="btn btn-info text-white px-5 py-3">
+                  {{ 'kinetic_grid.trophy.submit' | t }}
+                </button>
+              </div>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KG Trophy request",
+  "tag": "section",
+  "class": "kg-trophy-form-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Request a custom trophy"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Tell us about the event, plaque copy, quantity, and style. Requests email your store owner address from Shopify’s contact form."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "KG Trophy request"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,59 @@
+{% comment %}
+  Secondary media shown on product-card hover.
+  Prefers the first product video; otherwise the second product image.
+
+  Accepts:
+  - product: {Object} Product
+
+  Usage:
+  {% render 'product-hover-media', product: product %}
+{% endcomment %}
+
+{% liquid
+  assign hover_video = nil
+  assign hover_image = nil
+
+  for media in product.media
+    if media.media_type == 'video'
+      assign hover_video = media
+      break
+    endif
+  endfor
+
+  unless hover_video
+    if product.images.size > 1
+      assign hover_image = product.images[1]
+    endif
+  endunless
+%}
+
+{% if hover_video %}
+  <div class="product-card-hover-media" data-product-card-hover-video>
+    {{
+      hover_video
+      | video_tag:
+        autoplay: false,
+        loop: true,
+        muted: true,
+        controls: false,
+        playsinline: true,
+        preload: 'auto',
+        image_size: '800x',
+        class: 'product-card-hover-video'
+    }}
+  </div>
+{% elsif hover_image %}
+  {% liquid
+    assign hover_alt = hover_image.alt | default: product.title
+  %}
+  {{
+    hover_image
+    | image_url: width: 800
+    | image_tag:
+      loading: 'lazy',
+      widths: '400, 600, 800',
+      sizes: '(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 50vw',
+      alt: hover_alt,
+      class: 'product-card-hover-media'
+  }}
+{% endif %}

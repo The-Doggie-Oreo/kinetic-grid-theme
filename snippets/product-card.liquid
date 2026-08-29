@@ -8,11 +8,18 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
+{% capture product_hover_media %}
+  {% render 'product-hover-media', product: product %}
+{% endcapture %}
+{% assign product_hover_media = product_hover_media | strip %}
+
 <div class="product-card {{ settings.product_card_text_align }}">
   <a 
     href="{{ product.url | within: collection }}" 
     class="product-card-link">
-    <div class="product-card-img-wrapper mb-4">      
+    <div
+      class="product-card-img-wrapper{% if product_hover_media != blank %} product-card-img-wrapper--has-hover{% endif %}"
+      {% if product_hover_media != blank %}data-product-card-hover{% endif %}>
       {% if product.available == false %}
         <span class="product-sold-out-badge badge"
           {% if current_variant.available %}hidden{% endif %}>
@@ -35,15 +42,27 @@
           {% endif %}
         </span>
       {% endif %}
-      {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
+      {% liquid
+        assign primary_img_class = settings.product_card_img_border | append: ' product-card-img-primary'
+      %}
+      {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: primary_img_class %}
+      {{ product_hover_media }}
     </div>
-    <h3 class="product-card-title product-title {{ settings.product_card_title_font_size }}">
-      {{ product.title }}
-    </h3>
-    {% render 'product-rating-badge', product: product %}
-    {% render 'product-card-price', product: product %}
+    <div class="product-card-body">
+      <h3 class="product-card-title product-title {{ settings.product_card_title_font_size }}">
+        {{ product.title }}
+      </h3>
+      {% assign card_excerpt = product.description | strip_html | truncatewords: 18 %}
+      {% if card_excerpt != blank %}
+        <p class="product-card-excerpt">{{ card_excerpt | escape }}</p>
+      {% endif %}
+      {% render 'product-rating-badge', product: product %}
+      {% render 'product-card-price', product: product %}
+    </div>
   </a>
   {% if settings.product_card_show_atc_form %}
-    {% render 'product-card-form', product: product %}
+    <div class="product-card-actions">
+      {% render 'product-card-form', product: product %}
+    </div>
   {% endif %}
 </div>

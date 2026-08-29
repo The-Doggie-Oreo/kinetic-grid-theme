@@ -38,6 +38,11 @@
         {{ 'cart.checkout' | t }}
       </button>
     {% endform %}
+    {% if request.host contains '127.0.0.1' or request.host contains 'localhost' %}
+      <p class="small alert alert-warning mt-4 mb-0">
+        {{ 'cart.dev_checkout_notice_html' | t: preview_url: 'https://kineticgrid3d.myshopify.com/?preview_theme_id=199117832352' }}
+      </p>
+    {% endif %}
     <p class="small text-center mt-3 mb-n2 fst-italic">
       {{ 'cart.taxes_shipping_at_checkout_html' | t }}
     </p>

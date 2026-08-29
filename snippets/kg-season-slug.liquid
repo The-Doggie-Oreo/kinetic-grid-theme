@@ -1,0 +1,36 @@
+{% comment %}
+  Outputs the active season slug (no whitespace).
+  Used via capture in theme.liquid → data-season on <html>.
+
+  Calendar (Northern Hemisphere, US retail):
+    holiday  — Dec 1 through Jan 5
+    winter   — Jan 6 through Feb 28
+    spring   — Mar 1 through May 31
+    summer   — Jun 1 through Aug 14
+    fall     — Aug 15 through Nov 30
+{% endcomment %}
+
+{%- liquid
+  assign season_override = settings.season_mode | default: 'auto'
+
+  if season_override != blank and season_override != 'auto'
+    echo season_override
+  else
+    assign month = 'now' | date: '%m' | plus: 0
+    assign day = 'now' | date: '%d' | plus: 0
+
+    if month == 12
+      echo 'holiday'
+    elsif month == 1 and day <= 5
+      echo 'holiday'
+    elsif month == 1 or month == 2
+      echo 'winter'
+    elsif month >= 3 and month <= 5
+      echo 'spring'
+    elsif month >= 6 and month <= 8 and day < 15
+      echo 'summer'
+    else
+      echo 'fall'
+    endif
+  endif
+-%}

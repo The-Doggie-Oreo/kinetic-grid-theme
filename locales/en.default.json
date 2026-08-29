@@ -180,6 +180,7 @@
     "subtotal": "Subtotal",
     "taxes_shipping_at_checkout_html": "Taxes &amp; <a href=\"\/policies\/shipping-policy\" target=\"_blank\">Shipping<\/a> calculated at checkout",
     "checkout": "Checkout",
+    "dev_checkout_notice_html": "Local preview checkout often fails (Shop Pay 401). To place a test order, open the <a href=\"{{ preview_url }}\">store preview link</a>, add the plaque again, and check out there using Bogus Gateway (test mode).",
     "note": {
       "title": "Add a note to your order",
       "label": "Your message...",
@@ -206,7 +207,57 @@
       "view_all": "View all prints",
       "made_to_order": "Made-to-Order",
       "quick_add": "Quick Add",
-      "placeholder_title": "Catalog print"
+      "placeholder_title": "Catalog print",
+      "from": "From",
+      "view_product": "View product"
+    },
+    "spotlight": {
+      "placeholder_excerpt": "Select a product in the theme editor to show title, short description, and price."
+    },
+    "plaque": {
+      "customize_title": "Customize your plaque",
+      "preview_hint": "Live preview — text scales to fit as you type.",
+      "custom_size_title": "Custom size",
+      "custom_size_help": "Width and height in inches (0.1 steps). Max 8 × 11 in. Custom sizes cost more than presets.",
+      "width_label": "Width (inches, max 8)",
+      "height_label": "Height (inches, max 11)",
+      "engraving_title": "Your text",
+      "simple_help": "Type line by line, or paste everything and auto-format. Long lines and lots of lines are fine — we shrink the text to fit the plaque.",
+      "edit_lines_title": "Lines (edit anytime)",
+      "line_1": "Line 1",
+      "line_2": "Line 2 (optional)",
+      "line_3": "Line 3 (optional)",
+      "line_4": "Line 4 (optional)",
+      "line_5": "Line 5 (optional)",
+      "line_6": "Line 6 (optional)",
+      "line_n": "Line {{ number }} (optional)",
+      "line_1_placeholder": "Your name or title",
+      "line_2_placeholder": "Subtitle or date",
+      "line_3_placeholder": "Team, league, or event",
+      "line_4_placeholder": "Organization or role",
+      "line_5_placeholder": "Award or division",
+      "line_6_placeholder": "Year or extra detail",
+      "line_optional_placeholder": "Optional line",
+      "add_line": "Add another line",
+      "remove_line": "Remove last line",
+      "add_line_scale_note": "Add as many lines as you want (within the size). Text scales down to stay on the plaque.",
+      "line_capacity_one": "You can use 1 line on this size.",
+      "line_capacity_many": "This size can hold up to {{ count }} lines. Text scales to fit.",
+      "line_char_limit": "Long lines are fine — text scales down to fit.",
+      "font_label": "Font",
+      "font_help": "Shown in the preview and saved with your order for our studio.",
+      "paste_title": "Easiest: paste everything here",
+      "paste_help": "Paste your full text. We’ll split it into lines that fit. You can still edit each line after.",
+      "paste_placeholder": "Paste name, title, date, team, dedication…",
+      "auto_format": "Fit text on plaque",
+      "auto_format_success": "Ready — {{ count }} lines. Edit any line below if you want.",
+      "auto_format_empty": "Paste some text first.",
+      "auto_format_overflow": "",
+      "studio_file_note": "Your laser-ready design is sent to our studio with the order.",
+      "layout_manual": "Manual lines",
+      "layout_auto": "Auto-formatted",
+      "order_note": "Size, font, and text go to our studio with the order. Custom plaques are made to order and cannot be returned.",
+      "no_returns": "Custom engraved plaques are made to order and cannot be returned (max price about $25)."
     },
     "quote": {
       "name": "Name",
@@ -223,6 +274,30 @@
       "submit": "Send fabrication request",
       "success": "Thanks — your request is in. We’ll reply with a quote shortly.",
       "error": "Something went wrong. Please try again or email us directly."
+    },
+    "trophy": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "event": "Event / league",
+      "event_placeholder": "Tournament name, season, or studio event",
+      "style": "Trophy style",
+      "style_placeholder": "Select a style",
+      "style_hybrid": "3D topper + engraved plaque",
+      "style_figure": "3D figure only",
+      "style_plaque": "Laser plaque only",
+      "style_full": "Full custom design",
+      "quantity": "Quantity",
+      "plaque": "Plaque text",
+      "plaque_placeholder": "Names, place, date, or dedication",
+      "details": "Details / dimensions",
+      "details_placeholder": "Size, colors, materials, deadline, and anything else we should know",
+      "reference": "Reference image link",
+      "reference_placeholder": "https://drive.google.com/... or Dropbox / Imgur link",
+      "reference_help": "Shopify’s built-in form can’t attach files. Paste a share link to a logo, sketch, or photo instead.",
+      "returns_policy": "Trophy returns are accepted when something arrives damaged or defective — please ship the trophy back to us for inspection. Many breaks can be repaired with adhesive and the trophy is still usable. We're a small shop, so we need the physical item back to help you.",
+      "submit": "Send trophy request",
+      "success": "Thanks — your trophy request is in. We’ll reply with a quote shortly."
     },
     "footer": {
       "catalog": "Catalog",
@@ -242,6 +317,14 @@
       "terms": "Terms",
       "refund": "Refunds",
       "rights": "All rights reserved."
+    },
+    "season": {
+      "promo_label": "Seasonal offer",
+      "promo_fall": "Fall refresh — 10% off desk organizers, gaming prints & sewing accessories. Code FALL10 at checkout.",
+      "promo_holiday": "Gift-making season — 15% off custom awards & plaques through Dec 31. Code GIFT15 at checkout.",
+      "promo_winter": "Winter studio hours — free shipping on orders over $50 through February.",
+      "promo_spring": "Spring drop — fresh colors on desk organizers & cat accessories. Code SPRING10 at checkout.",
+      "promo_summer": "Summer vibes — 10% off beach-ready prints & outdoor gaming accessories. Code SUNNY10 at checkout."
     }
   }
 }

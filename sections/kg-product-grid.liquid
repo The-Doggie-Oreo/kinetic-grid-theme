@@ -35,9 +35,16 @@
       {% if grid_collection != blank and grid_collection.products.size > 0 %}
         {% for product in grid_collection.products limit: product_limit %}
           <div class="col">
+            {% capture product_hover_media %}
+              {% render 'product-hover-media', product: product %}
+            {% endcapture %}
+            {% assign product_hover_media = product_hover_media | strip %}
             <article class="kg-card kg-product-card">
-              <a class="kg-product-card__media d-block" href="{{ product.url }}">
-                <span class="badge rounded-pill kg-product-card__badge">
+              <a
+                class="kg-product-card__media d-block{% if product_hover_media != blank %} product-card-img-wrapper--has-hover{% endif %}"
+                href="{{ product.url }}"
+                {% if product_hover_media != blank %}data-product-card-hover{% endif %}>
+                <span class="badge kg-product-card__badge">
                   {{ 'kinetic_grid.product.made_to_order' | t }}
                 </span>
                 {% if product.featured_image %}
@@ -45,8 +52,9 @@
                   {{
                     product.featured_image
                     | image_url: width: 800
-                    | image_tag: loading: 'lazy', alt: image_alt, class: 'w-100 h-100'
+                    | image_tag: loading: 'lazy', alt: image_alt, class: 'w-100 h-100 product-card-img-primary'
                   }}
+                  {{ product_hover_media }}
                 {% else %}
                   {{ 'product-1' | placeholder_svg_tag: 'kg-product-placeholder' }}
                 {% endif %}
@@ -63,7 +71,7 @@
                 {% if product.has_only_default_variant %}
                   <button
                     type="button"
-                    class="btn btn-info text-white fw-bold rounded-pill w-100"
+                    class="btn btn-info text-white w-100"
                     data-kg-quick-add
                     data-variant-id="{{ product.selected_or_first_available_variant.id }}"
                     {% unless product.available %}disabled{% endunless %}
@@ -75,7 +83,7 @@
                     {% endif %}
                   </button>
                 {% else %}
-                  <a class="btn btn-outline-dark fw-bold rounded-pill w-100" href="{{ product.url }}">
+                  <a class="btn btn-outline-dark w-100" href="{{ product.url }}">
                     {{ 'product.choose_options' | t }}
                   </a>
                 {% endif %}
@@ -88,7 +96,7 @@
           <div class="col">
             <article class="kg-card kg-product-card">
               <div class="kg-product-card__media">
-                <span class="badge rounded-pill kg-product-card__badge">
+                <span class="badge kg-product-card__badge">
                   {{ 'kinetic_grid.product.made_to_order' | t }}
                 </span>
                 {{ 'product-1' | placeholder_svg_tag }}
@@ -96,7 +104,7 @@
               <div class="kg-product-card__body">
                 <h3 class="kg-product-card__title mb-3">{{ 'kinetic_grid.product.placeholder_title' | t }}</h3>
                 <p class="kg-product-card__price mb-5">$24.00</p>
-                <button type="button" class="btn btn-info text-white fw-bold rounded-pill w-100" disabled>
+                <button type="button" class="btn btn-info text-white w-100" disabled>
                   {{ 'kinetic_grid.product.quick_add' | t }}
                 </button>
               </div>

@@ -1,9 +1,739 @@
 {
   "sections": {
+    "hero_carousel_CmDneU": {
+      "type": "hero-carousel",
+      "blocks": {
+        "slide_Q4UPQq": {
+          "type": "slide",
+          "settings": {
+            "img_mobile": "shopify:\/\/shop_images\/lifestyle-1-mobile.jpg",
+            "img_desktop": "shopify:\/\/shop_images\/lifestyle-1.jpg",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "overlay_blur": 2,
+            "subtitle": "Kinetic Grid 3D",
+            "title": "Precision 3D Printing & 10W Diode Laser Engraving",
+            "description": "<p>From custom tournament trophies and made-to-order catalog prints to precision laser-engraved hardwood and metal plaques.<\/p>",
+            "btn_primary_text": "Explore 3D Catalog",
+            "btn_primary_url": "\/collections\/bestsellers",
+            "btn_secondary_text": "Request Custom Fabrication",
+            "btn_secondary_url": "\/pages\/contact"
+          }
+        },
+        "slide_TddqxQ": {
+          "type": "slide",
+          "settings": {
+            "img_mobile": "shopify:\/\/shop_images\/lifestyle-2-mobile.jpg",
+            "img_desktop": "shopify:\/\/shop_images\/lifestyle-2.jpg",
+            "overlay_color": "#000000",
+            "overlay_opacity": 10,
+            "overlay_blur": 2,
+            "subtitle": "Custom awards & plaques",
+            "title": "3D-Printed Toppers. Laser-Engraved Plates.",
+            "description": "<p>Hybrid trophies combining multi-color printed figures with hardwood, slate, acrylic, and anodized aluminum.<\/p>",
+            "btn_primary_text": "Shop awards",
+            "btn_primary_url": "\/collections\/custom-plaques",
+            "btn_secondary_text": "Custom awards page",
+            "btn_secondary_url": "\/pages\/custom-awards"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Q4UPQq",
+        "slide_TddqxQ"
+      ],
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "carousel_controls": true,
+        "carousel_indicators": true,
+        "carousel_transition": "slide",
+        "carousel_transition_duration": 500,
+        "carousel_autoplay": 5,
+        "carousel_effect": "carousel-zoom-in",
+        "media_mobile_height": 500,
+        "media_desktop_height": 700,
+        "media_adapt": false,
+        "media_full": true,
+        "caption_max_width": "900",
+        "caption_position": "carousel-caption-center",
+        "subtitle_font_size": "fs-md",
+        "title_font_size": "h2",
+        "description_font_size": "fs-lg",
+        "btn_primary_color": "btn-info",
+        "btn_secondary_color": "btn-outline-dark",
+        "btn_font_size": "fs-md",
+        "pt": 0,
+        "pb": 0
+      }
+    },
+    "featured_products_nXJKQn": {
+      "type": "featured-products",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "bestsellers",
+        "limit": 8,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Bestsellers",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Popular made-to-order prints from the catalog Ã¢â‚¬â€ produced when you order.<\/p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 10,
+        "pb": 11
+      }
+    },
+    "richtext_4miPYL": {
+      "type": "richtext",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 5,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "All-in-one digital fabrication",
+        "title_font_size": "h3",
+        "description": "<p>Kinetic Grid 3D is a studio for multi-material 3D printing, custom trophies, 10W diode laser engraving, and CAD prototyping Ã¢â‚¬â€ built for makers, leagues, and small-batch production.<\/p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Explore 3D Catalog",
+        "btn_primary_url": "\/collections\/all",
+        "btn_primary_color": "btn-info",
+        "btn_secondary_text": "Request a quote",
+        "btn_secondary_url": "\/pages\/contact",
+        "btn_secondary_color": "btn-outline-dark",
+        "pt": 12,
+        "pb": 12
+      },
+      "disabled": true
+    },
+    "richtext_AtYwxr": {
+      "type": "richtext",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "Batch production & file quoting",
+        "title_font_size": "h2",
+        "description": "<p>Send STL, STEP, or SVG files for rapid prototyping and repeatable production runs.<\/p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Upload a project",
+        "btn_primary_url": "\/pages\/contact",
+        "btn_primary_color": "btn-white",
+        "btn_secondary_text": "About the studio",
+        "btn_secondary_url": "\/pages\/about",
+        "btn_secondary_color": "btn-light-white",
+        "pt": 11,
+        "pb": 11
+      },
+      "disabled": true
+    },
+    "featured_collections_n3Br7m": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_rznnLq": {
+          "type": "collection",
+          "settings": {
+            "collection": "gaming",
+            "title": "Gaming & Tabletop"
+          }
+        },
+        "collection_KdHXk9": {
+          "type": "collection",
+          "settings": {
+            "collection": "sewing-crafts",
+            "title": "Sewing & Crafts"
+          }
+        },
+        "collection_b7ELCB": {
+          "type": "collection",
+          "settings": {
+            "collection": "articulated",
+            "title": "Articulated Models"
+          }
+        },
+        "collection_XRMXNt": {
+          "type": "collection",
+          "settings": {
+            "collection": "custom-trophies",
+            "title": "Custom Trophies"
+          }
+        },
+        "collection_fQ9QDf": {
+          "type": "collection",
+          "settings": {
+            "collection": "custom-plaques",
+            "title": "Custom Plaques"
+          }
+        },
+        "collection_bestsellers": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellers",
+            "title": "Bestsellers"
+          }
+        },
+        "collection_kRQqkR": {
+          "type": "collection",
+          "settings": {
+            "collection": "all",
+            "title": "All Prints"
+          }
+        }
+      },
+      "block_order": [
+        "collection_rznnLq",
+        "collection_KdHXk9",
+        "collection_b7ELCB",
+        "collection_XRMXNt",
+        "collection_fQ9QDf",
+        "collection_bestsellers",
+        "collection_kRQqkR"
+      ],
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 10,
+        "container_max_width": "",
+        "header_title": "Shop by capability",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Made-to-order prints, awards, laser work, and prototyping.<\/p>",
+        "header_description_font_size": "",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "collection_card_text_align": "text-center",
+        "collection_card_img_orientation": "ratio-16x9",
+        "collection_card_img_border": "img-thumbnail",
+        "collection_card_show_title": true,
+        "collection_card_title_font_size": "fs-md",
+        "collection_card_title_position": "collection-card-title-normal",
+        "collection_card_show_product_count": true,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 3,
+        "pt": 11,
+        "pb": 11
+      },
+      "disabled": true
+    },
+    "separator_kfq8kz": {
+      "type": "separator",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 10,
+        "height": 1,
+        "container": "container",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 10
+      },
+      "disabled": true
+    },
+    "featured_plaques_laser": {
+      "type": "featured-products",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "custom-plaques",
+        "limit": 8,
+        "recommended_mode": false,
+        "recommended_mode_intent": "related",
+        "header_title": "Custom plaques & awards",
+        "header_title_font_size": "h3",
+        "header_description": "<p>10W diode laser engraving on hardwood, slate, acrylic, and anodized aluminum Ã¢â‚¬â€ pick a preset size and material, then add your plaque text with the order.<\/p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 10,
+        "pb": 11
+      },
+      "disabled": true
+    },
+    "media_with_text_xTY8gi": {
+      "type": "media-with-text",
+      "blocks": {
+        "row_JkMDbM": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-secondary",
+            "bg_opacity": 5,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_color": "border-primary",
+            "border_opacity": 10,
+            "media_align_desktop": "",
+            "media_border": "img-thumbnail",
+            "img_orientation": "ratio-9x16",
+            "video": "",
+            "video_ratio": "adapt",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "10W diode laser",
+            "title": "Precision engraving on hardwood, slate, and metal",
+            "title_font_size": "h3",
+            "description": "<p>Cut and engrave hardwoods, slate, acrylic, and anodized aluminum trophy plates. Pair a laser plaque with a 3D-printed topper for a finished award.<\/p>",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "Laser engraving & plaques",
+            "btn_primary_url": "\/pages\/laser-engraving",
+            "btn_primary_color": "btn-info",
+            "btn_secondary_text": "Request a quote",
+            "btn_secondary_url": "\/pages\/contact",
+            "btn_secondary_color": "btn-outline-dark",
+            "pt": 10,
+            "pb": 10
+          }
+        }
+      },
+      "block_order": [
+        "row_JkMDbM"
+      ],
+      "settings": {
+        "container_max_width": ""
+      },
+      "disabled": true
+    },
+    "card_slider_BFzjjF": {
+      "type": "card-slider",
+      "blocks": {
+        "item_qp7jPa": {
+          "type": "item",
+          "settings": {
+            "title": "Custom trophies & awards",
+            "description": "<p>Multi-color 3D toppers combined with laser-engraved plaques for tournaments, leagues, and studio events.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/pages\/custom-awards"
+          }
+        },
+        "item_h9wANh": {
+          "type": "item",
+          "settings": {
+            "title": "10W diode laser engraving",
+            "description": "<p>Hardwoods, slate, acrylic, and anodized aluminum Ã¢â‚¬â€ precision engraving and cutting for plaques and parts.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/pages\/laser-engraving"
+          }
+        },
+        "item_hAPJWn": {
+          "type": "item",
+          "settings": {
+            "title": "Gaming & tabletop prints",
+            "description": "<p>Dice towers, miniatures, terrain, and made-to-order gaming gear ready for the table.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/collections\/gaming"
+          }
+        },
+        "item_9EkHYL": {
+          "type": "item",
+          "settings": {
+            "title": "Sewing & craft organizers",
+            "description": "<p>Functional storage for yarn, thread, and studio tools, printed to order.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/collections\/sewing-crafts"
+          }
+        },
+        "item_iKKgHJ": {
+          "type": "item",
+          "settings": {
+            "title": "Articulated models",
+            "description": "<p>Flexi and articulated prints from catalog files, including STLFLIX-style models.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/collections\/articulated"
+          }
+        },
+        "item_Je3xNm": {
+          "type": "item",
+          "settings": {
+            "title": "CAD & rapid prototyping",
+            "description": "<p>Custom file quoting and batch production runs from STL, STEP, and SVG.<\/p>",
+            "btn_text": "Learn more",
+            "btn_url": "\/pages\/prototyping"
+          }
+        }
+      },
+      "block_order": [
+        "item_qp7jPa",
+        "item_h9wANh",
+        "item_hAPJWn",
+        "item_9EkHYL",
+        "item_iKKgHJ",
+        "item_Je3xNm"
+      ],
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "header_title": "What we fabricate",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Catalog prints, custom awards, laser work, and CAD Ã¢â‚¬â€ one studio.<\/p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": true,
+        "slider_autoplay": 0,
+        "item_bg_color": "bg-body",
+        "item_bg_opacity": 0,
+        "item_text_color": "text-body",
+        "item_border_width": 1,
+        "item_border_color": "",
+        "item_border_opacity": 100,
+        "item_shadow": "shadow-sm",
+        "item_text_align": "text-start",
+        "item_img_orientation": "ratio-4x3",
+        "item_title_font_size": "h5",
+        "item_description_font_size": "",
+        "item_btn_color": "btn-outline-primary",
+        "item_btn_size": "btn-sm",
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 10,
+        "pb": 11
+      },
+      "disabled": true
+    },
+    "html_Y7Cp8x": {
+      "type": "html",
+      "settings": {
+        "liquid": "<p class=\"alert alert-primary text-center\">Current datetime is: <b>{{ \"now\" | date: \"%Y-%m-%d %H:%M\" }}<\/b><\/p>\n\n<iframe class=\"rounded\" src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d5458.176837636101!2d7.264440042281333!3d43.69609386612476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cddaa162b4a50b%3A0x77566707bed909ce!2sFontaine%20du%20Soleil!5e0!3m2!1sen!2s!4v1651756644654!5m2!1sen!2s\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 10,
+        "container": "container",
+        "container_max_width": "",
+        "text_align": "text-center",
+        "header_title": "Studio & workshop",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Made-to-order fabrication Ã¢â‚¬â€ check current shop time below, then visit or send a file.<\/p>",
+        "header_description_font_size": "fs-md",
+        "pt": 10,
+        "pb": 10
+      },
+      "disabled": true
+    },
+    "faq_7TT7z4": {
+      "type": "faq",
+      "blocks": {
+        "item_AgKJ3m": {
+          "type": "item",
+          "settings": {
+            "title": "What can you print and engrave?",
+            "description": "<p>We offer multi-material 3D printing for gaming gear, sewing organizers, and articulated models, plus 10W diode laser engraving and cutting on hardwoods, slate, acrylic, and anodized aluminum.<\/p>"
+          }
+        },
+        "item_EemRD3": {
+          "type": "item",
+          "settings": {
+            "title": "How long does a made-to-order print take?",
+            "description": "<p>Catalog prints are made when you order. Typical turnaround is a few business days depending on size, color changes, and queue. Custom trophies and laser plaques are quoted per job.<\/p>"
+          }
+        },
+        "item_jyLYkB": {
+          "type": "item",
+          "settings": {
+            "title": "Can I send my own 3D or CAD file?",
+            "description": "<p>Yes. Use the custom fabrication form for STL, STEP, SVG, or similar files. We quote prototyping and batch production runs from your files.<\/p>"
+          }
+        },
+        "item_pHCJRG": {
+          "type": "item",
+          "settings": {
+            "title": "Do you make custom trophies?",
+            "description": "<p>Yes. We combine 3D-printed figures and toppers with engraved plates. Include plaque text, dimensions, and quantity in your request.<\/p>"
+          }
+        },
+        "item_kWLWrb": {
+          "type": "item",
+          "settings": {
+            "title": "What materials do you laser engrave?",
+            "description": "<p>Hardwoods, slate, acrylic, and anodized aluminum trophy plates. Tell us the material and size when you request a quote.<\/p>"
+          }
+        },
+        "item_dizKmG": {
+          "type": "item",
+          "settings": {
+            "title": "What is your refund policy?",
+            "description": "<p>Made-to-order and custom work is fabricated per job. If something arrives damaged or not as quoted, contact us and we will make it right.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AgKJ3m",
+        "item_EemRD3",
+        "item_jyLYkB",
+        "item_pHCJRG",
+        "item_kWLWrb",
+        "item_dizKmG"
+      ],
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "open_first_item": true,
+        "header_title": "FAQs",
+        "header_title_font_size": "h2",
+        "header_description": "<p>Lead times, files, materials, and custom trophy orders.<\/p>",
+        "header_description_font_size": "fs-md",
+        "pt": 2,
+        "pb": 11
+      }
+    },
+    "testimonials_eFtnyC": {
+      "type": "testimonials",
+      "blocks": {
+        "item_B99dNi": {
+          "type": "item",
+          "settings": {
+            "title": "Tournament trophies that look finished",
+            "description": "<p>\"The 3D toppers plus engraved plates looked like they came from a trophy shop, not a side hustle. Our league is already booking next season.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Maya R.",
+            "author_subtitle": "Event organizer"
+          }
+        },
+        "item_VPnR9Q": {
+          "type": "item",
+          "settings": {
+            "title": "Dice tower that actually holds up",
+            "description": "<p>\"Ordered a made-to-order dice tower and it arrived solid, clean, and ready for game night. Exactly the catalog piece I wanted.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Chris P.",
+            "author_subtitle": "Tabletop player"
+          }
+        },
+        "item_XTUtYy": {
+          "type": "item",
+          "settings": {
+            "title": "Laser plaque on hardwood",
+            "description": "<p>\"The 10W diode work on hardwood was sharp. We used it for donor plaques and the grain still reads through the fill.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Elena V.",
+            "author_subtitle": "Studio client"
+          }
+        },
+        "item_79nB3i": {
+          "type": "item",
+          "settings": {
+            "title": "Sewing organizers that fit the bench",
+            "description": "<p>\"Functional yarn and thread storage, printed to order. No extra bulk, just the compartments I asked for.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Priya S.",
+            "author_subtitle": "Sewist"
+          }
+        },
+        "item_BUkPE7": {
+          "type": "item",
+          "settings": {
+            "title": "Prototype turnaround",
+            "description": "<p>\"Sent a STEP file on Monday, had a quoted batch and a first article the same week. That is the prototyping loop we needed.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Jordan K.",
+            "author_subtitle": "Product designer"
+          }
+        },
+        "item_DtBFNc": {
+          "type": "item",
+          "settings": {
+            "title": "Hybrid award, one vendor",
+            "description": "<p>\"Figure, topper, and aluminum plate from one studio. I did not have to juggle a printer and a trophy shop.\"<\/p>",
+            "img": "shopify:\/\/shop_images\/icon-user.svg",
+            "author": "Alex M.",
+            "author_subtitle": "Verified customer"
+          }
+        }
+      },
+      "block_order": [
+        "item_B99dNi",
+        "item_VPnR9Q",
+        "item_XTUtYy",
+        "item_79nB3i",
+        "item_BUkPE7",
+        "item_DtBFNc"
+      ],
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 5,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "header_title": "From the shop floor",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Leagues, makers, and studios we have fabricated for.<\/p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": true,
+        "slider_autoplay": 0,
+        "card_bg_color": "bg-primary",
+        "card_bg_opacity": 10,
+        "card_text_color": "text-body",
+        "card_border_width": 1,
+        "card_border_color": "border-primary",
+        "card_border_opacity": 50,
+        "card_shadow": "shadow-none",
+        "card_text_align": "text-start",
+        "card_show_stars": true,
+        "card_title_font_size": "h5",
+        "card_description_font_size": "fs-sm",
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 10,
+        "pb": 12
+      }
+    },
+    "blog_slider_UUweWT": {
+      "type": "blog-slider",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "header_title": "From the studio",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Process notes, material tests, and new catalog drops.<\/p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": true,
+        "slider_autoplay": 0,
+        "blog": "news",
+        "limit": 8,
+        "article_card_text_align": "text-start",
+        "article_card_img_orientation": "ratio-16x9",
+        "article_card_img_border": "img-thumbnail",
+        "article_card_title_size": "fs-xl",
+        "article_card_meta": true,
+        "article_card_tags": true,
+        "article_card_excerpt": false,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 3,
+        "pt": 10,
+        "pb": 12
+      },
+      "disabled": true
+    },
+    "separator_pMbxtB": {
+      "type": "separator",
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 25,
+        "height": 1,
+        "container": "container",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 0
+      },
+      "disabled": true
+    },
     "kg_hero": {
       "type": "kg-hero",
       "settings": {
-        "badge": "All-In-One Digital Fabrication",
+        "badge": "Digital fabrication",
         "title": "Precision 3D Printing & 10W Diode Laser Engraving",
         "subtitle": "From custom tournament trophies and made-to-order catalog prints to precision laser-engraved hardwood and metal plaques.",
         "primary_label": "Explore 3D Catalog",
@@ -11,53 +741,48 @@
         "secondary_label": "Request Custom Fabrication",
         "pt": 14,
         "pb": 14
-      }
+      },
+      "disabled": true
     },
     "kg_pillars": {
       "type": "kg-pillars",
       "blocks": {
+        "pillar_catalog": {
+          "type": "pillar",
+          "settings": {
+            "icon": "01",
+            "title": "Shop the catalog",
+            "text": "Bestsellers and made-to-order 3D prints - produced when you order.",
+            "link": "\/collections\/bestsellers"
+          }
+        },
         "pillar_awards": {
           "type": "pillar",
           "settings": {
-            "icon": "🏆",
-            "title": "Custom Trophies & Awards",
-            "text": "Multi-color 3D toppers combined with laser-engraved plaques."
+            "icon": "02",
+            "title": "Awards & plaques",
+            "text": "Custom trophies and laser plaques with preset sizes you can buy now.",
+            "link": "\/#custom-awards"
           }
         },
-        "pillar_laser": {
+        "pillar_quote": {
           "type": "pillar",
           "settings": {
-            "icon": "🔥",
-            "title": "10W Diode Laser Engraving",
-            "text": "Hardwoods, slate, acrylic, and anodized aluminum trophy plates."
-          }
-        },
-        "pillar_gaming": {
-          "type": "pillar",
-          "settings": {
-            "icon": "🎮",
-            "title": "Gaming & Tabletop Prints",
-            "text": "Dice towers, miniatures, terrain, and made-to-order gaming gear."
-          }
-        },
-        "pillar_sewing": {
-          "type": "pillar",
-          "settings": {
-            "icon": "🧵",
-            "title": "Sewing & Craft Organizers",
-            "text": "Functional storage for yarn, thread, and studio tools."
+            "icon": "03",
+            "title": "Request a quote",
+            "text": "Send files, plaque copy, and quantity for custom fabrication.",
+            "link": "\/#custom-quote"
           }
         }
       },
       "block_order": [
+        "pillar_catalog",
         "pillar_awards",
-        "pillar_laser",
-        "pillar_gaming",
-        "pillar_sewing"
+        "pillar_quote"
       ],
       "settings": {
-        "title": "Studio capabilities",
-        "subtitle": "Made-to-order printing, custom awards, and precision diode laser work under one roof.",
+        "title": "Where to start",
+        "subtitle": "Three clear paths - catalog prints, awards, or a custom quote.",
         "pt": 4,
         "pb": 12
       }
@@ -66,26 +791,69 @@
       "type": "kg-product-grid",
       "settings": {
         "title": "Made-to-order catalog",
-        "subtitle": "Gaming gear, craft organizers, and articulated prints — produced when you order.",
+        "subtitle": "Gaming gear, craft organizers, and articulated prints Ã¢â‚¬â€ produced when you order.",
         "limit": 8,
         "pt": 8,
         "pb": 12
-      }
+      },
+      "disabled": true
     },
     "kg_quote_form": {
       "type": "kg-quote-form",
       "settings": {
         "title": "Request custom fabrication",
-        "subtitle": "Share files, dimensions, plaque copy, and quantity. We’ll quote 3D prints, laser engraving, hybrid trophies, and CAD prototyping.",
+        "subtitle": "Share files, dimensions, plaque copy, and quantity. WeÃ¢â‚¬â„¢ll quote 3D prints, laser engraving, hybrid trophies, and CAD prototyping.",
         "pt": 8,
         "pb": 14
+      }
+    },
+    "kg_awards_spotlight": {
+      "type": "kg-product-spotlight",
+      "blocks": {
+        "spotlight_plaque": {
+          "type": "product",
+          "settings": {
+            "product": "custom-laser-plaque"
+          }
+        },
+        "spotlight_trophy": {
+          "type": "product",
+          "settings": {
+            "product": "custom-3d-printed-trophy"
+          }
+        }
+      },
+      "block_order": [
+        "spotlight_plaque",
+        "spotlight_trophy"
+      ],
+      "settings": {
+        "title": "Custom plaques & trophies",
+        "subtitle": "Open a product for size, material, price options, and checkout. Short details are right here.",
+        "pt": 10,
+        "pb": 12
       }
     }
   },
   "order": [
-    "kg_hero",
+    "hero_carousel_CmDneU",
     "kg_pillars",
+    "featured_products_nXJKQn",
+    "kg_awards_spotlight",
+    "faq_7TT7z4",
+    "testimonials_eFtnyC",
+    "kg_quote_form",
+    "kg_hero",
     "kg_product_grid",
-    "kg_quote_form"
+    "richtext_4miPYL",
+    "richtext_AtYwxr",
+    "featured_collections_n3Br7m",
+    "separator_kfq8kz",
+    "featured_plaques_laser",
+    "media_with_text_xTY8gi",
+    "card_slider_BFzjjF",
+    "html_Y7Cp8x",
+    "blog_slider_UUweWT",
+    "separator_pMbxtB"
   ]
 }

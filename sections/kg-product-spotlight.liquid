@@ -1,0 +1,231 @@
+{% comment %}
+  Product spotlights — mini product teasers with image, short description, price, and shop CTA.
+{% endcomment %}
+
+<div
+  id="custom-awards"
+  class="kg-product-spotlight {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="row justify-content-center mb-8 mb-desktop-10">
+        <div class="col-18 col-desktop-14 text-center">
+          {% unless section.settings.title == blank %}
+            <h2 class="kg-section-title h3 mb-3">{{ section.settings.title | escape }}</h2>
+          {% endunless %}
+          {% unless section.settings.subtitle == blank %}
+            <p class="mb-0 text-body">{{ section.settings.subtitle | escape }}</p>
+          {% endunless %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="kg-product-spotlight__list">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% liquid
+          assign reverse = false
+          assign row_mod = forloop.index0 | modulo: 2
+          if row_mod == 1
+            assign reverse = true
+          endif
+        %}
+
+        <article
+          class="kg-product-spotlight__item{% if reverse %} kg-product-spotlight__item--reverse{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {% if product != blank %}
+            {% capture product_hover_media %}
+              {% render 'product-hover-media', product: product %}
+            {% endcapture %}
+            {% assign product_hover_media = product_hover_media | strip %}
+            {% assign image_alt = product.featured_image.alt | default: product.title %}
+            {% assign excerpt = product.description | strip_html | truncatewords: 25 %}
+
+            <a
+              class="kg-product-spotlight__media{% if product_hover_media != blank %} product-card-img-wrapper--has-hover{% endif %}"
+              href="{{ product.url }}"
+              {% if product_hover_media != blank %}data-product-card-hover{% endif %}
+            >
+              {% if product.featured_image %}
+                {{
+                  product.featured_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '600, 900, 1200',
+                    sizes: '(min-width: 992px) 50vw, 100vw',
+                    alt: image_alt,
+                    class: 'kg-product-spotlight__img product-card-img-primary'
+                }}
+                {{ product_hover_media }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'kg-product-spotlight__placeholder' }}
+              {% endif %}
+            </a>
+
+            <div class="kg-product-spotlight__content">
+              <p class="kg-product-spotlight__eyebrow mb-3">
+                {{ 'kinetic_grid.product.made_to_order' | t }}
+              </p>
+              <h3 class="kg-product-spotlight__title h4 mb-4">
+                <a href="{{ product.url }}">{{ product.title | escape }}</a>
+              </h3>
+              {% if excerpt != blank %}
+                <p class="kg-product-spotlight__excerpt mb-5">{{ excerpt | escape }}</p>
+              {% endif %}
+              <p class="kg-product-spotlight__price mb-6">
+                {% if product.price_varies %}
+                  <span class="kg-product-spotlight__from">{{ 'kinetic_grid.product.from' | t }}</span>
+                {% endif %}
+                {{ product.price_min | money }}
+              </p>
+              <div class="kg-product-spotlight__actions">
+                <a class="btn btn-info text-white" href="{{ product.url }}">
+                  {{ 'kinetic_grid.product.view_product' | t }}
+                </a>
+                {% if product.has_only_default_variant and product.available %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    data-kg-quick-add
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  >
+                    {{ 'kinetic_grid.product.quick_add' | t }}
+                  </button>
+                {% elsif product.available == false %}
+                  <span class="btn btn-outline-dark disabled" aria-disabled="true">
+                    {{ 'product.sold_out' | t }}
+                  </span>
+                {% else %}
+                  <a class="btn btn-outline-dark" href="{{ product.url }}">
+                    {{ 'product.choose_options' | t }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            <div class="kg-product-spotlight__media">
+              {{ 'product-1' | placeholder_svg_tag: 'kg-product-spotlight__placeholder' }}
+            </div>
+            <div class="kg-product-spotlight__content">
+              <p class="kg-product-spotlight__eyebrow mb-3">
+                {{ 'kinetic_grid.product.made_to_order' | t }}
+              </p>
+              <h3 class="kg-product-spotlight__title h4 mb-4">
+                {{ 'kinetic_grid.product.placeholder_title' | t }}
+              </h3>
+              <p class="kg-product-spotlight__excerpt mb-5">
+                {{ 'kinetic_grid.spotlight.placeholder_excerpt' | t }}
+              </p>
+              <p class="kg-product-spotlight__price mb-6">$42.00</p>
+              <div class="kg-product-spotlight__actions">
+                <a class="btn btn-info text-white disabled" href="#" aria-disabled="true">
+                  {{ 'kinetic_grid.product.view_product' | t }}
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-kg-quick-add]');
+    if (!button || button.disabled) return;
+    if (!button.closest('#custom-awards, #kg-product-spotlight-{{ section.id }}')) return;
+
+    event.preventDefault();
+    const variantId = button.getAttribute('data-variant-id');
+    if (!variantId) return;
+
+    button.disabled = true;
+    try {
+      await fetch(window.theme?.routes?.cart_add_url || '/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ id: Number(variantId), quantity: 1 }),
+      });
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+      const cartOffcanvas = document.querySelector('#offcanvas-cart');
+      if (cartOffcanvas && window.bootstrap?.Offcanvas) {
+        bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas).show();
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "KG Product spotlight",
+  "tag": "section",
+  "class": "kg-product-spotlight-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Custom plaques & trophies"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Preset sizes you can buy now — open a product for options, engraving notes, and checkout."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KG Product spotlight",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}

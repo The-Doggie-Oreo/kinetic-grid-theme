@@ -2,49 +2,90 @@
   "type": "header",
   "name": "Header Group",
   "sections": {
+    "announcement_bar_Ge9W3V": {
+      "type": "announcement-bar",
+      "blocks": {
+        "slide_j46kwk": {
+          "type": "slide",
+          "settings": {
+            "announcement": "Made-to-order 3D prints, custom trophies, and 10W diode laser engraving"
+          }
+        },
+        "slide_mwF4Tk": {
+          "type": "slide",
+          "settings": {
+            "announcement": "Send files for custom fabrication quotes — 3D print, laser, hybrid trophies, and CAD"
+          }
+        }
+      },
+      "block_order": [
+        "slide_j46kwk",
+        "slide_mwF4Tk"
+      ],
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "600",
+        "font_size": "fs-xs",
+        "font_size_desktop": "fs-desktop-sm",
+        "text_transform": "",
+        "letter_spacing": 1,
+        "carousel_autoplay": 5,
+        "carousel_vertical": true,
+        "pt": 4,
+        "pb": 4
+      }
+    },
     "kg_header": {
       "type": "kg-header",
       "blocks": {
         "nav_catalog": {
           "type": "dropdown",
           "settings": {
-            "title": "3D Catalog",
-            "url": "\/collections\/all",
-            "item_1_label": "Gaming",
-            "item_1_url": "\/collections\/gaming",
-            "item_2_label": "Sewing \/ Crafts",
-            "item_2_url": "\/collections\/sewing-crafts",
-            "item_3_label": "Articulated",
-            "item_3_url": "\/collections\/articulated",
-            "item_4_label": "All Prints",
-            "item_4_url": "\/collections\/all"
+            "title": "Catalog",
+            "url": "\/collections\/bestsellers",
+            "item_1_label": "Bestsellers",
+            "item_1_url": "\/collections\/bestsellers",
+            "item_2_label": "Gaming",
+            "item_2_url": "\/collections\/gaming",
+            "item_3_label": "All prints",
+            "item_3_url": "\/collections\/all",
+            "item_4_label": "",
+            "item_4_url": ""
           }
         },
         "nav_awards": {
-          "type": "link",
+          "type": "dropdown",
           "settings": {
-            "title": "Custom Awards & Trophies",
-            "url": "\/pages\/custom-awards"
+            "title": "Awards",
+            "url": "\/collections\/custom-plaques",
+            "item_1_label": "Custom plaques",
+            "item_1_url": "\/collections\/custom-plaques",
+            "item_2_label": "Custom trophies",
+            "item_2_url": "\/collections\/custom-trophies",
+            "item_3_label": "Awards page",
+            "item_3_url": "\/pages\/custom-awards",
+            "item_4_label": "",
+            "item_4_url": ""
           }
         },
-        "nav_laser": {
+        "nav_quote": {
           "type": "link",
           "settings": {
-            "title": "Laser Engraving & Plaques",
-            "url": "\/pages\/laser-engraving"
-          }
-        },
-        "nav_cad": {
-          "type": "link",
-          "settings": {
-            "title": "Prototyping & CAD",
-            "url": "\/pages\/prototyping"
+            "title": "Request a quote",
+            "url": "\/#custom-quote"
           }
         },
         "nav_about": {
           "type": "link",
           "settings": {
-            "title": "About Studio",
+            "title": "About",
             "url": "\/pages\/about"
           }
         }
@@ -52,8 +93,7 @@
       "block_order": [
         "nav_catalog",
         "nav_awards",
-        "nav_laser",
-        "nav_cad",
+        "nav_quote",
         "nav_about"
       ],
       "settings": {
@@ -63,6 +103,7 @@
     }
   },
   "order": [
+    "announcement_bar_Ge9W3V",
     "kg_header"
   ]
 }

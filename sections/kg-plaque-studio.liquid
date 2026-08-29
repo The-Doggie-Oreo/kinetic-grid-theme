@@ -1,0 +1,174 @@
+{% comment %}
+  Owner-only plaque laser studio: paste text or order SVG → download .svg
+{% endcomment %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Oswald:wght@500&family=Libre+Baskerville:wght@400;700&family=Roboto+Slab:wght@500;600&family=Playfair+Display:wght@600&family=Bebas+Neue&family=Lora:wght@500;600&display=swap">
+
+<section class="kg-plaque-studio {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}">
+  <div class="container" style="max-width: 720px;">
+    <plaque-studio
+      data-unlock-code="{{ section.settings.unlock_code | escape }}"
+    >
+      <div class="kg-plaque-studio__gate" data-studio-gate>
+        <h1 class="h3 mb-3">{{ section.settings.title | default: 'Plaque studio' | escape }}</h1>
+        <p class="text-muted mb-4">{{ section.settings.gate_help | default: 'Studio tool — enter unlock code.' | escape }}</p>
+        <div class="d-flex flex-wrap gap-3 align-items-end">
+          <div class="flex-grow-1">
+            <label class="form-label" for="studio-unlock-{{ section.id }}">Unlock code</label>
+            <input
+              id="studio-unlock-{{ section.id }}"
+              class="form-control"
+              type="password"
+              autocomplete="off"
+              data-studio-unlock
+            >
+          </div>
+          <button type="button" class="btn btn-primary" data-studio-unlock-btn>Unlock</button>
+        </div>
+        <p class="small text-danger mt-3 mb-0" data-studio-unlock-error hidden>Wrong code.</p>
+      </div>
+
+      <div class="kg-plaque-studio__tool" data-studio-tool hidden>
+        <h1 class="h3 mb-2">{{ section.settings.title | default: 'Plaque studio' | escape }}</h1>
+        <p class="text-muted mb-5">Paste the plaque details from a Shopify order. We fill size, font, and lines — then download the SVG.</p>
+
+        <div class="plaque-preview mb-5" aria-live="polite">
+          <div class="plaque-preview__stage">
+            <div class="plaque-preview__plate" data-studio-plate>
+              <div class="plaque-preview__lines" data-studio-lines>
+                <span class="plaque-preview__line">Your name or title</span>
+              </div>
+            </div>
+          </div>
+          <p class="plaque-preview__dims small text-muted mt-3 mb-0 text-center" data-studio-dims>
+            3 × 2 in
+          </p>
+        </div>
+
+        <div class="border rounded p-4 mb-5">
+          <p class="fw-semibold mb-2">Paste from Shopify order</p>
+          <p class="small text-muted mb-3">
+            Copy everything under the plaque line item (width, height, font, lines — even the whole block with <code>Custom / P800</code>) and paste it here. We’ll read it automatically.
+          </p>
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Custom / P800
+
+Plaque width (in): 3.0
+Plaque height (in): 2.0
+Plaque size: 3 × 2 in (landscape, custom)
+Plaque font: Montserrat
+Plaque line 1: ...
+Plaque line 2: ...
+Layout mode: Manual"
+            data-studio-order-paste
+          ></textarea>
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <button type="button" class="btn btn-primary btn-sm" data-studio-load-order>
+              Load order → preview
+            </button>
+            <button type="button" class="btn btn-dark btn-sm" data-studio-download>
+              Download SVG
+            </button>
+          </div>
+        </div>
+
+        <details class="border rounded p-4 mb-4">
+          <summary class="fw-semibold" style="cursor:pointer">Or rebuild / tweak manually</summary>
+          <div class="pt-4">
+            <div class="row g-3 mb-3">
+              <div class="col-9 col-tablet-6">
+                <label class="form-label" for="studio-w-{{ section.id }}">Width (in)</label>
+                <input id="studio-w-{{ section.id }}" class="form-control" type="number" min="1" max="8" step="0.1" value="3" data-studio-width>
+              </div>
+              <div class="col-9 col-tablet-6">
+                <label class="form-label" for="studio-h-{{ section.id }}">Height (in)</label>
+                <input id="studio-h-{{ section.id }}" class="form-control" type="number" min="1" max="11" step="0.1" value="2" data-studio-height>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="studio-font-{{ section.id }}">Font</label>
+              <select id="studio-font-{{ section.id }}" class="form-select" data-studio-font>
+                <option value="Montserrat" selected>Montserrat</option>
+                <option value="Oswald">Oswald</option>
+                <option value="Roboto Slab">Roboto Slab</option>
+                <option value="Libre Baskerville">Libre Baskerville</option>
+                <option value="Playfair Display">Playfair Display</option>
+                <option value="Bebas Neue">Bebas Neue</option>
+                <option value="Lora">Lora</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="studio-paste-{{ section.id }}">Extra text (optional fit)</label>
+              <textarea
+                id="studio-paste-{{ section.id }}"
+                class="form-control"
+                rows="3"
+                placeholder="Only needed if you want to re-fit raw text into lines"
+                data-studio-paste
+              ></textarea>
+            </div>
+            <button type="button" class="btn btn-outline-primary btn-sm" data-studio-fit>Fit text on plaque</button>
+          </div>
+        </details>
+
+        <p class="small text-muted mb-0" data-studio-status hidden></p>
+      </div>
+    </plaque-studio>
+  </div>
+</section>
+
+<script src="{{ 'plaque-studio.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "KG Plaque studio",
+  "tag": "section",
+  "class": "kg-plaque-studio-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Plaque studio"
+    },
+    {
+      "type": "text",
+      "id": "unlock_code",
+      "label": "Unlock code",
+      "default": "kineticlaser",
+      "info": "Only people with this code can use the tool. Change it anytime."
+    },
+    {
+      "type": "text",
+      "id": "gate_help",
+      "label": "Gate help text",
+      "default": "Owner tool — enter unlock code."
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "KG Plaque studio"
+    }
+  ]
+}
+{% endschema %}

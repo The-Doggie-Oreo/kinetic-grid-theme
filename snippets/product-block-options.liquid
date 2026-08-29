@@ -8,6 +8,19 @@
     class="product-options list-unstyled mb-0 {{ pt }} {{ pb }}"
     aria-label="{{ 'product.product_options' | t }}">
     {% for option in product.options_with_values %}
+      {% if option.name == 'Price tier' %}
+        <li class="visually-hidden" data-plaque-tier-option hidden aria-hidden="true">
+          {% for value in option.values %}
+            <input
+              type="radio"
+              name="option-{{ option.name | handleize }}"
+              id="option-{{ option.name | handleize }}-{{ value | handleize }}"
+              value="{{ value | escape }}"
+              {% if option.selected_value == value %}checked{% endif %}
+            >
+          {% endfor %}
+        </li>
+      {% else %}
       <li class="py-3">
         {% if block.settings.options_style == 'buttons' %}       
           <p class="mb-1">
@@ -46,6 +59,7 @@
           </select>
         {% endif %}
       </li>
+      {% endif %}
     {% endfor %}
   </ul>
 {% endunless %}

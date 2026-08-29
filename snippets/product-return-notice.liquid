@@ -1,0 +1,22 @@
+{% liquid
+  assign is_plaque = false
+  assign is_trophy = false
+
+  if product.handle == 'custom-laser-plaque' or product.tags contains 'plaque-customizer'
+    assign is_plaque = true
+  endif
+
+  if product.handle == 'custom-3d-printed-trophy' or product.tags contains 'custom-trophy'
+    assign is_trophy = true
+  endif
+%}
+
+{% if is_plaque %}
+  <div class="product-return-notice alert alert-warning border-0 mb-0" role="note">
+    <p class="mb-0 small">{{ 'kinetic_grid.plaque.no_returns' | t }}</p>
+  </div>
+{% elsif is_trophy %}
+  <div class="product-return-notice alert alert-info border-0 mb-0" role="note">
+    <p class="mb-0 small">{{ 'kinetic_grid.trophy.returns_policy' | t }}</p>
+  </div>
+{% endif %}

@@ -1,0 +1,269 @@
+/*
+  Kinetic Grid — automatic seasonal palette + ambient effects.
+  Active season is set on <html data-season="…"> from snippets/kg-season-slug.liquid
+*/
+
+/* ── Fall (Aug 15 – Nov 30) ─────────────────────────────────────────── */
+html[data-season='fall'] {
+  --kg-navy: #1c1917;
+  --kg-slate: #44403c;
+  --kg-muted: #78716c;
+  --kg-accent: #b45309;
+  --kg-canvas: #f5f0e8;
+  --kg-surface: #fffdf9;
+  --kg-line: #e7e0d5;
+  --kg-shadow: 0 1px 0 rgba(28, 25, 23, 0.05);
+  --kg-footer-bg: #1a1510;
+  --kg-footer-accent: rgba(180, 83, 9, 0.12);
+  --kg-hero-tint: rgba(180, 83, 9, 0.08);
+  --kg-promo-bg: #78350f;
+  --kg-promo-text: #fffbeb;
+  --bs-primary: #78350f;
+  --bs-primary-rgb: 120, 53, 15;
+  --bs-body-bg: #f5f0e8;
+  --bs-body-bg-rgb: 245, 240, 232;
+}
+
+/* ── Holiday (Dec 1 – Jan 5) ────────────────────────────────────────── */
+html[data-season='holiday'] {
+  --kg-navy: #14532d;
+  --kg-slate: #365314;
+  --kg-muted: #4d7c0f;
+  --kg-accent: #991b1b;
+  --kg-canvas: #faf8f5;
+  --kg-surface: #ffffff;
+  --kg-line: #e5e7eb;
+  --kg-shadow: 0 1px 0 rgba(20, 83, 45, 0.06);
+  --kg-footer-bg: #0f1f14;
+  --kg-footer-accent: rgba(250, 204, 21, 0.08);
+  --kg-hero-tint: rgba(153, 27, 27, 0.06);
+  --kg-promo-bg: #14532d;
+  --kg-promo-text: #fef9c3;
+  --bs-primary: #14532d;
+  --bs-primary-rgb: 20, 83, 45;
+  --bs-body-bg: #faf8f5;
+  --bs-body-bg-rgb: 250, 248, 245;
+}
+
+/* ── Winter (Jan 6 – Feb 28) ────────────────────────────────────────── */
+html[data-season='winter'] {
+  --kg-navy: #0c4a6e;
+  --kg-slate: #334155;
+  --kg-muted: #64748b;
+  --kg-accent: #0369a1;
+  --kg-canvas: #f0f4f8;
+  --kg-surface: #ffffff;
+  --kg-line: #dbeafe;
+  --kg-shadow: 0 1px 0 rgba(12, 74, 110, 0.05);
+  --kg-footer-bg: #0f172a;
+  --kg-footer-accent: rgba(56, 189, 248, 0.08);
+  --kg-hero-tint: rgba(3, 105, 161, 0.07);
+  --kg-promo-bg: #0c4a6e;
+  --kg-promo-text: #e0f2fe;
+  --bs-primary: #0c4a6e;
+  --bs-primary-rgb: 12, 74, 110;
+  --bs-body-bg: #f0f4f8;
+  --bs-body-bg-rgb: 240, 244, 248;
+}
+
+/* ── Spring (Mar 1 – May 31) ────────────────────────────────────────── */
+html[data-season='spring'] {
+  --kg-navy: #166534;
+  --kg-slate: #3f6212;
+  --kg-muted: #65a30d;
+  --kg-accent: #059669;
+  --kg-canvas: #f4faf6;
+  --kg-surface: #ffffff;
+  --kg-line: #d9f99d;
+  --kg-shadow: 0 1px 0 rgba(22, 101, 52, 0.05);
+  --kg-footer-bg: #14532d;
+  --kg-footer-accent: rgba(190, 242, 100, 0.1);
+  --kg-hero-tint: rgba(5, 150, 105, 0.07);
+  --kg-promo-bg: #166534;
+  --kg-promo-text: #ecfccb;
+  --bs-primary: #166534;
+  --bs-primary-rgb: 22, 101, 52;
+  --bs-body-bg: #f4faf6;
+  --bs-body-bg-rgb: 244, 250, 246;
+}
+
+/* ── Summer (Jun 1 – Aug 14) ────────────────────────────────────────── */
+html[data-season='summer'] {
+  --kg-navy: #0c4a6e;
+  --kg-slate: #334155;
+  --kg-muted: #64748b;
+  --kg-accent: #0284c7;
+  --kg-canvas: #fffbeb;
+  --kg-surface: #ffffff;
+  --kg-line: #fde68a;
+  --kg-shadow: 0 1px 0 rgba(12, 74, 110, 0.04);
+  --kg-footer-bg: #1e3a5f;
+  --kg-footer-accent: rgba(251, 191, 36, 0.1);
+  --kg-hero-tint: rgba(2, 132, 199, 0.06);
+  --kg-promo-bg: #0369a1;
+  --kg-promo-text: #fef3c7;
+  --bs-primary: #0369a1;
+  --bs-primary-rgb: 3, 105, 161;
+  --bs-body-bg: #fffbeb;
+  --bs-body-bg-rgb: 255, 251, 235;
+}
+
+/* ── Shared seasonal surfaces ───────────────────────────────────────── */
+html[data-season] body {
+  background-color: var(--kg-canvas);
+}
+
+html[data-season] #header-group:has(.kg-header) {
+  background: color-mix(in srgb, var(--kg-canvas) 92%, transparent);
+  border-bottom-color: var(--kg-line);
+}
+
+html[data-season] .kg-hero {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--kg-accent) 12%, var(--kg-canvas)) 0%, var(--kg-canvas) 72%);
+}
+
+html[data-season] .hero-carousel .media-wrapper::after {
+  background:
+    linear-gradient(135deg, var(--kg-hero-tint, transparent) 0%, transparent 55%),
+    rgba(var(--overlay-color-rgb, 0, 0, 0), var(--overlay-opacity, 0.7));
+}
+
+html[data-season] .kg-footer {
+  background: var(--kg-footer-bg, #111827);
+}
+
+html[data-season] .kg-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, var(--kg-footer-accent, transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+html[data-season] .kg-product-card .btn-info,
+html[data-season] .kg-hero .btn-info,
+html[data-season] .kg-quote .btn-info {
+  background: var(--kg-accent);
+  border-color: var(--kg-accent);
+}
+
+html[data-season] .kg-product-card .btn-info:hover,
+html[data-season] .kg-hero .btn-info:hover,
+html[data-season] .kg-quote .btn-info:hover,
+html[data-season] .kg-product-card .btn-info:focus,
+html[data-season] .kg-hero .btn-info:focus,
+html[data-season] .kg-quote .btn-info:focus {
+  background: color-mix(in srgb, var(--kg-accent) 82%, #000);
+  border-color: color-mix(in srgb, var(--kg-accent) 82%, #000);
+}
+
+/* ── Promo bar ──────────────────────────────────────────────────────── */
+.kg-season-promo {
+  background: var(--kg-promo-bg, var(--kg-navy));
+  color: var(--kg-promo-text, #fff);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kg-season-promo__text {
+  line-height: 1.4;
+}
+
+/* ── Ambient particle layer (footer) ────────────────────────────────── */
+.kg-season-fx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kg-season-fx__leaf,
+.kg-season-fx__flake,
+.kg-season-fx__petal,
+.kg-season-fx__speck {
+  position: absolute;
+  top: -2rem;
+  left: var(--kg-fx-left, 50%);
+  opacity: 0;
+  animation: kg-fx-fall var(--kg-fx-duration, 16s) var(--kg-fx-delay, 0s) linear infinite;
+  will-change: transform, opacity;
+}
+
+.kg-season-fx__leaf {
+  width: var(--kg-fx-size, 12px);
+  height: var(--kg-fx-size, 12px);
+  background: var(--kg-fx-color, #c2703e);
+  border-radius: 0 80% 0 80%;
+  transform: rotate(45deg);
+}
+
+.kg-season-fx__flake {
+  width: var(--kg-fx-size, 6px);
+  height: var(--kg-fx-size, 6px);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.kg-season-fx__petal {
+  width: var(--kg-fx-size, 10px);
+  height: calc(var(--kg-fx-size, 10px) * 1.4);
+  background: var(--kg-fx-color, #fda4af);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(15deg);
+}
+
+.kg-season-fx__speck {
+  width: var(--kg-fx-size, 4px);
+  height: var(--kg-fx-size, 4px);
+  background: rgba(251, 191, 36, 0.55);
+  border-radius: 50%;
+  animation-name: kg-fx-drift;
+}
+
+@keyframes kg-fx-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0) rotate(0deg);
+  }
+  8% {
+    opacity: var(--kg-fx-opacity, 0.55);
+  }
+  90% {
+    opacity: var(--kg-fx-opacity, 0.35);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--kg-fx-drift, 30px), calc(100vh + 2rem), 0) rotate(360deg);
+  }
+}
+
+@keyframes kg-fx-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--kg-fx-drift, 20px), -80px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kg-season-fx__leaf,
+  .kg-season-fx__flake,
+  .kg-season-fx__petal,
+  .kg-season-fx__speck {
+    animation: none !important;
+    display: none;
+  }
+}

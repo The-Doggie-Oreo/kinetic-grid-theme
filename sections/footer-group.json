@@ -2,6 +2,29 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
+    "newsletter_fL4LWF": {
+      "type": "newsletter",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "bg-gradient",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 0,
+        "border_color": "border-secondary",
+        "border_opacity": 10,
+        "container_max_width": "600",
+        "header_title": "Studio notes & new catalog drops",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Get made-to-order drops, trophy season reminders, and laser material tests.<\/p>",
+        "header_description_font_size": "fs-md",
+        "btn_color": "btn-info",
+        "btn_size": "",
+        "notice": "<p>By signing up for email, you agree to our <a href=\"\/policies\/terms-of-service\">Terms of Service<\/a> and <a href=\"\/policies\/privacy-policy\">Privacy Policy<\/a>.<\/p>",
+        "pt": 11,
+        "pb": 11
+      }
+    },
     "kg_footer": {
       "type": "kg-footer",
       "settings": {
@@ -18,6 +41,7 @@
     }
   },
   "order": [
+    "newsletter_fL4LWF",
     "kg_footer"
   ]
 }

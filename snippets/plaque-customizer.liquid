@@ -1,0 +1,197 @@
+{% comment %}
+  Live plaque preview + line item properties for custom plaque orders.
+{% endcomment %}
+
+{% liquid
+  assign show_customizer = false
+  if product.handle == 'custom-laser-plaque'
+    assign show_customizer = true
+  endif
+  if product.tags contains 'plaque-customizer'
+    assign show_customizer = true
+  endif
+
+  assign uid = product.id
+%}
+
+{% if show_customizer %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Oswald:wght@500&family=Libre+Baskerville:wght@400;700&family=Roboto+Slab:wght@500;600&family=Playfair+Display:wght@600&family=Bebas+Neue&family=Lora:wght@500;600&display=swap">
+
+  <plaque-customizer
+    class="product-block-plaque"
+    data-default-size="2×3"
+    data-default-font="Montserrat"
+    data-max-width="8"
+    data-max-height="11"
+    data-step="0.1"
+    data-max-lines="8"
+    data-add-line="{{ 'kinetic_grid.plaque.add_line' | t }}"
+    data-remove-line="{{ 'kinetic_grid.plaque.remove_line' | t }}"
+    data-line-capacity-many="{{ 'kinetic_grid.plaque.line_capacity_many' | t }}"
+    data-auto-format-success="{{ 'kinetic_grid.plaque.auto_format_success' | t }}"
+    data-auto-format-empty="{{ 'kinetic_grid.plaque.auto_format_empty' | t }}"
+  >
+    <p class="product-block-plaque__label fw-semibold mb-3">
+      {{ 'kinetic_grid.plaque.customize_title' | t }}
+    </p>
+
+    <div class="plaque-custom-size mt-4" data-plaque-custom-panel hidden>
+      <p class="fw-semibold mb-2">{{ 'kinetic_grid.plaque.custom_size_title' | t }}</p>
+      <p class="small text-muted mb-3">{{ 'kinetic_grid.plaque.custom_size_help' | t }}</p>
+      <div class="plaque-custom-size__fields">
+        <div class="plaque-custom-size__field">
+          <label class="form-label" for="plaque-width-{{ uid }}">{{ 'kinetic_grid.plaque.width_label' | t }}</label>
+          <input
+            id="plaque-width-{{ uid }}"
+            class="form-control"
+            type="number"
+            min="1"
+            max="8"
+            step="0.1"
+            value="3"
+            inputmode="decimal"
+            data-plaque-width
+          >
+        </div>
+        <div class="plaque-custom-size__field">
+          <label class="form-label" for="plaque-height-{{ uid }}">{{ 'kinetic_grid.plaque.height_label' | t }}</label>
+          <input
+            id="plaque-height-{{ uid }}"
+            class="form-control"
+            type="number"
+            min="1"
+            max="11"
+            step="0.1"
+            value="2"
+            inputmode="decimal"
+            data-plaque-height
+          >
+        </div>
+      </div>
+      <input type="hidden" name="properties[Plaque width (in)]" value="" data-plaque-prop-width disabled>
+      <input type="hidden" name="properties[Plaque height (in)]" value="" data-plaque-prop-height disabled>
+      <input type="hidden" name="properties[Plaque size]" value="" data-plaque-prop-size disabled>
+    </div>
+
+    <div class="plaque-preview mt-4" aria-live="polite">
+      <div class="plaque-preview__stage" data-plaque-frame>
+        <div class="plaque-preview__plate" data-plaque-plate data-size="2×3">
+          <div class="plaque-preview__lines" data-plaque-lines>
+            {% for i in (1..8) %}
+              <span
+                class="plaque-preview__line{% if i > 1 %} plaque-preview__line--extra{% endif %}"
+                data-plaque-line="{{ i }}"
+                {% if i > 1 %}hidden{% endif %}
+              >
+                {% if i == 1 %}
+                  {{ 'kinetic_grid.plaque.line_1_placeholder' | t }}
+                {% else %}
+                  &nbsp;
+                {% endif %}
+              </span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <p class="plaque-preview__dims small text-muted mt-3 mb-0 text-center" data-plaque-dims-label>
+        3 × 2 in (landscape)
+      </p>
+    </div>
+
+    <fieldset class="plaque-fields mt-5">
+      <legend class="visually-hidden">{{ 'kinetic_grid.plaque.engraving_title' | t }}</legend>
+      <p class="fw-semibold mb-2">{{ 'kinetic_grid.plaque.engraving_title' | t }}</p>
+      <p class="small text-muted mb-4">{{ 'kinetic_grid.plaque.simple_help' | t }}</p>
+
+      <div class="mb-4">
+        <label class="form-label" for="plaque-font-{{ uid }}">{{ 'kinetic_grid.plaque.font_label' | t }}</label>
+        <select id="plaque-font-{{ uid }}" class="form-select" name="properties[Plaque font]" data-plaque-font>
+          <option value="Montserrat" selected>Montserrat</option>
+          <option value="Oswald">Oswald</option>
+          <option value="Roboto Slab">Roboto Slab</option>
+          <option value="Libre Baskerville">Libre Baskerville</option>
+          <option value="Playfair Display">Playfair Display</option>
+          <option value="Bebas Neue">Bebas Neue</option>
+          <option value="Lora">Lora</option>
+        </select>
+      </div>
+
+      <div class="plaque-paste-format mb-4">
+        <label class="form-label" for="plaque-paste-{{ uid }}">{{ 'kinetic_grid.plaque.paste_title' | t }}</label>
+        <p class="small text-muted mb-2">{{ 'kinetic_grid.plaque.paste_help' | t }}</p>
+        <textarea
+          id="plaque-paste-{{ uid }}"
+          class="form-control"
+          rows="3"
+          placeholder="{{ 'kinetic_grid.plaque.paste_placeholder' | t }}"
+          data-plaque-paste
+        ></textarea>
+        <button type="button" class="btn btn-primary btn-sm mt-3" data-plaque-auto-format>
+          {{ 'kinetic_grid.plaque.auto_format' | t }}
+        </button>
+        <p class="small text-muted mt-2 mb-0" data-plaque-format-status hidden></p>
+      </div>
+
+      <p class="fw-semibold mb-3">{{ 'kinetic_grid.plaque.edit_lines_title' | t }}</p>
+      <p class="small text-muted mb-3" data-plaque-line-hint></p>
+
+      <div class="mb-3" data-plaque-line-field="1">
+        <label class="form-label" for="plaque-line-1-{{ uid }}">
+          {{ 'kinetic_grid.plaque.line_1' | t }}
+          <span class="text-danger" aria-hidden="true">*</span>
+        </label>
+        <input
+          id="plaque-line-1-{{ uid }}"
+          class="form-control"
+          type="text"
+          name="properties[Plaque line 1]"
+          maxlength="80"
+          required
+          autocomplete="off"
+          placeholder="{{ 'kinetic_grid.plaque.line_1_placeholder' | t }}"
+          data-plaque-input="1"
+        >
+      </div>
+
+      {% for i in (2..8) %}
+        <div class="plaque-line-field mb-3" data-plaque-line-field="{{ i }}" hidden>
+          <div class="plaque-line-field__head">
+            <label class="form-label mb-0" for="plaque-line-{{ i }}-{{ uid }}">
+              {{ 'kinetic_grid.plaque.line_n' | t: number: i }}
+            </label>
+            <button type="button" class="btn btn-link btn-sm p-0 plaque-line-field__remove" data-plaque-remove-line="{{ i }}">
+              {{ 'kinetic_grid.plaque.remove_line' | t }}
+            </button>
+          </div>
+          <input
+            id="plaque-line-{{ i }}-{{ uid }}"
+            class="form-control"
+            type="text"
+            name="properties[Plaque line {{ i }}]"
+            maxlength="80"
+            autocomplete="off"
+            disabled
+            placeholder="{{ 'kinetic_grid.plaque.line_optional_placeholder' | t }}"
+            data-plaque-input="{{ i }}"
+          >
+        </div>
+      {% endfor %}
+
+      <div class="plaque-line-actions d-flex flex-wrap gap-2 align-items-center mb-4">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-plaque-add-line hidden>
+          {{ 'kinetic_grid.plaque.add_line' | t }}
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-plaque-remove-last-line hidden>
+          {{ 'kinetic_grid.plaque.remove_line' | t }}
+        </button>
+      </div>
+
+      <input type="hidden" name="properties[Layout mode]" value="Manual" data-plaque-prop-layout>
+      <div data-plaque-svg-props hidden aria-hidden="true"></div>
+
+      <p class="small text-muted mb-0">{{ 'kinetic_grid.plaque.order_note' | t }}</p>
+    </fieldset>
+  </plaque-customizer>
+
+  <script src="{{ 'plaque-customizer.js' | asset_url }}" defer></script>
+{% endif %}

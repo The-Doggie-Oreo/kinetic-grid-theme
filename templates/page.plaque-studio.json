@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "kg-plaque-studio",
+      "settings": {
+        "title": "Plaque studio",
+        "unlock_code": "kineticlaser",
+        "gate_help": "Owner tool — enter unlock code.",
+        "pt": 8,
+        "pb": 12
+      }
+    }
+  },
+  "order": ["main"]
+}

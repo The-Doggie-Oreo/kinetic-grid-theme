@@ -13,22 +13,32 @@
         </div>
       </div>
     {% endunless %}
-    <div class="row row-cols-1 row-cols-tablet-2 row-cols-desktop-4 g-6 g-desktop-8">
+    <div class="row row-cols-1 row-cols-tablet-2 row-cols-desktop-3 g-6 g-desktop-8">
       {% for block in section.blocks %}
         <div class="col" {{ block.shopify_attributes }}>
-          <article class="kg-card kg-pillar p-7 p-desktop-8">
-            {% unless block.settings.icon == blank %}
-              <div class="kg-pillar__icon" aria-hidden="true">
+          {% if block.settings.link != blank %}
+            <a class="kg-card kg-pillar kg-pillar--link p-7 p-desktop-8 text-decoration-none d-block h-100" href="{{ block.settings.link }}">
+          {% else %}
+            <article class="kg-card kg-pillar p-7 p-desktop-8 h-100">
+          {% endif %}
+            <div class="kg-pillar__icon" aria-hidden="true">
+              {% if block.settings.icon != blank %}
                 {{ block.settings.icon | escape }}
-              </div>
-            {% endunless %}
+              {% else %}
+              {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}
+              {% endif %}
+            </div>
             {% unless block.settings.title == blank %}
               <h3 class="mb-4">{{ block.settings.title | escape }}</h3>
             {% endunless %}
             {% unless block.settings.text == blank %}
               <p>{{ block.settings.text | escape }}</p>
             {% endunless %}
-          </article>
+          {% if block.settings.link != blank %}
+            </a>
+          {% else %}
+            </article>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -46,13 +56,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Studio capabilities"
+      "default": "Where to start"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Made-to-order printing, custom awards, and precision diode laser work under one roof."
+      "default": "Pick a path — catalog prints, awards, or a custom quote."
     },
     {
       "type": "header",
@@ -85,20 +95,26 @@
         {
           "type": "text",
           "id": "icon",
-          "label": "Icon",
-          "default": "🏆"
+          "label": "Index label",
+          "info": "Optional. Leave blank to auto-number (01, 02…). Avoid emoji.",
+          "default": "01"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Custom Trophies & Awards"
+          "default": "Shop the catalog"
         },
         {
           "type": "textarea",
           "id": "text",
           "label": "Text",
-          "default": "Multi-color 3D toppers combined with laser-engraved plaques."
+          "default": "Made-to-order 3D prints — gaming gear, organizers, and more."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
         }
       ]
     }
@@ -113,33 +129,25 @@
         {
           "type": "pillar",
           "settings": {
-            "icon": "🏆",
-            "title": "Custom Trophies & Awards",
-            "text": "Multi-color 3D toppers combined with laser-engraved plaques."
+            "icon": "01",
+            "title": "Shop the catalog",
+            "text": "Made-to-order 3D prints — gaming gear, organizers, and more."
           }
         },
         {
           "type": "pillar",
           "settings": {
-            "icon": "🔥",
-            "title": "10W Diode Laser Engraving",
-            "text": "Hardwoods, slate, acrylic, and anodized aluminum trophy plates."
+            "icon": "02",
+            "title": "Awards & plaques",
+            "text": "Custom trophies and laser plaques with preset sizes."
           }
         },
         {
           "type": "pillar",
           "settings": {
-            "icon": "🎮",
-            "title": "Gaming & Tabletop Prints",
-            "text": "Dice towers, miniatures, terrain, and made-to-order gaming gear."
-          }
-        },
-        {
-          "type": "pillar",
-          "settings": {
-            "icon": "🧵",
-            "title": "Sewing & Craft Organizers",
-            "text": "Functional storage for yarn, thread, and studio tools."
+            "icon": "03",
+            "title": "Request a quote",
+            "text": "Send files and details for custom fabrication."
           }
         }
       ]

@@ -1,7 +1,13 @@
+{% capture kg_season %}{% render 'kg-season-slug' %}{% endcapture %}
+{% assign kg_season = kg_season | strip %}
+
 <!doctype html>
 <html 
   lang="{{ request.locale.iso_code }}"
-  class="{% if request.design_mode %}design-mode{% endif %}">
+  class="{% if request.design_mode %}design-mode{% endif %}"
+  data-season="{{ kg_season }}"
+  data-season-fx="{% if settings.season_effects != false %}true{% else %}false{% endif %}"
+>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -33,10 +39,14 @@
   {% render 'styles-scripts' %}
 </head>
 
-<body class="{{ request.page_type | prepend: 'page-type-' }}">
+<body class="{{ request.page_type | prepend: 'page-type-' }} season-{{ kg_season }}">
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>
+
+  {% if settings.season_promo_enabled != false %}
+    {% render 'kg-season-promo', season: kg_season %}
+  {% endif %}
   
   <div id="header-group" class="sticky-top">
     {% sections 'header-group' %}

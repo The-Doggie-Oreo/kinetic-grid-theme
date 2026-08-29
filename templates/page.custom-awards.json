@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "kg_awards_hero": {
+      "type": "kg-hero",
+      "settings": {
+        "badge": "Digital fabrication",
+        "title": "3D toppers. Laser plaques. Tournament-ready awards.",
+        "subtitle": "Browse Custom Trophies, then request a hybrid award with plaque text, quantity, and a reference image link.",
+        "primary_label": "Browse Custom Trophies",
+        "primary_link": "\/collections\/custom-trophies",
+        "secondary_label": "Request a custom trophy",
+        "secondary_link": "#trophy-request",
+        "pt": 12,
+        "pb": 12
+      }
+    },
+    "kg_awards_pillars": {
+      "type": "kg-pillars",
+      "blocks": {
+        "pillar_hybrid": {
+          "type": "pillar",
+          "settings": {
+            "icon": "01",
+            "title": "Hybrid awards",
+            "text": "Multi-color 3D figures and toppers combined with engraved plates."
+          }
+        },
+        "pillar_plaque": {
+          "type": "pillar",
+          "settings": {
+            "icon": "02",
+            "title": "Laser plaques",
+            "text": "Hardwood, slate, acrylic, and anodized aluminum trophy plates."
+          }
+        },
+        "pillar_batch": {
+          "type": "pillar",
+          "settings": {
+            "icon": "03",
+            "title": "League & event runs",
+            "text": "Single awards or batch sets for seasons, tournaments, and studios."
+          }
+        },
+        "pillar_custom": {
+          "type": "pillar",
+          "settings": {
+            "icon": "04",
+            "title": "Made to your brief",
+            "text": "Send plaque copy, dimensions, and a reference link for a custom quote."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_hybrid",
+        "pillar_plaque",
+        "pillar_batch",
+        "pillar_custom"
+      ],
+      "settings": {
+        "title": "How Kinetic Grid awards are built",
+        "subtitle": "Catalog pieces from Custom Trophies, or a fully custom hybrid award.",
+        "pt": 4,
+        "pb": 10
+      }
+    },
+    "kg_awards_grid": {
+      "type": "kg-product-grid",
+      "settings": {
+        "title": "Custom Trophies collection",
+        "subtitle": "Ready-to-order award styles and toppers. Need something unique? Use the request form below.",
+        "collection": "custom-trophies",
+        "limit": 12,
+        "pt": 6,
+        "pb": 10
+      }
+    },
+    "kg_awards_richtext": {
+      "type": "richtext",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 5,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "Need a one-off or a full podium set?",
+        "title_font_size": "h3",
+        "description": "<p>Share event details, plaque text, quantity, and a Drive\/Dropbox link to a sketch or logo. We’ll reply with a quote from the studio.<\/p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Jump to request form",
+        "btn_primary_url": "#trophy-request",
+        "btn_primary_color": "btn-info",
+        "btn_secondary_text": "View collection",
+        "btn_secondary_url": "\/collections\/custom-trophies",
+        "btn_secondary_color": "btn-outline-dark",
+        "pt": 10,
+        "pb": 10
+      }
+    },
+    "kg_awards_form": {
+      "type": "kg-trophy-form",
+      "settings": {
+        "title": "Request a custom trophy",
+        "subtitle": "Tell us about the event, plaque copy, quantity, and style. Paste a Drive or Dropbox link if you have a logo or sketch.",
+        "pt": 6,
+        "pb": 14
+      }
+    }
+  },
+  "order": [
+    "kg_awards_hero",
+    "kg_awards_pillars",
+    "kg_awards_grid",
+    "kg_awards_richtext",
+    "kg_awards_form"
+  ]
+}

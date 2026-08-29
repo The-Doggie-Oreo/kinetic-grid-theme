@@ -270,17 +270,47 @@
 
 
 /*
-  Product card
+  Product card — full-bleed media + rounded frame (matches KG grid cards)
 */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--kg-surface, #fff);
+  border: 1px solid var(--kg-line, rgba(0, 0, 0, 0.1));
+  border-radius: var(--bs-border-radius, 0.25rem);
+}
+
 .product-card-link {
   display: block;
   text-decoration: none;
   color: currentColor;
+  flex: 1 1 auto;
 }
 
 .product-card-link:focus-visible {
   outline: 0;
   box-shadow: var(--bs-focus-box-shadow);
+}
+
+.product-card-excerpt {
+  color: var(--kg-muted, #64748b);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin: 0 0 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-body {
+  padding: 1.1rem 1.15rem 0.35rem;
+}
+
+.product-card-actions {
+  padding: 0 1.15rem 1.25rem;
 }
 
 .product-card-title {
@@ -295,14 +325,77 @@
 
 .product-card-img-wrapper {
   position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0;
+  background: #ecece8;
+  border-bottom: 1px solid var(--kg-line, rgba(0, 0, 0, 0.08));
+}
+
+.product-card-img-wrapper img,
+.product-card-img-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-img-wrapper .img-thumbnail,
+.product-card-img-wrapper .rounded {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  max-width: none;
+  background: transparent;
 }
 
 .product-card-img-wrapper img {
-  transition: all .2s ease-out;
+  transition: opacity .25s ease;
 }
 
-a:hover .product-card-img-wrapper img {
+a:hover .product-card-img-wrapper:not(.product-card-img-wrapper--has-hover) img {
   opacity: .8;
+}
+
+.product-card-img-wrapper--has-hover {
+  overflow: hidden;
+}
+
+.product-card-hover-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.product-card-hover-media video,
+.product-card-hover-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-img-wrapper--has-hover .product-card-img-primary {
+  transition: opacity .25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover .product-card-img-wrapper--has-hover .product-card-img-primary,
+  .product-card-link:hover .product-card-img-wrapper--has-hover .product-card-img-primary,
+  .product-card-img-wrapper--has-hover:hover .product-card-img-primary {
+    opacity: 0;
+  }
+
+  .product-card:hover .product-card-hover-media,
+  .product-card-link:hover .product-card-hover-media,
+  .product-card-img-wrapper--has-hover:hover .product-card-hover-media {
+    opacity: 1;
+  }
 }
 
 .product-card-img-wrapper .badge {
@@ -383,6 +476,10 @@ a:hover .product-card-img-wrapper img {
 
 .product-card-btn-wishlist:focus-visible {
   box-shadow: var(--bs-focus-box-shadow);
+}
+
+.product-card .btn-atc {
+  width: 100%;
 }
 
 .product-card .carousel {
@@ -473,6 +570,156 @@ a:hover .product-card-img-wrapper img {
 .list-group-item-action .jdgm-preview-badge {
   margin: 0.25rem 0;
   font-size: .8em;
+}
+
+/*
+  Plaque customizer (custom plaque product page)
+*/
+.product-block-plaque {
+  padding: 0.25rem 0 0;
+}
+
+.plaque-preview__stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.plaque-preview__plate {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 216px;
+  height: 144px;
+  padding: 0.4rem 0.55rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background:
+    linear-gradient(145deg, #fff7cc 0%, #f5d76e 18%, #d4af37 45%, #c9a227 70%, #f0e088 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.12),
+    0 10px 28px rgba(15, 23, 42, 0.18);
+  border: 1px solid #b8860b;
+  transition: width 0.25s ease, height 0.25s ease, font-size 0.15s ease;
+}
+
+.plaque-preview__lines {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.04em;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-align: center;
+  color: #1a1208;
+  font-weight: 600;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.plaque-preview__line {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.product-return-notice {
+  border-radius: var(--bs-border-radius, 0.25rem);
+}
+
+.plaque-preview__plate::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.12rem;
+  pointer-events: none;
+}
+
+.plaque-preview__line--extra[hidden] {
+  display: none !important;
+}
+
+.plaque-line-field[hidden] {
+  display: none !important;
+}
+
+.plaque-fields [data-plaque-add-line][hidden] {
+  display: none !important;
+}
+
+.plaque-line-field__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.plaque-line-field__remove {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  text-decoration: underline;
+}
+
+.plaque-line-field__remove[hidden] {
+  display: none !important;
+}
+
+.plaque-fields [data-plaque-remove-last-line][hidden] {
+  display: none !important;
+}
+
+.plaque-fields [data-plaque-add-line-note][hidden] {
+  display: none !important;
+}
+
+.plaque-paste-format textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.plaque-fields select[data-plaque-font] {
+  max-width: 100%;
+}
+
+.plaque-preview__line.is-filled {
+  color: #0f172a;
+}
+
+.plaque-fields .form-label {
+  font-weight: 500;
+}
+
+.plaque-custom-size[hidden] {
+  display: none !important;
+}
+
+.plaque-custom-size__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 479px) {
+  .plaque-custom-size__fields {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cart-upsells .jdgm-preview-badge {

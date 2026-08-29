@@ -6,25 +6,25 @@
     <div class="row justify-content-center">
       <div class="col-18 col-desktop-14 text-center">
         {% unless section.settings.badge == blank %}
-          <span class="badge rounded-pill kg-hero__badge mb-6">
+          <p class="kg-hero__badge mb-5">
             {{ section.settings.badge | escape }}
-          </span>
+          </p>
         {% endunless %}
         {% unless section.settings.title == blank %}
-          <h1 class="display-5 fw-bold mb-6">
+          <h1 class="display-5 mb-5">
             {{ section.settings.title | escape }}
           </h1>
         {% endunless %}
         {% unless section.settings.subtitle == blank %}
-          <p class="lead kg-hero__lede mb-8">
+          <p class="kg-hero__lede mb-8">
             {{ section.settings.subtitle | escape }}
           </p>
         {% endunless %}
-        <div class="d-flex flex-wrap justify-content-center gap-6">
+        <div class="d-flex flex-wrap justify-content-center gap-4">
           {% unless section.settings.primary_label == blank %}
             <a
               href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}"
-              class="btn btn-info text-white fw-bold px-4 py-3 rounded-pill"
+              class="btn btn-info text-white px-5 py-3"
             >
               {{ section.settings.primary_label | escape }}
             </a>
@@ -32,7 +32,7 @@
           {% unless section.settings.secondary_label == blank %}
             <a
               href="{{ section.settings.secondary_link | default: '#custom-quote' }}"
-              class="btn btn-outline-dark fw-bold px-4 py-3 rounded-pill"
+              class="btn btn-outline-dark px-5 py-3"
             >
               {{ section.settings.secondary_label | escape }}
             </a>
@@ -53,7 +53,7 @@
       "type": "text",
       "id": "badge",
       "label": "Badge",
-      "default": "All-In-One Digital Fabrication"
+      "default": "Digital fabrication"
     },
     {
       "type": "text",

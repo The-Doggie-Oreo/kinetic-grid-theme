@@ -1113,5 +1113,70 @@
         "label": "Linkedin"
       }
     ]
+  },
+  {
+    "name": "Seasonal",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The store palette and promo bar switch automatically by date. Override the season to preview a look, or turn effects off if you prefer a cleaner layout."
+      },
+      {
+        "type": "select",
+        "id": "season_mode",
+        "label": "Season mode",
+        "default": "auto",
+        "options": [
+          { "value": "auto", "label": "Automatic (by date)" },
+          { "value": "fall", "label": "Fall" },
+          { "value": "holiday", "label": "Holiday (Dec vibes)" },
+          { "value": "winter", "label": "Winter" },
+          { "value": "spring", "label": "Spring / Easter" },
+          { "value": "summer", "label": "Summer" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "season_promo_enabled",
+        "label": "Show seasonal promo bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "season_effects",
+        "label": "Show ambient effects (falling leaves, snow, petals)",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Promo messages (optional overrides)"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_fall",
+        "label": "Fall promo",
+        "info": "Leave blank to use the default message."
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_holiday",
+        "label": "Holiday promo"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_winter",
+        "label": "Winter promo"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_spring",
+        "label": "Spring promo"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_summer",
+        "label": "Summer promo"
+      }
+    ]
   }
 ]

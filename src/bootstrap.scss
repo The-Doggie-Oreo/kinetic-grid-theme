@@ -55,6 +55,18 @@ $spacers: (
   20: $spacer * 20,
 );
 
+$primary:                   #0F172A;
+$secondary:                 #0D9488;
+$info:                      #06B6D4;
+$dark:                      #0F172A;
+$body-bg:                   #F8FAFC;
+$body-color:                #1E293B;
+$card-border-radius:        1rem;
+$card-border-color:         #E2E8F0;
+$border-color:              #E2E8F0;
+$border-radius:             1rem;
+$border-radius-xl:          1rem;
+
 $h1-font-size: 3rem;
 $h2-font-size: 2.5rem;
 $h3-font-size: 2rem;
@@ -83,8 +95,6 @@ $font-sizes: (
 /*
   Map Overrides 
 */ 
-$theme-colors: map-remove($theme-colors, "light");
-$theme-colors: map-remove($theme-colors, "dark");
 $theme-colors: map-remove($theme-colors, "gray");
 
 $utilities: (

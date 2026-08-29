@@ -1,0 +1,124 @@
+<div
+  id="kg-hero-{{ section.id }}"
+  class="kg-hero {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-18 col-desktop-14 text-center">
+        {% unless section.settings.badge == blank %}
+          <span class="badge rounded-pill kg-hero__badge mb-6">
+            {{ section.settings.badge | escape }}
+          </span>
+        {% endunless %}
+        {% unless section.settings.title == blank %}
+          <h1 class="display-5 fw-bold mb-6">
+            {{ section.settings.title | escape }}
+          </h1>
+        {% endunless %}
+        {% unless section.settings.subtitle == blank %}
+          <p class="lead kg-hero__lede mb-8">
+            {{ section.settings.subtitle | escape }}
+          </p>
+        {% endunless %}
+        <div class="d-flex flex-wrap justify-content-center gap-6">
+          {% unless section.settings.primary_label == blank %}
+            <a
+              href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}"
+              class="btn btn-info text-white fw-bold px-4 py-3 rounded-pill"
+            >
+              {{ section.settings.primary_label | escape }}
+            </a>
+          {% endunless %}
+          {% unless section.settings.secondary_label == blank %}
+            <a
+              href="{{ section.settings.secondary_link | default: '#custom-quote' }}"
+              class="btn btn-outline-dark fw-bold px-4 py-3 rounded-pill"
+            >
+              {{ section.settings.secondary_label | escape }}
+            </a>
+          {% endunless %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KG Hero",
+  "tag": "section",
+  "class": "kg-hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "All-In-One Digital Fabrication"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Precision 3D Printing & 10W Diode Laser Engraving"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "From custom tournament trophies and made-to-order catalog prints to precision laser-engraved hardwood and metal plaques."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Explore 3D Catalog"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Request Custom Fabrication"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "KG Hero"
+    }
+  ]
+}
+{% endschema %}

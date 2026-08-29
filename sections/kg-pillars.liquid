@@ -1,0 +1,149 @@
+<div
+  id="kg-pillars-{{ section.id }}"
+  class="kg-pillars {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    {% unless section.settings.title == blank %}
+      <div class="row justify-content-center mb-10">
+        <div class="col-18 col-desktop-12 text-center">
+          <h2 class="kg-section-title h3 mb-4">{{ section.settings.title | escape }}</h2>
+          {% unless section.settings.subtitle == blank %}
+            <p class="mb-0 text-body">{{ section.settings.subtitle | escape }}</p>
+          {% endunless %}
+        </div>
+      </div>
+    {% endunless %}
+    <div class="row row-cols-1 row-cols-tablet-2 row-cols-desktop-4 g-6 g-desktop-8">
+      {% for block in section.blocks %}
+        <div class="col" {{ block.shopify_attributes }}>
+          <article class="kg-card kg-pillar p-7 p-desktop-8">
+            {% unless block.settings.icon == blank %}
+              <div class="kg-pillar__icon" aria-hidden="true">
+                {{ block.settings.icon | escape }}
+              </div>
+            {% endunless %}
+            {% unless block.settings.title == blank %}
+              <h3 class="mb-4">{{ block.settings.title | escape }}</h3>
+            {% endunless %}
+            {% unless block.settings.text == blank %}
+              <p>{{ block.settings.text | escape }}</p>
+            {% endunless %}
+          </article>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "KG Pillars",
+  "tag": "section",
+  "class": "kg-pillars-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Studio capabilities"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Made-to-order printing, custom awards, and precision diode laser work under one roof."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "default": "🏆"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Custom Trophies & Awards"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Multi-color 3D toppers combined with laser-engraved plaques."
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "KG Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "🏆",
+            "title": "Custom Trophies & Awards",
+            "text": "Multi-color 3D toppers combined with laser-engraved plaques."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "🔥",
+            "title": "10W Diode Laser Engraving",
+            "text": "Hardwoods, slate, acrylic, and anodized aluminum trophy plates."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "🎮",
+            "title": "Gaming & Tabletop Prints",
+            "text": "Dice towers, miniatures, terrain, and made-to-order gaming gear."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "🧵",
+            "title": "Sewing & Craft Organizers",
+            "text": "Functional storage for yarn, thread, and studio tools."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,281 @@
+<header class="kg-header">
+  <nav class="navbar navbar-expand-desktop" aria-label="{{ 'kinetic_grid.header.nav_label' | t }}">
+    <div class="container">
+      <a class="kg-header__brand navbar-brand mb-0" href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          {% assign logo_height = section.settings.logo_height | default: 36 %}
+          {% assign logo_height_2x = logo_height | times: 2 %}
+          <img
+            src="{{ section.settings.logo | image_url: height: logo_height_2x }}"
+            alt="{{ shop.name | escape }}"
+            height="{{ logo_height }}"
+            width="{{ logo_height | times: section.settings.logo.aspect_ratio | round }}"
+            loading="eager"
+          >
+        {% else %}
+          <span class="kg-header__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="36" height="36" fill="none">
+              <path d="M16 3.5 28 10v12L16 28.5 4 22V10L16 3.5Z" stroke="#06B6D4" stroke-width="1.6"/>
+              <path d="M16 16 28 10M16 16v12.5M16 16 4 10" stroke="#0F172A" stroke-width="1.4"/>
+              <path d="M10.5 13.2 16 16.4l5.5-3.2" stroke="#0D9488" stroke-width="1.2"/>
+              <circle cx="16" cy="16" r="1.4" fill="#06B6D4"/>
+            </svg>
+          </span>
+          <span class="kg-header__name">{{ section.settings.brand_name | default: shop.name | escape }}</span>
+        {% endif %}
+      </a>
+
+      <ul class="nav kg-header__actions align-items-center ms-auto order-desktop-last">
+        {% if settings.search %}
+          <li class="nav-item">
+            <a
+              class="nav-link nav-link-icon"
+              href="#offcanvas-search"
+              data-bs-toggle="offcanvas"
+              aria-controls="offcanvas-search"
+              aria-label="{{ 'general.accessibility.search' | t }}"
+              role="button"
+            >
+              {% render 'svg-icons', icon: 'search', size: 20 %}
+            </a>
+          </li>
+        {% endif %}
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-icon"
+            href="#offcanvas-cart"
+            data-bs-toggle="offcanvas"
+            aria-controls="offcanvas-cart"
+            aria-label="{{ 'general.accessibility.cart' | t }} {{ cart.item_count }}"
+            role="button"
+          >
+            {% render 'svg-icons', icon: 'cart', size: 20 %}
+            {% render 'cart-count-badge' %}
+          </a>
+        </li>
+      </ul>
+
+      <button
+        class="navbar-toggler ms-3"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#kg-header-nav-{{ section.id }}"
+        aria-controls="kg-header-nav-{{ section.id }}"
+        aria-expanded="false"
+        aria-label="{{ 'general.accessibility.menu' | t }}"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="kg-header-nav-{{ section.id }}">
+        <ul class="navbar-nav mx-auto mb-2 mb-desktop-0">
+          {% for block in section.blocks %}
+            {% if block.type == 'dropdown' %}
+              <li class="nav-item dropdown" {{ block.shopify_attributes }}>
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="{{ block.settings.url | default: '#' }}"
+                  id="kg-nav-drop-{{ block.id }}"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ block.settings.title | escape }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="kg-nav-drop-{{ block.id }}">
+                  {% if block.settings.item_1_label != blank %}
+                    <li>
+                      <a class="dropdown-item" href="{{ block.settings.item_1_url }}">
+                        {{ block.settings.item_1_label | escape }}
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if block.settings.item_2_label != blank %}
+                    <li>
+                      <a class="dropdown-item" href="{{ block.settings.item_2_url }}">
+                        {{ block.settings.item_2_label | escape }}
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if block.settings.item_3_label != blank %}
+                    <li>
+                      <a class="dropdown-item" href="{{ block.settings.item_3_url }}">
+                        {{ block.settings.item_3_label | escape }}
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if block.settings.item_4_label != blank %}
+                    <li>
+                      <a class="dropdown-item" href="{{ block.settings.item_4_url }}">
+                        {{ block.settings.item_4_label | escape }}
+                      </a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </li>
+            {% else %}
+              <li class="nav-item" {{ block.shopify_attributes }}>
+                <a class="nav-link" href="{{ block.settings.url }}">
+                  {{ block.settings.title | escape }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "KG Header",
+  "tag": "section",
+  "class": "kg-header-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "Kinetic Grid 3D"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "dropdown",
+      "name": "Dropdown",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "3D Catalog"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Parent link"
+        },
+        {
+          "type": "text",
+          "id": "item_1_label",
+          "label": "Item 1 label",
+          "default": "Gaming"
+        },
+        {
+          "type": "url",
+          "id": "item_1_url",
+          "label": "Item 1 link"
+        },
+        {
+          "type": "text",
+          "id": "item_2_label",
+          "label": "Item 2 label",
+          "default": "Sewing / Crafts"
+        },
+        {
+          "type": "url",
+          "id": "item_2_url",
+          "label": "Item 2 link"
+        },
+        {
+          "type": "text",
+          "id": "item_3_label",
+          "label": "Item 3 label",
+          "default": "Articulated"
+        },
+        {
+          "type": "url",
+          "id": "item_3_url",
+          "label": "Item 3 link"
+        },
+        {
+          "type": "text",
+          "id": "item_4_label",
+          "label": "Item 4 label",
+          "default": "All Prints"
+        },
+        {
+          "type": "url",
+          "id": "item_4_url",
+          "label": "Item 4 link"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "About Studio"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KG Header",
+      "blocks": [
+        {
+          "type": "dropdown",
+          "settings": {
+            "title": "3D Catalog",
+            "item_1_label": "Gaming",
+            "item_2_label": "Sewing / Crafts",
+            "item_3_label": "Articulated",
+            "item_4_label": "All Prints"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Custom Awards & Trophies"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Laser Engraving & Plaques"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "Prototyping & CAD"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "title": "About Studio"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

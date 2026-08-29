@@ -1,0 +1,198 @@
+<footer class="kg-footer">
+  <svg class="kg-footer__wordmark" viewBox="0 0 1400 220" aria-hidden="true" focusable="false">
+    <text
+      x="50%"
+      y="78%"
+      text-anchor="middle"
+      font-size="168"
+      font-weight="800"
+      letter-spacing="8"
+      fill="none"
+      stroke="#06B6D4"
+      stroke-width="3"
+      opacity="0.14"
+    >KINETIC GRID</text>
+  </svg>
+
+  <div class="kg-footer__inner container pt-12 pb-10">
+    <div class="row g-8 g-desktop-10">
+      <div class="col-18 col-desktop-6 kg-reveal kg-footer__brand">
+        <a class="kg-header__brand mb-5 d-inline-flex" href="{{ routes.root_url }}">
+          <span class="kg-header__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+              <path d="M16 3.5 28 10v12L16 28.5 4 22V10L16 3.5Z" stroke="#06B6D4" stroke-width="1.6"/>
+              <path d="M16 16 28 10M16 16v12.5M16 16 4 10" stroke="#0F172A" stroke-width="1.4"/>
+              <circle cx="16" cy="16" r="1.4" fill="#06B6D4"/>
+            </svg>
+          </span>
+          <span class="kg-header__name">{{ section.settings.brand_name | default: shop.name | escape }}</span>
+        </a>
+        {% unless section.settings.blurb == blank %}
+          <p class="mb-0">{{ section.settings.blurb | escape }}</p>
+        {% endunless %}
+      </div>
+
+      <div class="col-18 col-tablet-6 col-desktop-4 kg-reveal">
+        <h3 class="kg-footer__heading">{{ 'kinetic_grid.footer.catalog' | t }}</h3>
+        <ul class="kg-footer__list">
+          <li><a href="{{ section.settings.catalog_gaming_url | default: routes.all_products_collection_url }}">{{ 'kinetic_grid.footer.gaming' | t }}</a></li>
+          <li><a href="{{ section.settings.catalog_sewing_url | default: routes.all_products_collection_url }}">{{ 'kinetic_grid.footer.sewing' | t }}</a></li>
+          <li><a href="{{ section.settings.catalog_articulated_url | default: routes.all_products_collection_url }}">{{ 'kinetic_grid.footer.articulated' | t }}</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}">{{ 'kinetic_grid.footer.all_prints' | t }}</a></li>
+        </ul>
+      </div>
+
+      <div class="col-18 col-tablet-6 col-desktop-4 kg-reveal">
+        <h3 class="kg-footer__heading">{{ 'kinetic_grid.footer.services' | t }}</h3>
+        <ul class="kg-footer__list">
+          <li><a href="{{ section.settings.awards_url | default: '#custom-quote' }}">{{ 'kinetic_grid.footer.awards' | t }}</a></li>
+          <li><a href="{{ section.settings.laser_url | default: '#custom-quote' }}">{{ 'kinetic_grid.footer.laser' | t }}</a></li>
+          <li><a href="{{ section.settings.cad_url | default: '#custom-quote' }}">{{ 'kinetic_grid.footer.cad' | t }}</a></li>
+          <li><a href="#custom-quote">{{ 'kinetic_grid.footer.quote' | t }}</a></li>
+        </ul>
+      </div>
+
+      <div class="col-18 col-tablet-6 col-desktop-4 kg-reveal">
+        <h3 class="kg-footer__heading">{{ 'kinetic_grid.footer.studio' | t }}</h3>
+        <ul class="kg-footer__list">
+          <li><a href="{{ section.settings.about_url | default: '/pages/about' }}">{{ 'kinetic_grid.footer.about' | t }}</a></li>
+          <li><a href="#custom-quote">{{ 'kinetic_grid.footer.contact' | t }}</a></li>
+          {% if shop.email != blank %}
+            <li><a href="mailto:{{ shop.email }}">{{ shop.email }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="kg-footer__bar">
+    <div class="container py-6">
+      <div class="row align-items-center gy-5">
+        <div class="col-18 col-desktop-6 order-desktop-2">
+          <div class="d-flex justify-content-desktop-center">
+            {% render 'social-icons', icon_size: 18, show_title: false %}
+          </div>
+        </div>
+        <div class="col-18 col-desktop-6 order-desktop-3">
+          <ul class="kg-footer__list d-flex flex-wrap justify-content-desktop-end gap-6 mb-0">
+            {% if shop.privacy_policy.url != blank %}
+              <li><a href="{{ shop.privacy_policy.url }}">{{ 'kinetic_grid.footer.privacy' | t }}</a></li>
+            {% endif %}
+            {% if shop.terms_of_service.url != blank %}
+              <li><a href="{{ shop.terms_of_service.url }}">{{ 'kinetic_grid.footer.terms' | t }}</a></li>
+            {% endif %}
+            {% if shop.refund_policy.url != blank %}
+              <li><a href="{{ shop.refund_policy.url }}">{{ 'kinetic_grid.footer.refund' | t }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-18 col-desktop-6 order-desktop-1">
+          <p class="small mb-0">
+            &copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. {{ 'kinetic_grid.footer.rights' | t }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% javascript %}
+  const initKgFooterReveal = () => {
+    const nodes = document.querySelectorAll('.kg-footer .kg-reveal');
+    if (!nodes.length || !('IntersectionObserver' in window)) {
+      nodes.forEach((node) => node.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+    nodes.forEach((node) => observer.observe(node));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initKgFooterReveal);
+  } else {
+    initKgFooterReveal();
+  }
+
+  document.addEventListener('shopify:section:load', (event) => {
+    if (event.target.querySelector('.kg-footer')) initKgFooterReveal();
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "KG Footer",
+  "tag": "section",
+  "class": "kg-footer-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "Kinetic Grid 3D"
+    },
+    {
+      "type": "textarea",
+      "id": "blurb",
+      "label": "Studio blurb",
+      "default": "Digital fabrication studio for made-to-order 3D prints, custom trophies, and 10W diode laser engraving."
+    },
+    {
+      "type": "header",
+      "content": "Catalog links"
+    },
+    {
+      "type": "url",
+      "id": "catalog_gaming_url",
+      "label": "Gaming collection"
+    },
+    {
+      "type": "url",
+      "id": "catalog_sewing_url",
+      "label": "Sewing / crafts collection"
+    },
+    {
+      "type": "url",
+      "id": "catalog_articulated_url",
+      "label": "Articulated collection"
+    },
+    {
+      "type": "header",
+      "content": "Studio links"
+    },
+    {
+      "type": "url",
+      "id": "awards_url",
+      "label": "Awards page"
+    },
+    {
+      "type": "url",
+      "id": "laser_url",
+      "label": "Laser page"
+    },
+    {
+      "type": "url",
+      "id": "cad_url",
+      "label": "CAD / prototyping page"
+    },
+    {
+      "type": "url",
+      "id": "about_url",
+      "label": "About page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KG Footer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,228 @@
+<div
+  id="custom-quote"
+  class="kg-quote {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-18 col-desktop-12">
+        <div class="kg-card p-7 p-desktop-10">
+          {% unless section.settings.title == blank %}
+            <h2 class="kg-section-title h3 mb-4">{{ section.settings.title | escape }}</h2>
+          {% endunless %}
+          {% unless section.settings.subtitle == blank %}
+            <p class="mb-8">{{ section.settings.subtitle | escape }}</p>
+          {% endunless %}
+
+          {% form 'contact', class: 'kg-quote-form', id: 'kg-quote-form' %}
+            {% if form.posted_successfully? %}
+              <p class="alert alert-success" role="status">
+                {{ 'kinetic_grid.quote.success' | t }}
+              </p>
+            {% endif %}
+            {{ form.errors | default_errors }}
+
+            <div
+              class="kg-quote__status alert alert-success mb-6"
+              data-kg-quote-success
+              role="status"
+              hidden
+            >
+              {{ 'kinetic_grid.quote.success' | t }}
+            </div>
+            <div
+              class="kg-quote__status alert alert-danger mb-6"
+              data-kg-quote-error
+              role="alert"
+              hidden
+            >
+              {{ 'kinetic_grid.quote.error' | t }}
+            </div>
+
+            <div class="row g-6">
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-quote-name">
+                  {{ 'kinetic_grid.quote.name' | t }}
+                </label>
+                <input
+                  id="kg-quote-name"
+                  class="form-control"
+                  type="text"
+                  name="contact[name]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+              <div class="col-18 col-tablet-9">
+                <label class="form-label fw-semibold" for="kg-quote-email">
+                  {{ 'kinetic_grid.quote.email' | t }}
+                </label>
+                <input
+                  id="kg-quote-email"
+                  class="form-control"
+                  type="email"
+                  name="contact[email]"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  required
+                >
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-quote-service">
+                  {{ 'kinetic_grid.quote.service' | t }}
+                </label>
+                <select id="kg-quote-service" class="form-select" name="contact[service]" required>
+                  <option value="">{{ 'kinetic_grid.quote.service_placeholder' | t }}</option>
+                  <option value="3D Print">{{ 'kinetic_grid.quote.service_print' | t }}</option>
+                  <option value="Laser Engrave">{{ 'kinetic_grid.quote.service_laser' | t }}</option>
+                  <option value="Hybrid Trophy">{{ 'kinetic_grid.quote.service_trophy' | t }}</option>
+                  <option value="CAD File Prototyping">{{ 'kinetic_grid.quote.service_cad' | t }}</option>
+                </select>
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-quote-details">
+                  {{ 'kinetic_grid.quote.details' | t }}
+                </label>
+                <textarea
+                  id="kg-quote-details"
+                  class="form-control"
+                  name="contact[body]"
+                  required
+                >{{ form.body }}</textarea>
+              </div>
+              <div class="col-18">
+                <label class="form-label fw-semibold" for="kg-quote-plaque">
+                  {{ 'kinetic_grid.quote.plaque' | t }}
+                </label>
+                <input
+                  id="kg-quote-plaque"
+                  class="form-control"
+                  type="text"
+                  name="contact[plaque_text]"
+                  placeholder="{{ 'kinetic_grid.quote.plaque_placeholder' | t }}"
+                >
+              </div>
+              <div class="col-18">
+                <button
+                  type="submit"
+                  class="btn btn-info text-white fw-bold px-4 py-3 rounded-pill"
+                  data-kg-quote-submit
+                >
+                  {{ 'kinetic_grid.quote.submit' | t }}
+                </button>
+              </div>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('submit', async (event) => {
+    const form = event.target.closest('.kg-quote-form');
+    if (!form) return;
+
+    event.preventDefault();
+
+    const success = form.querySelector('[data-kg-quote-success]');
+    const error = form.querySelector('[data-kg-quote-error]');
+    const submit = form.querySelector('[data-kg-quote-submit]');
+    const idleLabel = submit ? submit.textContent : '';
+
+    if (success) {
+      success.hidden = true;
+      success.classList.remove('is-visible');
+    }
+    if (error) {
+      error.hidden = true;
+      error.classList.remove('is-visible');
+    }
+    if (submit) {
+      submit.disabled = true;
+      submit.setAttribute('aria-busy', 'true');
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'text/html' }
+      });
+
+      if (!response.ok) throw new Error('Request failed');
+
+      if (success) {
+        success.hidden = false;
+        success.classList.add('is-visible');
+      }
+      form.reset();
+    } catch (err) {
+      if (error) {
+        error.hidden = false;
+        error.classList.add('is-visible');
+      }
+    } finally {
+      if (submit) {
+        submit.disabled = false;
+        submit.setAttribute('aria-busy', 'false');
+        submit.textContent = idleLabel;
+      }
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "KG Quote form",
+  "tag": "section",
+  "class": "kg-quote-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Request custom fabrication"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Share files, dimensions, plaque copy, and quantity. We’ll quote 3D prints, laser engraving, hybrid trophies, and CAD prototyping."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "KG Quote form"
+    }
+  ]
+}
+{% endschema %}

@@ -197,5 +197,51 @@
     "gift_upsell": {
       "title": "Add gift wrapping"
     }
+  },
+  "kinetic_grid": {
+    "header": {
+      "nav_label": "Primary"
+    },
+    "product": {
+      "view_all": "View all prints",
+      "made_to_order": "Made-to-Order",
+      "quick_add": "Quick Add",
+      "placeholder_title": "Catalog print"
+    },
+    "quote": {
+      "name": "Name",
+      "email": "Email",
+      "service": "Service needed",
+      "service_placeholder": "Select a service",
+      "service_print": "3D Print",
+      "service_laser": "Laser Engrave",
+      "service_trophy": "Hybrid Trophy",
+      "service_cad": "CAD File Prototyping",
+      "details": "Details / dimensions",
+      "plaque": "Plaque text",
+      "plaque_placeholder": "Copy for engraved plates (optional)",
+      "submit": "Send fabrication request",
+      "success": "Thanks — your request is in. We’ll reply with a quote shortly.",
+      "error": "Something went wrong. Please try again or email us directly."
+    },
+    "footer": {
+      "catalog": "Catalog",
+      "gaming": "Gaming",
+      "sewing": "Sewing / Crafts",
+      "articulated": "Articulated",
+      "all_prints": "All Prints",
+      "services": "Custom services",
+      "awards": "Awards & Trophies",
+      "laser": "Laser Engraving",
+      "cad": "Prototyping & CAD",
+      "quote": "Request a quote",
+      "studio": "Studio",
+      "about": "About Studio",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "refund": "Refunds",
+      "rights": "All rights reserved."
+    }
   }
 }

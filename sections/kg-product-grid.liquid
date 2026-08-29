@@ -1,0 +1,216 @@
+{% liquid
+  if section.settings.collection != blank
+    assign grid_collection = section.settings.collection
+  else
+    assign grid_collection = collections.all
+  endif
+
+  assign product_limit = section.settings.limit | default: 8
+%}
+
+<div
+  id="kg-product-grid-{{ section.id }}"
+  class="kg-product-grid {{ section.settings.pt | prepend: 'pt-' }} {{ section.settings.pb | prepend: 'pb-' }}"
+>
+  <div class="container">
+    <div class="row align-items-end mb-8 mb-desktop-10">
+      <div class="col-18 col-desktop-12">
+        {% unless section.settings.title == blank %}
+          <h2 class="kg-section-title h3 mb-3">{{ section.settings.title | escape }}</h2>
+        {% endunless %}
+        {% unless section.settings.subtitle == blank %}
+          <p class="mb-0">{{ section.settings.subtitle | escape }}</p>
+        {% endunless %}
+      </div>
+      {% if grid_collection != blank and grid_collection.url != blank %}
+        <div class="col-18 col-desktop-6 text-desktop-end mt-5 mt-desktop-0">
+          <a class="fw-bold" href="{{ grid_collection.url }}">
+            {{ 'kinetic_grid.product.view_all' | t }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="row row-cols-1 row-cols-tablet-2 row-cols-desktop-4 g-6 g-desktop-8">
+      {% if grid_collection != blank and grid_collection.products.size > 0 %}
+        {% for product in grid_collection.products limit: product_limit %}
+          <div class="col">
+            <article class="kg-card kg-product-card">
+              <a class="kg-product-card__media d-block" href="{{ product.url }}">
+                <span class="badge rounded-pill kg-product-card__badge">
+                  {{ 'kinetic_grid.product.made_to_order' | t }}
+                </span>
+                {% if product.featured_image %}
+                  {% assign image_alt = product.featured_image.alt | default: product.title %}
+                  {{
+                    product.featured_image
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', alt: image_alt, class: 'w-100 h-100'
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'kg-product-placeholder' }}
+                {% endif %}
+              </a>
+              <div class="kg-product-card__body">
+                <h3 class="mb-3">
+                  <a class="kg-product-card__title" href="{{ product.url }}">
+                    {{ product.title | escape }}
+                  </a>
+                </h3>
+                <p class="kg-product-card__price mb-5">
+                  {{ product.price | money }}
+                </p>
+                {% if product.has_only_default_variant %}
+                  <button
+                    type="button"
+                    class="btn btn-info text-white fw-bold rounded-pill w-100"
+                    data-kg-quick-add
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    {% unless product.available %}disabled{% endunless %}
+                  >
+                    {% if product.available %}
+                      {{ 'kinetic_grid.product.quick_add' | t }}
+                    {% else %}
+                      {{ 'product.sold_out' | t }}
+                    {% endif %}
+                  </button>
+                {% else %}
+                  <a class="btn btn-outline-dark fw-bold rounded-pill w-100" href="{{ product.url }}">
+                    {{ 'product.choose_options' | t }}
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..4) %}
+          <div class="col">
+            <article class="kg-card kg-product-card">
+              <div class="kg-product-card__media">
+                <span class="badge rounded-pill kg-product-card__badge">
+                  {{ 'kinetic_grid.product.made_to_order' | t }}
+                </span>
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+              <div class="kg-product-card__body">
+                <h3 class="kg-product-card__title mb-3">{{ 'kinetic_grid.product.placeholder_title' | t }}</h3>
+                <p class="kg-product-card__price mb-5">$24.00</p>
+                <button type="button" class="btn btn-info text-white fw-bold rounded-pill w-100" disabled>
+                  {{ 'kinetic_grid.product.quick_add' | t }}
+                </button>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-kg-quick-add]');
+    if (!button || button.disabled) return;
+
+    const variantId = button.getAttribute('data-variant-id');
+    if (!variantId) return;
+
+    const originalLabel = button.textContent;
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+
+    try {
+      const formData = new FormData();
+      formData.append('id', variantId);
+      formData.append('quantity', '1');
+
+      const cart = document.querySelector('cart-container');
+      if (cart && typeof cart.add === 'function') {
+        await cart.add(formData);
+      } else {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: Number(variantId), quantity: 1 })
+        });
+        if (!response.ok) {
+          const payload = await response.json();
+          throw new Error(payload.description || 'Unable to add to cart');
+        }
+      }
+    } catch (error) {
+      button.textContent = originalLabel;
+      window.alert(error.message);
+    } finally {
+      button.disabled = false;
+      button.setAttribute('aria-busy', 'false');
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "KG Product grid",
+  "tag": "section",
+  "class": "kg-product-grid-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Made-to-order catalog"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Gaming gear, craft organizers, and articulated prints — produced when you order."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Products to show",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "KG Product grid"
+    }
+  ]
+}
+{% endschema %}

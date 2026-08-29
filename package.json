@@ -2,6 +2,7 @@
   "scripts": {
     "watch": "npm-watch",
     "bs-scss": "sass --no-source-map src/bootstrap.scss:assets/vendor-bootstrap.css && postcss assets/vendor-bootstrap.css --replace --no-map --use autoprefixer && minify assets/vendor-bootstrap.css > assets/vendor-bootstrap.min.css && rm assets/vendor-bootstrap.css",
+    "bs-css": "npm run bs-scss",
     "bs-js": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.js assets/vendor-bootstrap.bundle.min.js",
     "swiper": "cp node_modules/swiper/swiper-bundle.min.js assets/vendor-swiper.bundle.min.js && cp node_modules/swiper/swiper-bundle.min.css assets/vendor-swiper.bundle.min.css"
   },

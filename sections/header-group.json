@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header Group",
@@ -49,28 +58,28 @@
           "type": "dropdown",
           "settings": {
             "title": "Catalog",
-            "url": "\/collections\/bestsellers",
+            "url": "/collections/bestsellers",
             "item_1_label": "Bestsellers",
-            "item_1_url": "\/collections\/bestsellers",
+            "item_1_url": "/collections/bestsellers",
             "item_2_label": "D&D & Tabletop",
-            "item_2_url": "\/collections\/dnd",
+            "item_2_url": "/collections/dnd",
             "item_3_label": "Gaming",
-            "item_3_url": "\/collections\/gaming",
+            "item_3_url": "/collections/gaming",
             "item_4_label": "All prints",
-            "item_4_url": "\/collections\/all"
+            "item_4_url": "/collections/all"
           }
         },
         "nav_awards": {
           "type": "dropdown",
           "settings": {
             "title": "Awards",
-            "url": "\/collections\/custom-plaques",
+            "url": "/collections/custom-plaques",
             "item_1_label": "Custom plaques",
-            "item_1_url": "\/collections\/custom-plaques",
+            "item_1_url": "/collections/custom-plaques",
             "item_2_label": "Custom trophies",
-            "item_2_url": "\/collections\/custom-trophies",
+            "item_2_url": "/collections/custom-trophies",
             "item_3_label": "Awards page",
-            "item_3_url": "\/pages\/custom-awards",
+            "item_3_url": "/pages/custom-awards",
             "item_4_label": "",
             "item_4_url": ""
           }
@@ -79,14 +88,14 @@
           "type": "link",
           "settings": {
             "title": "Request a quote",
-            "url": "\/#custom-quote"
+            "url": "/#custom-quote"
           }
         },
         "nav_about": {
           "type": "link",
           "settings": {
             "title": "About",
-            "url": "\/pages\/about"
+            "url": "/pages/about"
           }
         }
       },
@@ -97,6 +106,7 @@
         "nav_about"
       ],
       "settings": {
+        "logo": "shopify://shop_images/Gemini_Generated_Image_sv62p3sv62p3sv62__1_-removebg-preview.png",
         "logo_height": 36,
         "brand_name": "Kinetic Grid 3D"
       }

@@ -5,9 +5,11 @@
   Calendar (Northern Hemisphere, US retail):
     holiday  — Dec 1 through Jan 5
     winter   — Jan 6 through Feb 28
-    spring   — Mar 1 through May 31
+    halloween — Oct 1 through Oct 31 only (Halloween drop)
+    easter   — Mar 15 through Apr 25
+    spring   — Mar 1 through May 31 (except easter window above)
     summer   — Jun 1 through Aug 14
-    fall     — Aug 15 through Nov 30
+    fall     — Aug 15 through Sep 30, and Nov 1 through Nov 30
 {% endcomment %}
 
 {%- liquid
@@ -25,6 +27,12 @@
       echo 'holiday'
     elsif month == 1 or month == 2
       echo 'winter'
+    elsif month == 10
+      echo 'halloween'
+    elsif month == 3 and day >= 15
+      echo 'easter'
+    elsif month == 4 and day <= 25
+      echo 'easter'
     elsif month >= 3 and month <= 5
       echo 'spring'
     elsif month >= 6 and month <= 8 and day < 15

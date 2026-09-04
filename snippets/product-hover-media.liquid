@@ -1,6 +1,6 @@
 {% comment %}
-  Secondary media shown on product-card hover.
-  Prefers the first product video; otherwise the second product image.
+  Secondary image shown on product-card hover (STLFlix-style lifestyle shot).
+  Skips videos — uses the second product image only.
 
   Accepts:
   - product: {Object} Product
@@ -10,48 +10,30 @@
 {% endcomment %}
 
 {% liquid
-  assign hover_video = nil
   assign hover_image = nil
+  assign image_count = 0
 
   for media in product.media
-    if media.media_type == 'video'
-      assign hover_video = media
-      break
+    if media.media_type == 'image'
+      assign image_count = image_count | plus: 1
+      if image_count == 2
+        assign hover_image = media
+        break
+      endif
     endif
   endfor
-
-  unless hover_video
-    if product.images.size > 1
-      assign hover_image = product.images[1]
-    endif
-  endunless
 %}
 
-{% if hover_video %}
-  <div class="product-card-hover-media" data-product-card-hover-video>
-    {{
-      hover_video
-      | video_tag:
-        autoplay: false,
-        loop: true,
-        muted: true,
-        controls: false,
-        playsinline: true,
-        preload: 'auto',
-        image_size: '800x',
-        class: 'product-card-hover-video'
-    }}
-  </div>
-{% elsif hover_image %}
+{% if hover_image %}
   {% liquid
     assign hover_alt = hover_image.alt | default: product.title
   %}
   {{
     hover_image
-    | image_url: width: 800
+    | image_url: width: 900
     | image_tag:
       loading: 'lazy',
-      widths: '400, 600, 800',
+      widths: '400, 600, 900',
       sizes: '(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 50vw',
       alt: hover_alt,
       class: 'product-card-hover-media'

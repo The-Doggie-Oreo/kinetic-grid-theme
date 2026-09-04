@@ -1,0 +1,13 @@
+{% comment %}
+  Injects Orbit Nexus ingest config + bridge script for quote/trophy forms.
+{% endcomment %}
+{% if settings.orbit_ingest_enabled and settings.orbit_ingest_url != blank and settings.orbit_ingest_token != blank %}
+  <script>
+    window.KG_ORBIT = {
+      enabled: true,
+      url: {{ settings.orbit_ingest_url | json }},
+      token: {{ settings.orbit_ingest_token | json }}
+    };
+  </script>
+  <script src="{{ 'kg-orbit-bridge.js' | asset_url }}" defer></script>
+{% endif %}

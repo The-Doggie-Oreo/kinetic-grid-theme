@@ -147,6 +147,10 @@
     }
 
     try {
+      if (window.KGOrbit && window.KGOrbit.enabled()) {
+        await window.KGOrbit.post(window.KGOrbit.buildPayload(form));
+      }
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: new FormData(form),

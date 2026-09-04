@@ -2,14 +2,20 @@
   <nav class="navbar navbar-expand-desktop" aria-label="{{ 'kinetic_grid.header.nav_label' | t }}">
     <div class="container">
       <a class="kg-header__brand navbar-brand mb-0" href="{{ routes.root_url }}">
-        {% if section.settings.logo != blank %}
+        {% liquid
+          assign brand_logo = section.settings.logo
+          if brand_logo == blank
+            assign brand_logo = settings.logo
+          endif
+        %}
+        {% if brand_logo != blank %}
           {% assign logo_height = section.settings.logo_height | default: 36 %}
           {% assign logo_height_2x = logo_height | times: 2 %}
           <img
-            src="{{ section.settings.logo | image_url: height: logo_height_2x }}"
+            src="{{ brand_logo | image_url: height: logo_height_2x }}"
             alt="{{ shop.name | escape }}"
             height="{{ logo_height }}"
-            width="{{ logo_height | times: section.settings.logo.aspect_ratio | round }}"
+            width="{{ logo_height | times: brand_logo.aspect_ratio | round }}"
             loading="eager"
           >
         {% else %}

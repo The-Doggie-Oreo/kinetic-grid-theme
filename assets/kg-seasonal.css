@@ -24,25 +24,93 @@ html[data-season='fall'] {
   --bs-body-bg-rgb: 245, 240, 232;
 }
 
-/* ── Holiday (Dec 1 – Jan 5) ────────────────────────────────────────── */
+/* ── Halloween (preview / Oct vibes) ─────────────────────────────────── */
+html[data-season='halloween'] {
+  --kg-navy: #fafaf9;
+  --kg-slate: #d6d3d1;
+  --kg-muted: #a8a29e;
+  --kg-accent: #fb923c;
+  --kg-canvas: #292524;
+  --kg-surface: #44403c;
+  --kg-line: #57534e;
+  --kg-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  --kg-footer-bg: #1c1917;
+  --kg-footer-accent: rgba(251, 146, 60, 0.16);
+  --kg-hero-tint: rgba(168, 85, 247, 0.14);
+  --kg-promo-bg: #7c2d12;
+  --kg-promo-text: #ffedd5;
+  --bs-primary: #ea580c;
+  --bs-primary-rgb: 234, 88, 12;
+  --bs-body-bg: #292524;
+  --bs-body-bg-rgb: 41, 37, 36;
+  --bs-body-color: #e7e5e4;
+  --bs-body-color-rgb: 231, 229, 228;
+}
+
+html[data-season='halloween'] .kg-header .nav-link,
+html[data-season='halloween'] .kg-header__name {
+  color: #fafaf9;
+}
+
+html[data-season='halloween'] .kg-card,
+html[data-season='halloween'] .product-card {
+  background: var(--kg-surface);
+  border-color: var(--kg-line);
+  color: var(--bs-body-color);
+}
+
+html[data-season='halloween'] .kg-product-card__title,
+html[data-season='halloween'] .product-card-title,
+html[data-season='halloween'] .kg-section-title {
+  color: #fafaf9;
+}
+
+html[data-season='halloween'] .kg-product-card__price,
+html[data-season='halloween'] .product-card-excerpt,
+html[data-season='halloween'] .kg-footer__list a {
+  color: var(--kg-slate);
+}
+
+/* ── Christmas (Dec) — classic red & green ─────────────────────────── */
 html[data-season='holiday'] {
   --kg-navy: #14532d;
-  --kg-slate: #365314;
-  --kg-muted: #4d7c0f;
-  --kg-accent: #991b1b;
-  --kg-canvas: #faf8f5;
+  --kg-slate: #166534;
+  --kg-muted: #4ade80;
+  --kg-accent: #dc2626;
+  --kg-canvas: #fef2f2;
   --kg-surface: #ffffff;
-  --kg-line: #e5e7eb;
-  --kg-shadow: 0 1px 0 rgba(20, 83, 45, 0.06);
-  --kg-footer-bg: #0f1f14;
-  --kg-footer-accent: rgba(250, 204, 21, 0.08);
-  --kg-hero-tint: rgba(153, 27, 27, 0.06);
-  --kg-promo-bg: #14532d;
-  --kg-promo-text: #fef9c3;
-  --bs-primary: #14532d;
-  --bs-primary-rgb: 20, 83, 45;
-  --bs-body-bg: #faf8f5;
-  --bs-body-bg-rgb: 250, 248, 245;
+  --kg-line: #fecaca;
+  --kg-shadow: 0 1px 0 rgba(185, 28, 28, 0.06);
+  --kg-footer-bg: #14532d;
+  --kg-footer-accent: rgba(220, 38, 38, 0.22);
+  --kg-hero-tint: rgba(220, 38, 38, 0.08);
+  --kg-promo-bg: #b91c1c;
+  --kg-promo-text: #fef2f2;
+  --bs-primary: #15803d;
+  --bs-primary-rgb: 21, 128, 61;
+  --bs-body-bg: #fff1f2;
+  --bs-body-bg-rgb: 255, 241, 242;
+}
+
+html[data-season='holiday'] .kg-season-promo {
+  background: linear-gradient(90deg, #b91c1c 0%, #b91c1c 46%, #15803d 54%, #15803d 100%);
+}
+
+html[data-season='holiday'] .kg-product-card .btn-info,
+html[data-season='holiday'] .kg-hero .btn-info {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+html[data-season='holiday'] .kg-footer::before {
+  background:
+    radial-gradient(circle at 12% 88%, rgba(220, 38, 38, 0.28), transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(250, 204, 21, 0.12), transparent 38%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(34, 197, 94, 0.18), transparent 70%);
+}
+
+html[data-season='holiday'] .kg-season-fx__flake {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
 }
 
 /* ── Winter (Jan 6 – Feb 28) ────────────────────────────────────────── */
@@ -50,62 +118,112 @@ html[data-season='winter'] {
   --kg-navy: #0c4a6e;
   --kg-slate: #334155;
   --kg-muted: #64748b;
-  --kg-accent: #0369a1;
-  --kg-canvas: #f0f4f8;
-  --kg-surface: #ffffff;
-  --kg-line: #dbeafe;
-  --kg-shadow: 0 1px 0 rgba(12, 74, 110, 0.05);
-  --kg-footer-bg: #0f172a;
-  --kg-footer-accent: rgba(56, 189, 248, 0.08);
-  --kg-hero-tint: rgba(3, 105, 161, 0.07);
-  --kg-promo-bg: #0c4a6e;
-  --kg-promo-text: #e0f2fe;
-  --bs-primary: #0c4a6e;
-  --bs-primary-rgb: 12, 74, 110;
-  --bs-body-bg: #f0f4f8;
-  --bs-body-bg-rgb: 240, 244, 248;
-}
-
-/* ── Spring (Mar 1 – May 31) ────────────────────────────────────────── */
-html[data-season='spring'] {
-  --kg-navy: #166534;
-  --kg-slate: #3f6212;
-  --kg-muted: #65a30d;
-  --kg-accent: #059669;
-  --kg-canvas: #f4faf6;
-  --kg-surface: #ffffff;
-  --kg-line: #d9f99d;
-  --kg-shadow: 0 1px 0 rgba(22, 101, 52, 0.05);
-  --kg-footer-bg: #14532d;
-  --kg-footer-accent: rgba(190, 242, 100, 0.1);
-  --kg-hero-tint: rgba(5, 150, 105, 0.07);
-  --kg-promo-bg: #166534;
-  --kg-promo-text: #ecfccb;
-  --bs-primary: #166534;
-  --bs-primary-rgb: 22, 101, 52;
-  --bs-body-bg: #f4faf6;
-  --bs-body-bg-rgb: 244, 250, 246;
-}
-
-/* ── Summer (Jun 1 – Aug 14) ────────────────────────────────────────── */
-html[data-season='summer'] {
-  --kg-navy: #0c4a6e;
-  --kg-slate: #334155;
-  --kg-muted: #64748b;
   --kg-accent: #0284c7;
-  --kg-canvas: #fffbeb;
+  --kg-canvas: #e0f2fe;
   --kg-surface: #ffffff;
-  --kg-line: #fde68a;
-  --kg-shadow: 0 1px 0 rgba(12, 74, 110, 0.04);
-  --kg-footer-bg: #1e3a5f;
-  --kg-footer-accent: rgba(251, 191, 36, 0.1);
-  --kg-hero-tint: rgba(2, 132, 199, 0.06);
+  --kg-line: #bae6fd;
+  --kg-shadow: 0 1px 0 rgba(12, 74, 110, 0.06);
+  --kg-footer-bg: #0f2744;
+  --kg-footer-accent: rgba(56, 189, 248, 0.14);
+  --kg-hero-tint: rgba(2, 132, 199, 0.1);
   --kg-promo-bg: #0369a1;
-  --kg-promo-text: #fef3c7;
+  --kg-promo-text: #e0f2fe;
   --bs-primary: #0369a1;
   --bs-primary-rgb: 3, 105, 161;
-  --bs-body-bg: #fffbeb;
-  --bs-body-bg-rgb: 255, 251, 235;
+  --bs-body-bg: #e0f2fe;
+  --bs-body-bg-rgb: 224, 242, 254;
+}
+
+html[data-season='winter'] .kg-season-fx__flake {
+  background: #38bdf8;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.95),
+    0 0 8px rgba(14, 165, 233, 0.55);
+}
+
+/* ── Easter — soft cream & lilac (subtle) ─────────────────────────────── */
+html[data-season='easter'] {
+  --kg-navy: #3d3648;
+  --kg-slate: #5c5568;
+  --kg-muted: #8b8494;
+  --kg-accent: #9f8ab8;
+  --kg-canvas: #faf9f7;
+  --kg-surface: #ffffff;
+  --kg-line: #ece8f0;
+  --kg-shadow: 0 1px 0 rgba(61, 54, 72, 0.04);
+  --kg-footer-bg: #2f2938;
+  --kg-footer-accent: rgba(159, 138, 184, 0.1);
+  --kg-hero-tint: rgba(159, 138, 184, 0.06);
+  --kg-promo-bg: #6b5b80;
+  --kg-promo-text: #f5f0fa;
+  --bs-primary: #7c6a94;
+  --bs-primary-rgb: 124, 106, 148;
+  --bs-body-bg: #faf9f7;
+  --bs-body-bg-rgb: 250, 249, 247;
+}
+
+/* ── Spring — fresh garden (muted, not neon) ──────────────────────────── */
+html[data-season='spring'] {
+  --kg-navy: #2d4a3e;
+  --kg-slate: #4a6358;
+  --kg-muted: #7a9488;
+  --kg-accent: #6b9080;
+  --kg-canvas: #f7faf8;
+  --kg-surface: #ffffff;
+  --kg-line: #dfe9e3;
+  --kg-shadow: 0 1px 0 rgba(45, 74, 62, 0.04);
+  --kg-footer-bg: #2d4a3e;
+  --kg-footer-accent: rgba(163, 196, 179, 0.12);
+  --kg-hero-tint: rgba(107, 144, 128, 0.07);
+  --kg-promo-bg: #52796f;
+  --kg-promo-text: #ecfdf5;
+  --bs-primary: #52796f;
+  --bs-primary-rgb: 82, 121, 111;
+  --bs-body-bg: #f7faf8;
+  --bs-body-bg-rgb: 247, 250, 248;
+}
+
+html[data-season='spring'] .kg-hero {
+  background: linear-gradient(
+    180deg,
+    rgba(163, 196, 179, 0.18) 0%,
+    rgba(247, 250, 248, 0) 72%
+  );
+}
+
+/* ── Summer — calm coastal (neutral page, beach strip in footer) ─────── */
+html[data-season='summer'] {
+  --kg-navy: #1e3a4c;
+  --kg-slate: #475569;
+  --kg-muted: #64748b;
+  --kg-accent: #0e7490;
+  --kg-canvas: #f9f7f4;
+  --kg-surface: #ffffff;
+  --kg-line: #e7e2db;
+  --kg-shadow: 0 1px 0 rgba(30, 58, 76, 0.04);
+  --kg-footer-bg: #1a3344;
+  --kg-footer-accent: rgba(56, 189, 248, 0.08);
+  --kg-hero-tint: rgba(14, 116, 144, 0.05);
+  --kg-promo-bg: #0e7490;
+  --kg-promo-text: #f0fdfa;
+  --bs-primary: #0e7490;
+  --bs-primary-rgb: 14, 116, 144;
+  --bs-body-bg: #f9f7f4;
+  --bs-body-bg-rgb: 249, 247, 244;
+}
+
+html[data-season='summer'] .kg-footer {
+  padding-bottom: 152px;
+}
+
+html[data-season='summer'] .kg-footer__bar {
+  position: relative;
+  z-index: 2;
+}
+
+html[data-season='summer'] .kg-footer__seasons {
+  position: relative;
+  z-index: 4;
 }
 
 /* ── Shared seasonal surfaces ───────────────────────────────────────── */
@@ -168,13 +286,166 @@ html[data-season] .kg-quote .btn-info:focus {
   text-align: center;
   padding: 0.45rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.kg-season-promo__inner {
+  width: 100%;
+  overflow: hidden;
 }
 
 .kg-season-promo__text {
-  line-height: 1.4;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── Ambient particle layer (footer) ────────────────────────────────── */
+/* ── Fall leaves: muted overlay + footer pile ───────────────────────── */
+.kg-leaf-fall {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.kg-leaf-fall canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: saturate(0.85) brightness(0.96);
+}
+
+.kg-footer {
+  position: relative;
+}
+
+.kg-footer--fall .kg-footer__inner.container,
+html[data-season='fall'] .kg-footer .kg-footer__inner.container {
+  padding-top: 1.25rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.kg-footer--fall .kg-footer__brand.mb-5,
+html[data-season='fall'] .kg-footer .kg-footer__brand.mb-5 {
+  margin-bottom: 0.85rem !important;
+}
+
+.kg-footer--fall .kg-footer__bar .container,
+html[data-season='fall'] .kg-footer .kg-footer__bar .container {
+  padding-top: 0.65rem !important;
+  padding-bottom: 0.65rem !important;
+}
+
+.kg-footer--fall .kg-footer__bar,
+html[data-season='fall'] .kg-footer .kg-footer__bar {
+  margin-bottom: 96px;
+}
+
+.kg-footer--fall .kg-footer__wordmark,
+html[data-season='fall'] .kg-footer .kg-footer__wordmark {
+  z-index: 0;
+}
+
+.kg-leaf-footer-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.kg-leaf-footer-layer__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+html[data-season='fall'] .kg-footer .kg-footer__inner,
+html[data-season='fall'] .kg-footer .kg-footer__bar {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* ── Season preview switcher (footer) ─────────────────────────────────── */
+.kg-footer__seasons {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.kg-season-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kg-season-switcher__btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0.38rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.kg-season-switcher__btn:hover,
+.kg-season-switcher__btn:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.kg-season-switcher__btn.is-active {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.42);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.kg-season-switcher__btn--auto {
+  opacity: 0.75;
+  font-size: 0.62rem;
+}
+
+.kg-season-switcher__auto {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 0.15rem;
+}
+
+@media (min-width: 768px) {
+  .kg-season-switcher__auto {
+    flex-basis: auto;
+    margin-top: 0;
+    margin-left: 0.25rem;
+  }
+
+  .kg-season-switcher__btn {
+    font-size: 0.7rem;
+    padding: 0.42rem 0.65rem;
+  }
+}
+
+/* ── Ambient particle layer (other seasons, footer only) ─────────────── */
 .kg-season-fx {
   position: absolute;
   inset: 0;
@@ -186,11 +457,14 @@ html[data-season] .kg-quote .btn-info:focus {
 .kg-season-fx__leaf,
 .kg-season-fx__flake,
 .kg-season-fx__petal,
-.kg-season-fx__speck {
+.kg-season-fx__speck,
+.kg-season-fx__bat,
+.kg-season-fx__egg {
   position: absolute;
-  top: -2rem;
+  top: 0;
   left: var(--kg-fx-left, 50%);
   opacity: 0;
+  pointer-events: none;
   animation: kg-fx-fall var(--kg-fx-duration, 16s) var(--kg-fx-delay, 0s) linear infinite;
   will-change: transform, opacity;
 }
@@ -227,20 +501,188 @@ html[data-season] .kg-quote .btn-info:focus {
   animation-name: kg-fx-drift;
 }
 
+.kg-season-fx__bat {
+  width: calc(var(--kg-fx-size, 10px) * 1.6);
+  height: var(--kg-fx-size, 10px);
+  background: var(--kg-fx-color, #ea580c);
+  border-radius: 50% 50% 0 0;
+  box-shadow: -5px 2px 0 -1px var(--kg-fx-color, #ea580c), 5px 2px 0 -1px var(--kg-fx-color, #ea580c);
+  animation-name: kg-fx-fall;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.kg-season-fx__egg {
+  width: calc(var(--kg-fx-size, 10px) * 0.72);
+  height: var(--kg-fx-size, 10px);
+  background: var(--kg-fx-color, #fda4af);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+/* ── Summer beach strip (footer bottom) ──────────────────────────────── */
+.kg-summer-beach {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 148px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.kg-summer-beach__sky {
+  position: absolute;
+  inset: 0 0 58%;
+  background: linear-gradient(180deg, #3d7ea6 0%, #5ba4c9 55%, #87cce8 100%);
+}
+
+.kg-summer-beach__sand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 58%;
+  background: linear-gradient(180deg, #d4b896 0%, #c9a87a 45%, #b8956a 100%);
+  box-shadow: inset 0 8px 16px rgba(255, 255, 255, 0.12);
+}
+
+.kg-summer-beach__sand::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.kg-summer-beach__setup {
+  position: absolute;
+  right: 10%;
+  bottom: 14px;
+  width: 88px;
+  height: 72px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.kg-summer-beach__umbrella {
+  position: absolute;
+  left: 4px;
+  bottom: 26px;
+  width: 58px;
+  height: 28px;
+  border-radius: 50% 50% 0 0;
+  background: repeating-conic-gradient(
+    #e11d48 0deg 36deg,
+    #f8fafc 36deg 72deg
+  );
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: rotate(-8deg);
+}
+
+.kg-summer-beach__umbrella::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 3px;
+  height: 30px;
+  margin-left: -1.5px;
+  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+  border-radius: 2px;
+}
+
+.kg-summer-beach__chair {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 26px;
+}
+
+.kg-summer-beach__chair::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  bottom: 8px;
+  width: 26px;
+  height: 4px;
+  background: #0284c7;
+  border-radius: 2px;
+  transform: rotate(-12deg);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.kg-summer-beach__chair::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  bottom: 10px;
+  width: 14px;
+  height: 16px;
+  background: linear-gradient(160deg, #0ea5e9 0%, #0369a1 100%);
+  border-radius: 2px 2px 0 0;
+  transform: rotate(-12deg);
+}
+
+.kg-summer-beach__ball {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: conic-gradient(
+    #ef4444 0deg 72deg,
+    #ffffff 72deg 144deg,
+    #2563eb 144deg 216deg,
+    #facc15 216deg 288deg,
+    #ef4444 288deg 360deg
+  );
+  box-shadow:
+    inset -4px -4px 10px rgba(0, 0, 0, 0.12),
+    2px 6px 14px rgba(0, 0, 0, 0.22);
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+  z-index: 5;
+  will-change: transform, left, top;
+}
+
+.kg-summer-beach__ball:active,
+.kg-summer-beach__ball.is-dragging {
+  cursor: grabbing;
+}
+
+.kg-summer-beach__ball.is-flying {
+  transition: opacity 0.35s ease;
+}
+
+html[data-season='spring'] .kg-season-fx__petal {
+  filter: saturate(0.85);
+  opacity: 0.85;
+}
+
+html[data-season='easter'] .kg-season-fx__egg {
+  filter: saturate(0.8);
+  opacity: 0.8;
+}
+
 @keyframes kg-fx-fall {
   0% {
-    opacity: 0;
-    transform: translate3d(0, -1rem, 0) rotate(0deg);
+    opacity: var(--kg-fx-opacity, 0.7);
+    transform: translate3d(0, var(--kg-fx-start, -4rem), 0) rotate(var(--kg-fx-rotate, 0deg));
   }
-  8% {
-    opacity: var(--kg-fx-opacity, 0.55);
-  }
-  90% {
-    opacity: var(--kg-fx-opacity, 0.35);
+  92% {
+    opacity: var(--kg-fx-opacity, 0.6);
   }
   100% {
     opacity: 0;
-    transform: translate3d(var(--kg-fx-drift, 30px), calc(100vh + 2rem), 0) rotate(360deg);
+    transform: translate3d(var(--kg-fx-drift, 30px), calc(100vh + 4rem), 0)
+      rotate(calc(var(--kg-fx-rotate, 0deg) + 420deg));
   }
 }
 
@@ -262,8 +704,13 @@ html[data-season] .kg-quote .btn-info:focus {
   .kg-season-fx__leaf,
   .kg-season-fx__flake,
   .kg-season-fx__petal,
-  .kg-season-fx__speck {
-    animation: none !important;
-    display: none;
+  .kg-season-fx__speck,
+  .kg-season-fx__bat,
+  .kg-season-fx__egg {
+    animation-duration: 40s !important;
+  }
+
+  .kg-summer-beach__ball {
+    cursor: default;
   }
 }

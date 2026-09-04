@@ -320,11 +320,22 @@
     },
     "season": {
       "promo_label": "Seasonal offer",
-      "promo_fall": "Fall refresh — 10% off desk organizers, gaming prints & sewing accessories. Code FALL10 at checkout.",
-      "promo_holiday": "Gift-making season — 15% off custom awards & plaques through Dec 31. Code GIFT15 at checkout.",
-      "promo_winter": "Winter studio hours — free shipping on orders over $50 through February.",
-      "promo_spring": "Spring drop — fresh colors on desk organizers & cat accessories. Code SPRING10 at checkout.",
-      "promo_summer": "Summer vibes — 10% off beach-ready prints & outdoor gaming accessories. Code SUNNY10 at checkout."
+      "switcher_label": "Season preview",
+      "fall": "Fall",
+      "halloween": "Halloween",
+      "winter": "Winter",
+      "christmas": "Christmas",
+      "easter": "Easter",
+      "spring": "Spring",
+      "summer": "Summer",
+      "auto": "Auto",
+      "promo_fall": "Fall drop: shop seasonal desk organizers, gaming prints, and sewing accessories.",
+      "promo_halloween": "Halloween drop runs Oct 1 through Oct 31. Shop the seasonal catalog.",
+      "promo_holiday": "Gift season: custom awards and plaques made to order.",
+      "promo_winter": "Made-to-order prints and engraving. Shipping calculated at checkout.",
+      "promo_easter": "Made-to-order catalog prints and desk organizers.",
+      "promo_spring": "Made-to-order catalog: desk organizers, gaming prints, and more.",
+      "promo_summer": "Made-to-order gaming and outdoor-ready prints. Shipping at checkout."
     }
   }
 }

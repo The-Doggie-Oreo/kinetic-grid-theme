@@ -14,7 +14,7 @@
         "slide_mwF4Tk": {
           "type": "slide",
           "settings": {
-            "announcement": "Send files for custom fabrication quotes — 3D print, laser, hybrid trophies, and CAD"
+            "announcement": "Custom fabrication quotes: 3D print, laser, hybrid trophies, and CAD"
           }
         }
       },
@@ -52,12 +52,12 @@
             "url": "\/collections\/bestsellers",
             "item_1_label": "Bestsellers",
             "item_1_url": "\/collections\/bestsellers",
-            "item_2_label": "Gaming",
-            "item_2_url": "\/collections\/gaming",
-            "item_3_label": "All prints",
-            "item_3_url": "\/collections\/all",
-            "item_4_label": "",
-            "item_4_url": ""
+            "item_2_label": "D&D & Tabletop",
+            "item_2_url": "\/collections\/dnd",
+            "item_3_label": "Gaming",
+            "item_3_url": "\/collections\/gaming",
+            "item_4_label": "All prints",
+            "item_4_url": "\/collections\/all"
           }
         },
         "nav_awards": {

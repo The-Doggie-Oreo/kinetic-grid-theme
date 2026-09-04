@@ -36,9 +36,7 @@
             " 
             data-index="{{ forloop.index0 }}" 
             {{ block.shopify_attributes }}>
-            <div class="description rte lh-sm">
-              {{ block.settings.announcement }}
-            </div>
+            <p class="description lh-sm mb-0">{{ block.settings.announcement | strip_html | escape }}</p>
           </div>
         {% endfor %}
       </div>
@@ -300,7 +298,7 @@
         {
           "type": "slide",
           "settings": {
-            "announcement": "Free shipping over $100 USD"
+            "announcement": "Shipping is calculated at checkout based on size, weight, and destination"
           }
         }
       ]

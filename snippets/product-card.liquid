@@ -44,8 +44,18 @@
       {% endif %}
       {% liquid
         assign primary_img_class = settings.product_card_img_border | append: ' product-card-img-primary'
+        assign primary_img_alt = product.featured_image.alt | default: product.title
       %}
-      {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: primary_img_class %}
+      {{
+        product.featured_image
+        | image_url: width: 900
+        | image_tag:
+          loading: 'lazy',
+          widths: '400, 600, 900',
+          sizes: '(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 50vw',
+          alt: primary_img_alt,
+          class: primary_img_class
+      }}
       {{ product_hover_media }}
     </div>
     <div class="product-card-body">

@@ -106,6 +106,7 @@
       "settings": {
         "title": "Request a custom trophy",
         "subtitle": "Tell us about the event, plaque copy, quantity, and style. Paste a Drive or Dropbox link if you have a logo or sketch.",
+        "show_demo_fill": true,
         "pt": 6,
         "pb": 14
       }

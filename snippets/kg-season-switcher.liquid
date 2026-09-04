@@ -1,0 +1,62 @@
+{% comment %}
+  Footer season preview switcher (persists in localStorage, see kg-season-switcher.js).
+{% endcomment %}
+
+<script type="application/json" id="kg-season-promos">
+{
+  "fall": {% echo 'kinetic_grid.season.promo_fall' | t | json %},
+  "halloween": {% echo 'kinetic_grid.season.promo_halloween' | t | json %},
+  "winter": {% echo 'kinetic_grid.season.promo_winter' | t | json %},
+  "holiday": {% echo 'kinetic_grid.season.promo_holiday' | t | json %},
+  "easter": {% echo 'kinetic_grid.season.promo_easter' | t | json %},
+  "spring": {% echo 'kinetic_grid.season.promo_spring' | t | json %},
+  "summer": {% echo 'kinetic_grid.season.promo_summer' | t | json %}
+}
+</script>
+
+<nav class="kg-footer__seasons" aria-label="{{ 'kinetic_grid.season.switcher_label' | t }}">
+  <div class="container py-4">
+    <ul class="kg-season-switcher" role="list">
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="fall">
+          {{ 'kinetic_grid.season.fall' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="halloween">
+          {{ 'kinetic_grid.season.halloween' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="winter">
+          {{ 'kinetic_grid.season.winter' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="holiday">
+          {{ 'kinetic_grid.season.christmas' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="easter">
+          {{ 'kinetic_grid.season.easter' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="spring">
+          {{ 'kinetic_grid.season.spring' | t }}
+        </button>
+      </li>
+      <li>
+        <button type="button" class="kg-season-switcher__btn" data-kg-season="summer">
+          {{ 'kinetic_grid.season.summer' | t }}
+        </button>
+      </li>
+      <li class="kg-season-switcher__auto">
+        <button type="button" class="kg-season-switcher__btn kg-season-switcher__btn--auto" data-kg-season="auto">
+          {{ 'kinetic_grid.season.auto' | t }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

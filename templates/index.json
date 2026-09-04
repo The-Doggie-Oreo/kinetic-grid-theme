@@ -6,41 +6,197 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify:\/\/shop_images\/lifestyle-1-mobile.jpg",
-            "img_desktop": "shopify:\/\/shop_images\/lifestyle-1.jpg",
+            "img_mobile": "",
+            "img_desktop": "",
+            "img_asset": "hero-laser-engraving.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 10,
-            "overlay_blur": 2,
+            "overlay_opacity": 30,
+            "overlay_blur": 0,
             "subtitle": "Kinetic Grid 3D",
-            "title": "Precision 3D Printing & 10W Diode Laser Engraving",
-            "description": "<p>From custom tournament trophies and made-to-order catalog prints to precision laser-engraved hardwood and metal plaques.<\/p>",
-            "btn_primary_text": "Explore 3D Catalog",
-            "btn_primary_url": "\/collections\/bestsellers",
-            "btn_secondary_text": "Request Custom Fabrication",
-            "btn_secondary_url": "\/pages\/contact"
+            "title": "10W Diode Laser Engraving",
+            "description": "<p>Precision engraving on hardwood, slate, acrylic, and anodized aluminum — preset plaque sizes with your text at checkout.<\/p>",
+            "btn_primary_text": "Shop laser plaques",
+            "btn_primary_url": "\/products\/custom-laser-plaque",
+            "btn_secondary_text": "Explore 3D catalog",
+            "btn_secondary_url": "\/collections\/bestsellers"
           }
         },
         "slide_TddqxQ": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify:\/\/shop_images\/lifestyle-2-mobile.jpg",
-            "img_desktop": "shopify:\/\/shop_images\/lifestyle-2.jpg",
+            "img_mobile": "",
+            "img_desktop": "",
+            "img_asset": "hero-custom-trophies.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 10,
-            "overlay_blur": 2,
-            "subtitle": "Custom awards & plaques",
-            "title": "3D-Printed Toppers. Laser-Engraved Plates.",
-            "description": "<p>Hybrid trophies combining multi-color printed figures with hardwood, slate, acrylic, and anodized aluminum.<\/p>",
-            "btn_primary_text": "Shop awards",
-            "btn_primary_url": "\/collections\/custom-plaques",
+            "overlay_opacity": 30,
+            "overlay_blur": 0,
+            "subtitle": "Custom awards",
+            "title": "3D-Printed Custom Trophies",
+            "description": "<p>Hybrid awards with multi-color printed toppers and laser-engraved hardwood, slate, or acrylic bases — built for leagues, offices, and inside jokes.<\/p>",
+            "btn_primary_text": "Shop trophies",
+            "btn_primary_url": "\/products\/custom-3d-printed-trophy",
             "btn_secondary_text": "Custom awards page",
             "btn_secondary_url": "\/pages\/custom-awards"
+          }
+        },
+        "slide_dnd": {
+          "type": "slide",
+          "settings": {
+            "img_mobile": "",
+            "img_desktop": "",
+            "img_asset": "hero-dnd.png",
+            "season_tag": "",
+            "season_priority": "first",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "overlay_blur": 0,
+            "subtitle": "Get ready for D&D",
+            "title": "Dice Towers, Minis & Tabletop Gear",
+            "description": "<p>Made-to-order prints for your next campaign — dice organizers, miniatures, terrain, and session-ready accessories.<\/p>",
+            "btn_primary_text": "Shop D&D collection",
+            "btn_primary_url": "\/collections\/dnd",
+            "btn_secondary_text": "D&D page",
+            "btn_secondary_url": "\/pages\/dnd"
+          }
+        },
+        "slide_season_fall": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-fall-drop.png",
+            "season_tag": "fall",
+            "season_priority": "first",
+            "overlay_color": "#000000",
+            "overlay_opacity": 20,
+            "overlay_blur": 0,
+            "subtitle": "Fall drop",
+            "title": "3D Printed Seasonal Collection",
+            "description": "<p>Desk organizers, gaming prints, sewing accessories, and more — made to order when you buy.<\/p>",
+            "btn_primary_text": "Shop Fall drop",
+            "btn_primary_url": "\/collections\/fall-drop",
+            "btn_secondary_text": "Shop bestsellers",
+            "btn_secondary_url": "\/collections\/bestsellers"
+          }
+        },
+        "slide_season_halloween": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-dnd.png",
+            "season_tag": "halloween",
+            "season_priority": "first",
+            "overlay_color": "#1a1025",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Halloween drop · Oct 1–31",
+            "title": "Seasonal Prints for Spooky Season",
+            "description": "<p>The Halloween drop is live through October 31 — made-to-order when you buy.<\/p>",
+            "btn_primary_text": "Shop Halloween drop",
+            "btn_primary_url": "\/collections\/halloween-drop",
+            "btn_secondary_text": "Shop D&D",
+            "btn_secondary_url": "\/collections\/dnd"
+          }
+        },
+        "slide_season_winter": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-laser-engraving.png",
+            "season_tag": "winter",
+            "season_priority": "first",
+            "overlay_color": "#0f172a",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Year-round at the studio",
+            "title": "Laser Plaques & Made-to-Order Engraving",
+            "description": "<p>Hardwood, slate, acrylic, and anodized aluminum — preset plaque sizes with your text at checkout.<\/p>",
+            "btn_primary_text": "Shop laser plaques",
+            "btn_primary_url": "\/products\/custom-laser-plaque",
+            "btn_secondary_text": "Shop catalog",
+            "btn_secondary_url": "\/collections\/bestsellers"
+          }
+        },
+        "slide_season_holiday": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-custom-trophies.png",
+            "season_tag": "holiday",
+            "season_priority": "first",
+            "overlay_color": "#1a0505",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Gift-making season",
+            "title": "Custom Awards & Trophies Made to Order",
+            "description": "<p>Hybrid trophies and engraved plaques built for leagues, offices, and the people on your nice list.<\/p>",
+            "btn_primary_text": "Shop trophies",
+            "btn_primary_url": "\/products\/custom-3d-printed-trophy",
+            "btn_secondary_text": "Shop plaques",
+            "btn_secondary_url": "\/collections\/custom-plaques"
+          }
+        },
+        "slide_season_easter": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-dnd.png",
+            "season_tag": "easter",
+            "season_priority": "first",
+            "overlay_color": "#2d2938",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Made to order",
+            "title": "Catalog Prints & Desk Organizers",
+            "description": "<p>Year-round made-to-order pieces from the catalog — produced when you order.<\/p>",
+            "btn_primary_text": "Shop catalog",
+            "btn_primary_url": "\/collections\/bestsellers",
+            "btn_secondary_text": "Shop D&D",
+            "btn_secondary_url": "\/collections\/dnd"
+          }
+        },
+        "slide_season_spring": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-laser-engraving.png",
+            "season_tag": "spring",
+            "season_priority": "first",
+            "overlay_color": "#1e3a2f",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Made to order",
+            "title": "Desk Organizers, Gaming Prints & More",
+            "description": "<p>Year-round catalog favorites — no seasonal drop yet, just made-to-order when you buy.<\/p>",
+            "btn_primary_text": "Shop bestsellers",
+            "btn_primary_url": "\/collections\/bestsellers",
+            "btn_secondary_text": "Request a quote",
+            "btn_secondary_url": "\/#custom-quote"
+          }
+        },
+        "slide_season_summer": {
+          "type": "slide",
+          "settings": {
+            "img_asset": "hero-dnd.png",
+            "season_tag": "summer",
+            "season_priority": "first",
+            "overlay_color": "#0c4a6e",
+            "overlay_opacity": 40,
+            "overlay_blur": 0,
+            "subtitle": "Made to order",
+            "title": "Gaming Prints & Tabletop Gear",
+            "description": "<p>Year-round catalog pieces for game night — produced when you order.<\/p>",
+            "btn_primary_text": "Shop gaming",
+            "btn_primary_url": "\/collections\/gaming",
+            "btn_secondary_text": "Shop D&D",
+            "btn_secondary_url": "\/collections\/dnd"
           }
         }
       },
       "block_order": [
         "slide_Q4UPQq",
-        "slide_TddqxQ"
+        "slide_TddqxQ",
+        "slide_dnd",
+        "slide_season_fall",
+        "slide_season_halloween",
+        "slide_season_winter",
+        "slide_season_holiday",
+        "slide_season_easter",
+        "slide_season_spring",
+        "slide_season_summer"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -62,7 +218,7 @@
         "media_adapt": false,
         "media_full": true,
         "caption_max_width": "900",
-        "caption_position": "carousel-caption-center",
+        "caption_position": "carousel-caption-bottom",
         "subtitle_font_size": "fs-md",
         "title_font_size": "h2",
         "description_font_size": "fs-lg",
@@ -92,7 +248,7 @@
         "recommended_mode_intent": "related",
         "header_title": "Bestsellers",
         "header_title_font_size": "h3",
-        "header_description": "<p>Popular made-to-order prints from the catalog Ã¢â‚¬â€ produced when you order.<\/p>",
+        "header_description": "<p>Popular made-to-order prints from the catalog — produced when you order.<\/p>",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
@@ -123,7 +279,7 @@
         "text_align": "text-center",
         "title": "All-in-one digital fabrication",
         "title_font_size": "h3",
-        "description": "<p>Kinetic Grid 3D is a studio for multi-material 3D printing, custom trophies, 10W diode laser engraving, and CAD prototyping Ã¢â‚¬â€ built for makers, leagues, and small-batch production.<\/p>",
+        "description": "<p>Kinetic Grid 3D is a studio for multi-material 3D printing, custom trophies, 10W diode laser engraving, and CAD prototyping — built for makers, leagues, and small-batch production.<\/p>",
         "description_font_size": "fs-md",
         "btn_primary_text": "Explore 3D Catalog",
         "btn_primary_url": "\/collections\/all",
@@ -294,7 +450,7 @@
         "recommended_mode_intent": "related",
         "header_title": "Custom plaques & awards",
         "header_title_font_size": "h3",
-        "header_description": "<p>10W diode laser engraving on hardwood, slate, acrylic, and anodized aluminum Ã¢â‚¬â€ pick a preset size and material, then add your plaque text with the order.<\/p>",
+        "header_description": "<p>10W diode laser engraving on hardwood, slate, acrylic, and anodized aluminum — pick a preset size and material, then add your plaque text with the order.<\/p>",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
@@ -377,7 +533,7 @@
           "type": "item",
           "settings": {
             "title": "10W diode laser engraving",
-            "description": "<p>Hardwoods, slate, acrylic, and anodized aluminum Ã¢â‚¬â€ precision engraving and cutting for plaques and parts.<\/p>",
+            "description": "<p>Hardwoods, slate, acrylic, and anodized aluminum — precision engraving and cutting for plaques and parts.<\/p>",
             "btn_text": "Learn more",
             "btn_url": "\/pages\/laser-engraving"
           }
@@ -439,7 +595,7 @@
         "container_max_width": "",
         "header_title": "What we fabricate",
         "header_title_font_size": "h3",
-        "header_description": "<p>Catalog prints, custom awards, laser work, and CAD Ã¢â‚¬â€ one studio.<\/p>",
+        "header_description": "<p>Catalog prints, custom awards, laser work, and CAD — one studio.<\/p>",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
@@ -486,7 +642,7 @@
         "text_align": "text-center",
         "header_title": "Studio & workshop",
         "header_title_font_size": "h3",
-        "header_description": "<p>Made-to-order fabrication Ã¢â‚¬â€ check current shop time below, then visit or send a file.<\/p>",
+        "header_description": "<p>Made-to-order fabrication — check current shop time below, then visit or send a file.<\/p>",
         "header_description_font_size": "fs-md",
         "pt": 10,
         "pb": 10
@@ -791,7 +947,7 @@
       "type": "kg-product-grid",
       "settings": {
         "title": "Made-to-order catalog",
-        "subtitle": "Gaming gear, craft organizers, and articulated prints Ã¢â‚¬â€ produced when you order.",
+        "subtitle": "Gaming gear, craft organizers, and articulated prints — produced when you order.",
         "limit": 8,
         "pt": 8,
         "pb": 12
@@ -802,7 +958,7 @@
       "type": "kg-quote-form",
       "settings": {
         "title": "Request custom fabrication",
-        "subtitle": "Share files, dimensions, plaque copy, and quantity. WeÃ¢â‚¬â„¢ll quote 3D prints, laser engraving, hybrid trophies, and CAD prototyping.",
+        "subtitle": "Share files, dimensions, plaque copy, and quantity. We'll quote 3D prints, laser engraving, hybrid trophies, and CAD prototyping.",
         "pt": 8,
         "pb": 14
       }

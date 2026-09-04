@@ -336,7 +336,8 @@
 .product-card-img-wrapper video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .product-card-img-wrapper .img-thumbnail,
@@ -366,18 +367,23 @@ a:hover .product-card-img-wrapper:not(.product-card-img-wrapper--has-hover) img 
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity .25s ease;
 }
 
 .product-card-hover-media video,
-.product-card-hover-video {
+.product-card-hover-video,
+.product-card-hover-video-iframe {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  background: #ecece8;
 }
 
 .product-card-img-wrapper--has-hover .product-card-img-primary {

@@ -703,7 +703,7 @@
         "type": "checkbox",
         "id": "cart_goal_enable",
         "label": "Enable cart goal",
-        "default": true,
+        "default": false,
         "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
       },
       {
@@ -737,7 +737,7 @@
         "type": "richtext",
         "id": "cart_goal_description_before",
         "label": "Description - Goal NOT completed",
-        "default": "<p>You're <strong>[amount]<\/strong> away from <strong>FREE SHIPPING!<\/strong><\/p>"
+        "default": "<p>Add <strong>[amount]<\/strong> more to review shipping at checkout.<\/p>"
       },
       {
         "type": "select",
@@ -786,7 +786,7 @@
         "type": "richtext",
         "id": "cart_goal_description_after",
         "label": "Description - Goal completed",
-        "default": "<p>Congrats! You're eligible for <strong>FREE SHIPPING.<\/strong><\/p>"
+        "default": "<p>Ready to checkout — shipping rates are calculated based on size, weight, and destination.<\/p>"
       },
       {
         "type": "select",
@@ -1129,9 +1129,11 @@
         "options": [
           { "value": "auto", "label": "Automatic (by date)" },
           { "value": "fall", "label": "Fall" },
-          { "value": "holiday", "label": "Holiday (Dec vibes)" },
+          { "value": "halloween", "label": "Halloween" },
+          { "value": "holiday", "label": "Christmas" },
           { "value": "winter", "label": "Winter" },
-          { "value": "spring", "label": "Spring / Easter" },
+          { "value": "easter", "label": "Easter" },
+          { "value": "spring", "label": "Spring" },
           { "value": "summer", "label": "Summer" }
         ]
       },
@@ -1149,6 +1151,24 @@
       },
       {
         "type": "header",
+        "content": "Fall leaf images"
+      },
+      {
+        "type": "paragraph",
+        "content": "Optional — upload your own leaf PNGs here (transparent background works best). If left empty, the theme uses the bundled gold and orange leaf files in Assets."
+      },
+      {
+        "type": "image_picker",
+        "id": "season_leaf_gold",
+        "label": "Gold leaf"
+      },
+      {
+        "type": "image_picker",
+        "id": "season_leaf_orange",
+        "label": "Orange leaf"
+      },
+      {
+        "type": "header",
         "content": "Promo messages (optional overrides)"
       },
       {
@@ -1160,12 +1180,22 @@
       {
         "type": "textarea",
         "id": "season_promo_holiday",
-        "label": "Holiday promo"
+        "label": "Christmas promo"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_halloween",
+        "label": "Halloween promo"
       },
       {
         "type": "textarea",
         "id": "season_promo_winter",
         "label": "Winter promo"
+      },
+      {
+        "type": "textarea",
+        "id": "season_promo_easter",
+        "label": "Easter promo"
       },
       {
         "type": "textarea",
@@ -1176,6 +1206,33 @@
         "type": "textarea",
         "id": "season_promo_summer",
         "label": "Summer promo"
+      }
+    ]
+  },
+  {
+    "name": "Orbit Nexus (ops)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Send quote & trophy contact forms into your Orbit Nexus dashboard. Use a public URL (or ngrok tunnel to local MAMP). Token comes from Orbit → Settings."
+      },
+      {
+        "type": "checkbox",
+        "id": "orbit_ingest_enabled",
+        "label": "Send forms to Orbit Nexus",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "orbit_ingest_url",
+        "label": "Ingest API URL",
+        "info": "Example: https://your-tunnel.ngrok.app/ks-bootshop/orbit-nexus/api/ingest.php"
+      },
+      {
+        "type": "text",
+        "id": "orbit_ingest_token",
+        "label": "Ingest token",
+        "info": "Copy from Orbit Nexus → Settings. Keep private."
       }
     ]
   }

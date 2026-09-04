@@ -1,0 +1,114 @@
+{% comment %}
+  Single hero carousel slide.
+  Accepts: block, section, slide_index, is_active, media_loading
+{% endcomment %}
+
+{% liquid
+  if section.settings.media_adapt == false
+    assign media_mobile_height = section.settings.media_mobile_height | prepend: 'height: ' | append: 'px;'
+    assign media_desktop_height = section.settings.media_desktop_height | prepend: 'height: ' | append: 'px;'
+  endif
+
+  assign season_tag = block.settings.season_tag | default: ''
+  assign season_priority = block.settings.season_priority | default: 'first'
+%}
+
+<div
+  class="carousel-item{% if is_active %} active{% endif %}"
+  data-index="{{ slide_index }}"
+  data-season-tag="{{ season_tag | escape }}"
+  data-season-priority="{{ season_priority | escape }}"
+  {{ block.shopify_attributes }}>
+  <div
+    class="media-wrapper"
+    style="
+      --overlay-color-rgb: {{ block.settings.overlay_color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+      --overlay-opacity: {{ block.settings.overlay_opacity | append: '%' }};
+      --overlay-blur: {{ block.settings.overlay_blur | append: 'px' }}">
+    {% if block.settings.img_mobile != blank or block.settings.img_desktop != blank %}
+      <div class="d-tablet-none">
+        <img
+          class="carousel-media"
+          src="{{ block.settings.img_mobile | image_url: width: '800', crop: 'center' }}"
+          alt=" {{ block.settings.img_mobile.alt }}"
+          width="800"
+          height="{{ 800 | divided_by: block.settings.img_mobile.aspect_ratio | round }}"
+          loading="{{ media_loading }}"
+          style="{{ media_mobile_height }}">
+      </div>
+      <div class="d-none d-tablet-block">
+        <img
+          class="carousel-media"
+          src="{{ block.settings.img_desktop | image_url: width: '1600', crop: 'center' }}"
+          alt=" {{ block.settings.img_desktop.alt }}"
+          width="1600"
+          height="{{ 1600 | divided_by: block.settings.img_desktop.aspect_ratio | round }}"
+          loading="{{ media_loading }}"
+          style="{{ media_desktop_height }}">
+      </div>
+    {% elsif block.settings.img_asset != blank %}
+      <div class="d-tablet-none">
+        <img
+          class="carousel-media"
+          src="{{ block.settings.img_asset | asset_url }}"
+          alt="{{ block.settings.title | escape }}"
+          width="800"
+          height="900"
+          loading="{{ media_loading }}"
+          style="{{ media_mobile_height }}">
+      </div>
+      <div class="d-none d-tablet-block">
+        <img
+          class="carousel-media"
+          src="{{ block.settings.img_asset | asset_url }}"
+          alt="{{ block.settings.title | escape }}"
+          width="1600"
+          height="900"
+          loading="{{ media_loading }}"
+          style="{{ media_desktop_height }}">
+      </div>
+    {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+  <div class="carousel-caption {{ section.settings.caption_position }}">
+    <div
+      class="carousel-caption-inner"
+      style="max-width: {{ section.settings.caption_max_width | append: 'px' }};">
+      {% unless block.settings.subtitle == blank %}
+        <p class="subtitle {{ section.settings.subtitle_font_size }}">
+          {{ block.settings.subtitle }}
+        </p>
+      {% endunless %}
+      {% unless block.settings.title == blank %}
+        <h2 class="title mb-4 mb-desktop-5 {{ section.settings.title_font_size }}">
+          {{ block.settings.title }}
+        </h2>
+      {% endunless %}
+      {% unless block.settings.description == blank %}
+        <div class="description rte {{ section.settings.description_font_size }}">
+          {{ block.settings.description }}
+        </div>
+      {% endunless %}
+      {% if block.settings.btn_primary_text != blank or block.settings.btn_secondary_text != blank %}
+        <div class="btn-wrapper m-n2">
+          {% unless block.settings.btn_primary_text == blank %}
+            <a
+              class="btn m-2 {{ section.settings.btn_primary_color }} {{ section.settings.btn_font_size }}"
+              href="{{ block.settings.btn_primary_url }}">
+              {{ block.settings.btn_primary_text }}
+            </a>
+          {% endunless %}
+          {% unless block.settings.btn_secondary_text == blank %}
+            <a
+              class="btn m-2 {{ section.settings.btn_secondary_color }} {{ section.settings.btn_font_size }}"
+              href="{{ block.settings.btn_secondary_url }}">
+              {{ block.settings.btn_secondary_text }}
+            </a>
+          {% endunless %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

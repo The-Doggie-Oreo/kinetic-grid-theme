@@ -6,7 +6,10 @@
   lang="{{ request.locale.iso_code }}"
   class="{% if request.design_mode %}design-mode{% endif %}"
   data-season="{{ kg_season }}"
+  data-season-default="{{ kg_season }}"
   data-season-fx="{% if settings.season_effects != false %}true{% else %}false{% endif %}"
+  data-leaf-gold="{% if settings.season_leaf_gold != blank %}{{ settings.season_leaf_gold | image_url: width: 400 }}{% else %}{{ 'kg-leaf-gold.png' | asset_url }}{% endif %}"
+  data-leaf-orange="{% if settings.season_leaf_orange != blank %}{{ settings.season_leaf_orange | image_url: width: 400 }}{% else %}{{ 'kg-leaf-orange.png' | asset_url }}{% endif %}"
 >
 <head>
   <meta charset="utf-8">
@@ -36,10 +39,27 @@
 
   {{ content_for_header }}
 
+  <script>
+    (function () {
+      var preview = localStorage.getItem('kg-season-preview');
+      if (!preview) return;
+      document.documentElement.setAttribute('data-season', preview);
+      document.documentElement.classList.add('season-preview');
+    })();
+  </script>
+
   {% render 'styles-scripts' %}
 </head>
 
 <body class="{{ request.page_type | prepend: 'page-type-' }} season-{{ kg_season }}">
+  <script>
+    (function () {
+      var preview = localStorage.getItem('kg-season-preview');
+      if (!preview) return;
+      document.body.className = document.body.className.replace(/\bseason-\S+/g, '').trim();
+      document.body.classList.add('season-' + preview);
+    })();
+  </script>
   <a class="visually-hidden-focusable" href="#main">
     {{ 'general.accessibility.skip_content' | t }}
   </a>

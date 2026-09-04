@@ -146,10 +146,20 @@
                   {{ 'kinetic_grid.trophy.reference_help' | t }}
                 </p>
               </div>
-              <div class="col-18">
+              <div class="col-18 d-flex flex-wrap gap-3 align-items-center">
                 <button type="submit" class="btn btn-info text-white px-5 py-3">
                   {{ 'kinetic_grid.trophy.submit' | t }}
                 </button>
+                {% if section.settings.show_demo_fill %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark px-4 py-3"
+                    data-kg-trophy-demo-fill
+                  >
+                    Fill sample request
+                  </button>
+                  <span class="small text-muted" data-kg-trophy-demo-status hidden></span>
+                {% endif %}
               </div>
             </div>
           {% endform %}
@@ -158,6 +168,164 @@
     </div>
   </div>
 </div>
+
+{% javascript %}
+  (function () {
+    const samples = [
+      {
+        name: 'Maya Rivera',
+        email: 'maya.r@example.com',
+        phone: '555-201-8841',
+        event: 'Sunset Fantasy Football — Season 12',
+        style: '3D topper + engraved plaque',
+        quantity: '12',
+        plaque: '2026 League Champion — Draft Day Dynasty',
+        details: 'Need hybrid trophies for 1st–3rd plus participation plaques. Prefer hardwood bases with gold fill. Want a football helmet topper if possible.',
+        reference: 'https://example.com/refs/fantasy-helmet.png'
+      },
+      {
+        name: 'Chris Patel',
+        email: 'chris.p@example.com',
+        phone: '555-414-2290',
+        event: 'Tabletop Tuesdays — Campaign Finale',
+        style: '3D figure only',
+        quantity: '4',
+        plaque: '',
+        details: 'Four custom D&D character figures, about 4 inches tall. Classes: wizard, rogue, cleric, barbarian. Multicolor prints okay.',
+        reference: 'https://example.com/refs/party-sheet.pdf'
+      },
+      {
+        name: 'Elena Vos',
+        email: 'elena.v@example.com',
+        phone: '555-778-1033',
+        event: 'Donor Recognition Wall',
+        style: 'Laser plaque only',
+        quantity: '24',
+        plaque: 'With gratitude — Founding Patron',
+        details: 'Anodized aluminum plaques, roughly 3x2 landscape. Need consistent layout across all 24 names. Matte black with white engraving.',
+        reference: 'https://example.com/refs/donor-list.csv'
+      },
+      {
+        name: 'Jordan Kim',
+        email: 'jordan.k@example.com',
+        phone: '555-662-4501',
+        event: 'Office March Madness Pool',
+        style: 'Full custom design',
+        quantity: '1',
+        plaque: 'Bracket King 2026',
+        details: 'One oversized desk trophy with basketball motif and funny office nickname on the plate. Budget around $150–200.',
+        reference: 'https://example.com/refs/bracket-sketch.jpg'
+      },
+      {
+        name: 'Priya Singh',
+        email: 'priya.s@example.com',
+        phone: '555-903-7712',
+        event: 'Maker Faire Youth Robotics',
+        style: '3D topper + engraved plaque',
+        quantity: '6',
+        plaque: 'Best Autonomous Run',
+        details: 'Six awards for age brackets. Robot arm topper preferred. Slate plaques if available. Need them two weeks before the fair.',
+        reference: 'https://example.com/refs/robot-arm.stl'
+      },
+      {
+        name: 'Alex Morgan',
+        email: 'alex.m@example.com',
+        phone: '555-330-1988',
+        event: 'Corporate Sales Kickoff',
+        style: 'Laser plaque only',
+        quantity: '40',
+        plaque: 'President’s Club — Q4',
+        details: 'Batch of acrylic nameplates for top sellers. Include company logo from the Drive link. Prefer frosted acrylic.',
+        reference: 'https://example.com/refs/company-logo.svg'
+      },
+      {
+        name: 'Sam Ortega',
+        email: 'sam.o@example.com',
+        phone: '555-221-6400',
+        event: 'Bowling League Banquet',
+        style: '3D figure only',
+        quantity: '3',
+        plaque: '',
+        details: 'Three bowling-pin character figures for 1st place teams. Bright colors, durable finish for display cases.',
+        reference: 'https://example.com/refs/bowling-pin.png'
+      },
+      {
+        name: 'Riley Chen',
+        email: 'riley.c@example.com',
+        phone: '555-819-0044',
+        event: 'Esports LAN — Regional Finals',
+        style: '3D topper + engraved plaque',
+        quantity: '8',
+        plaque: 'Regional Champions',
+        details: 'Controller / headset hybrid toppers on dark bases. Need RGB-friendly colors (cyan/magenta). Ships to venue hotel.',
+        reference: 'https://example.com/refs/lan-moodboard.pdf'
+      },
+      {
+        name: 'Taylor Brooks',
+        email: 'taylor.b@example.com',
+        phone: '555-477-2655',
+        event: 'Little League Closing Day',
+        style: 'Full custom design',
+        quantity: '18',
+        plaque: 'All-Star Weekend MVP',
+        details: 'Kid-friendly baseball awards. Mix of small trophies and plaques. Names will be sent as a spreadsheet after teams finalize.',
+        reference: 'https://example.com/refs/ll-jersey-logo.png'
+      },
+      {
+        name: 'Morgan Lee',
+        email: 'morgan.l@example.com',
+        phone: '555-155-9082',
+        event: 'Studio Client Appreciation',
+        style: '3D topper + engraved plaque',
+        quantity: '2',
+        plaque: 'Kinetic Grid Partner Award',
+        details: 'Two premium desk awards for long-term clients. Prefer hardwood + aluminum plate with geometric topper. Quote both matte and gloss options.',
+        reference: 'https://example.com/refs/partner-award-brief.docx'
+      }
+    ];
+
+    let index = 0;
+
+    function setValue(form, selector, value) {
+      const el = form.querySelector(selector);
+      if (!el) return;
+      el.value = value;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    document.addEventListener('click', (event) => {
+      const btn = event.target.closest('[data-kg-trophy-demo-fill]');
+      if (!btn) return;
+
+      const root = btn.closest('.kg-trophy-form');
+      const form = root && root.querySelector('.kg-trophy-request-form');
+      if (!form) return;
+
+      const sample = samples[index % samples.length];
+      const n = (index % samples.length) + 1;
+      index += 1;
+
+      setValue(form, '#kg-trophy-name', sample.name);
+      setValue(form, '#kg-trophy-email', sample.email);
+      setValue(form, '#kg-trophy-phone', sample.phone);
+      setValue(form, '#kg-trophy-event', sample.event);
+      setValue(form, '#kg-trophy-style', sample.style);
+      setValue(form, '#kg-trophy-qty', sample.quantity);
+      setValue(form, '#kg-trophy-plaque', sample.plaque);
+      setValue(form, '#kg-trophy-details', sample.details);
+      setValue(form, '#kg-trophy-reference', sample.reference);
+
+      const status = root.querySelector('[data-kg-trophy-demo-status]');
+      if (status) {
+        status.hidden = false;
+        status.textContent = 'Loaded sample ' + n + ' of ' + samples.length + ' — click again for the next one.';
+      }
+
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+{% endjavascript %}
 
 {% schema %}
 {
@@ -176,6 +344,13 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Tell us about the event, plaque copy, quantity, and style. Requests email your store owner address from Shopify’s contact form."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_demo_fill",
+      "label": "Show “Fill sample request” button",
+      "default": true,
+      "info": "Cycles through 10 demo trophy requests for testing. Turn off when you go live if you don’t want shoppers to see it."
     },
     {
       "type": "header",

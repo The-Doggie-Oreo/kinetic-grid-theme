@@ -1,7 +1,11 @@
 <header 
   id="collection-header-{{ section.id }}"
   class="
-    collection-header image-overlay
+    {% if section.settings.img_asset != blank and section.settings.img_fit != 'overlay' %}
+      collection-header collection-header--banner{% if section.settings.img_fit == 'cover' %} collection-header--banner-cover{% endif %}
+    {% else %}
+      collection-header image-overlay
+    {% endif %}
     {{ section.settings.bg_color }} 
     {{ section.settings.bg_gradient }}
     {{ section.settings.text_color }}
@@ -17,7 +21,17 @@
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
   ">
-  {% if section.settings.img_show and collection.image != nil %}
+  {% if section.settings.img_asset != blank and section.settings.img_fit != 'overlay' %}
+    <div class="collection-header__banner">
+      <img
+        src="{{ section.settings.img_asset | asset_url }}"
+        class="collection-header__banner-img"
+        alt="{{ collection.title | escape }}"
+        width="1920"
+        height="700"
+        loading="eager">
+    </div>
+  {% elsif section.settings.img_show and collection.image != nil %}
     <div 
       class="img-wrapper"
       style="
@@ -33,14 +47,32 @@
         width="1600"
         height="{{ 1600 | divided_by: collection.image.aspect_ratio }}"
         loading="eager">
-      </div>
+    </div>
+  {% elsif section.settings.img_asset != blank %}
+    <div 
+      class="img-wrapper"
+      style="
+        --overlay-color-rgb: {{ section.settings.img_overlay_color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+        --overlay-opacity: {{ section.settings.img_overlay_opacity | append: '%' }};
+        --overlay-blur: {{ section.settings.img_overlay_blur | append: 'px' }}
+      ">
+      <img
+        src="{{ section.settings.img_asset | asset_url }}"
+        class="img-fluid"
+        alt="{{ collection.title | escape }}"
+        width="1600"
+        height="700"
+        loading="eager">
+    </div>
   {% endif %}
   <div 
     class="container"
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
-    <h2 class="title {{ section.settings.title_font_size }}">
-      <span>{{ collection.title }}</span>
-    </h2>
+    {% if section.settings.title_show %}
+      <h2 class="title {{ section.settings.title_font_size }}">
+        <span>{{ collection.title }}</span>
+      </h2>
+    {% endif %}
     {% if section.settings.description_show and collection.description != blank %}
       <div class="description rte mb-0 {{ section.settings.description_font_size }}">
         {{ collection.description }}
@@ -158,7 +190,25 @@
       "type": "checkbox",
       "id": "img_show",
       "label": "Show collection image",
-      "default": true
+      "default": true,
+      "info": "Uses the collection image from Shopify admin. Ignored when a theme asset banner is set to full fit."
+    },
+    {
+      "type": "text",
+      "id": "img_asset",
+      "label": "Theme asset banner (optional)",
+      "info": "Filename from Assets, e.g. hero-fall-drop.png"
+    },
+    {
+      "type": "select",
+      "id": "img_fit",
+      "label": "Banner fit",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Cropped banner (smaller, zoomed in)" },
+        { "value": "contain", "label": "Show full image (contain)" },
+        { "value": "overlay", "label": "Full-width background (overlay)" }
+      ]
     },
     {
       "type": "color",
@@ -188,6 +238,12 @@
     {
       "type": "header",
       "content": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_show",
+      "label": "Show collection title",
+      "default": true
     },
     {
       "type": "select",

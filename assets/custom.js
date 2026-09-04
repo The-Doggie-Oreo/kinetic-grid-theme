@@ -1,6 +1,6 @@
 /*
-  Product card hover media: play muted video on hover, pause on leave.
-  Uses bubbling pointer events so Swiper/AJAX-loaded cards work without rebinding.
+  Product card hover media: play muted native video on hover (if present).
+  Image hover is handled purely via CSS opacity swap.
 */
 (function () {
   function getHoverHost(node) {
@@ -8,7 +8,7 @@
     return node.closest('[data-product-card-hover]');
   }
 
-  function getHoverVideo(host) {
+  function getNativeVideo(host) {
     if (!host) return null;
     return host.querySelector('video.product-card-hover-video, [data-product-card-hover-video] video, video');
   }
@@ -41,7 +41,7 @@
       var host = getHoverHost(event.target);
       if (!host) return;
       if (event.relatedTarget instanceof Node && host.contains(event.relatedTarget)) return;
-      playHoverVideo(getHoverVideo(host));
+      playHoverVideo(getNativeVideo(host));
     },
     true
   );
@@ -52,28 +52,7 @@
       var host = getHoverHost(event.target);
       if (!host) return;
       if (event.relatedTarget instanceof Node && host.contains(event.relatedTarget)) return;
-      pauseHoverVideo(getHoverVideo(host));
-    },
-    true
-  );
-
-  document.addEventListener(
-    'focusin',
-    function (event) {
-      var host = getHoverHost(event.target);
-      if (!host) return;
-      playHoverVideo(getHoverVideo(host));
-    },
-    true
-  );
-
-  document.addEventListener(
-    'focusout',
-    function (event) {
-      var host = getHoverHost(event.target);
-      if (!host) return;
-      if (event.relatedTarget instanceof Node && host.contains(event.relatedTarget)) return;
-      pauseHoverVideo(getHoverVideo(host));
+      pauseHoverVideo(getNativeVideo(host));
     },
     true
   );

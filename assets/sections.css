@@ -26,6 +26,21 @@
 .announcement-bar .description {
   text-align: center;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.announcement-bar .carousel-inner {
+  min-height: 1.75rem;
+}
+
+.announcement-bar .carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.75rem;
 }
 
 .announcement-bar .description a {
@@ -219,16 +234,19 @@ body.navbar-dropdown-open #footer-group::after {
 .hero-carousel .carousel-caption .subtitle {
   animation: fade_in_up 0.5s ease-out both;
   animation-delay: 0.4s;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-carousel .carousel-caption .title {
   animation: fade_in_up 0.5s ease-out both;
   animation-delay: 0.6s;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
 .hero-carousel .carousel-caption .description {
   animation: fade_in_up 0.5s ease-out both;
   animation-delay: 0.8s;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .hero-carousel .carousel-caption .btn-wrapper {

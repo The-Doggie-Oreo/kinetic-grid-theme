@@ -3,3 +3,7 @@ node_modules
 config.yml
 .DS_Store
 package-lock.json
+
+# Local ops dashboard (PHP/MAMP — never push to Shopify)
+orbit-nexus/
+orbit-nexus/**

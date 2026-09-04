@@ -1,0 +1,111 @@
+{
+  "sections": {
+    "kg_dnd_hero": {
+      "type": "kg-hero",
+      "settings": {
+        "badge": "Get ready for D&D",
+        "title": "Dice towers, minis, terrain & tabletop gear",
+        "subtitle": "Made-to-order 3D prints for your next campaign — dice organizers, miniatures, props, and session-ready accessories.",
+        "primary_label": "Shop D&D collection",
+        "primary_link": "/collections/dnd",
+        "secondary_label": "Browse all gaming",
+        "secondary_link": "/collections/gaming",
+        "pt": 12,
+        "pb": 12
+      }
+    },
+    "kg_dnd_pillars": {
+      "type": "kg-pillars",
+      "blocks": {
+        "pillar_dice": {
+          "type": "pillar",
+          "settings": {
+            "icon": "01",
+            "title": "Dice & session gear",
+            "text": "Dice towers, trays, spell trackers, and table organizers printed to order."
+          }
+        },
+        "pillar_minis": {
+          "type": "pillar",
+          "settings": {
+            "icon": "02",
+            "title": "Minis & characters",
+            "text": "Heroes, monsters, and display pieces for players and DMs."
+          }
+        },
+        "pillar_terrain": {
+          "type": "pillar",
+          "settings": {
+            "icon": "03",
+            "title": "Terrain & props",
+            "text": "Scatter terrain, doors, chests, and set dressing for memorable encounters."
+          }
+        },
+        "pillar_custom": {
+          "type": "pillar",
+          "settings": {
+            "icon": "04",
+            "title": "Custom party requests",
+            "text": "Need a one-off piece or batch for your table? Send files or a reference link for a quote."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_dice",
+        "pillar_minis",
+        "pillar_terrain",
+        "pillar_custom"
+      ],
+      "settings": {
+        "title": "Built for game night",
+        "subtitle": "Catalog prints for D&D and tabletop — plus custom fabrication when you need something unique.",
+        "pt": 4,
+        "pb": 10
+      }
+    },
+    "kg_dnd_grid": {
+      "type": "kg-product-grid",
+      "settings": {
+        "title": "D&D & tabletop prints",
+        "subtitle": "Dice towers, minis, terrain, and session accessories — produced when you order.",
+        "collection": "dnd",
+        "limit": 24,
+        "pt": 6,
+        "pb": 10
+      }
+    },
+    "kg_dnd_richtext": {
+      "type": "richtext",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 5,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "Running a league or one-shot?",
+        "title_font_size": "h3",
+        "description": "<p>Send STL files, quantities, and paint/finish notes for batch runs or a custom party set. We’ll reply from the studio with a quote.</p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Request custom fabrication",
+        "btn_primary_url": "/#custom-quote",
+        "btn_primary_color": "btn-info",
+        "btn_secondary_text": "View D&D collection",
+        "btn_secondary_url": "/collections/dnd",
+        "btn_secondary_color": "btn-outline-dark",
+        "pt": 10,
+        "pb": 10
+      }
+    }
+  },
+  "order": [
+    "kg_dnd_hero",
+    "kg_dnd_pillars",
+    "kg_dnd_grid",
+    "kg_dnd_richtext"
+  ]
+}

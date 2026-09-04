@@ -1,0 +1,10 @@
+# Local PHP admin dashboard — do not upload to Shopify
+orbit-nexus
+orbit-nexus/**
+
+# Local tooling / secrets
+scripts
+*.ps1
+.git
+.gitignore
+.shopifyignore

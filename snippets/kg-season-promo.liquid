@@ -11,8 +11,12 @@
       assign promo = settings.season_promo_fall
     when 'holiday'
       assign promo = settings.season_promo_holiday
+    when 'halloween'
+      assign promo = settings.season_promo_halloween
     when 'winter'
       assign promo = settings.season_promo_winter
+    when 'easter'
+      assign promo = settings.season_promo_easter
     when 'spring'
       assign promo = settings.season_promo_spring
     when 'summer'
@@ -25,20 +29,26 @@
         assign promo = 'kinetic_grid.season.promo_fall' | t
       when 'holiday'
         assign promo = 'kinetic_grid.season.promo_holiday' | t
+      when 'halloween'
+        assign promo = 'kinetic_grid.season.promo_halloween' | t
       when 'winter'
         assign promo = 'kinetic_grid.season.promo_winter' | t
+      when 'easter'
+        assign promo = 'kinetic_grid.season.promo_easter' | t
       when 'spring'
         assign promo = 'kinetic_grid.season.promo_spring' | t
       when 'summer'
         assign promo = 'kinetic_grid.season.promo_summer' | t
     endcase
   endif
+
+  assign promo = promo | replace: '&amp;', '&' | replace: '&#39;', "'" | replace: '&quot;', '"' | strip
 -%}
 
 {%- unless promo == blank -%}
   <div class="kg-season-promo" data-season-promo="{{ season | escape }}" role="region" aria-label="{{ 'kinetic_grid.season.promo_label' | t }}">
-    <div class="container">
-      <p class="kg-season-promo__text mb-0">{{ promo }}</p>
+    <div class="container kg-season-promo__inner">
+      <p class="kg-season-promo__text mb-0">{{ promo | escape }}</p>
     </div>
   </div>
 {%- endunless -%}

@@ -14,6 +14,12 @@
     >KINETIC GRID</text>
   </svg>
 
+  {% if settings.season_effects != false %}
+    <div class="kg-leaf-footer-layer" data-leaf-footer aria-hidden="true">
+      <canvas class="kg-leaf-footer-layer__canvas"></canvas>
+    </div>
+  {% endif %}
+
   <div class="kg-footer__inner container pt-12 pb-10">
     <div class="row g-8 g-desktop-10">
       <div class="col-18 col-desktop-6 kg-reveal kg-footer__brand">
@@ -100,6 +106,8 @@
       </div>
     </div>
   </div>
+
+  {% render 'kg-season-switcher' %}
 </footer>
 
 {% javascript %}

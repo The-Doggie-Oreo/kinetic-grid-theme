@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_carousel_tdHVay": {
@@ -6,13 +15,15 @@
         "slide_eGdG3z": {
           "type": "slide",
           "settings": {
-            "img_desktop": "shopify:\/\/shop_images\/lifestyle-1.jpg",
+            "img_asset": "",
+            "season_tag": "",
+            "season_priority": "first",
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "overlay_blur": 5,
             "subtitle": "Optional Subtitle",
             "title": "Welcome to our store",
-            "description": "<p>An optional description for this page<\/p>",
+            "description": "<p>An optional description for this page</p>",
             "btn_primary_text": "",
             "btn_primary_url": "",
             "btn_secondary_text": "",
@@ -92,49 +103,15 @@
         "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-1": {
           "type": "item",
           "settings": {
-            "img": "shopify:\/\/shop_images\/product-1_baca2f7d-a8b0-4db2-aa52-c4074f562b1d.jpg",
-            "title": "John Doe",
-            "description": "<p>CEO & Founder<\/p>",
-            "btn_text": "Learn more",
-            "btn_url": ""
-          }
-        },
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-2": {
-          "type": "item",
-          "settings": {
-            "img": "shopify:\/\/shop_images\/product-5_4bfb97ab-4193-4461-a4e3-6e06d63b8249.jpg",
-            "title": "Jane Doe",
-            "description": "<p>Marketing<\/p>",
-            "btn_text": "Learn more",
-            "btn_url": ""
-          }
-        },
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-4": {
-          "type": "item",
-          "settings": {
-            "img": "shopify:\/\/shop_images\/product-3.jpg",
-            "title": "Jim Doe",
-            "description": "<p>Sales<\/p>",
-            "btn_text": "Learn more",
-            "btn_url": ""
-          }
-        },
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-3": {
-          "type": "item",
-          "settings": {
-            "img": "shopify:\/\/shop_images\/product-2_51119e0e-dd95-4bc4-85bc-2db1278575ad.jpg",
-            "title": "Jill Doe",
-            "description": "<p>Developer<\/p>",
-            "btn_text": "Learn more",
+            "title": "James Boyle",
+            "description": "<p>Founder & maker</p>",
+            "btn_text": "",
             "btn_url": ""
           }
         }
       },
       "block_order": [
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-1",
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-2",
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-4",
-        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-3"
+        "template--15889379819659__54fb0ae0-8c55-432c-8b0a-1211e6ba4a0e-item-1"
       ],
       "settings": {
         "bg_color": "bg-gradient-body-light text-body",
@@ -146,9 +123,9 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "header_title": "Our Team",
+        "header_title": "Meet the maker",
         "header_title_font_size": "h2",
-        "header_description": "<p>Add on optional description for this section<\/p>",
+        "header_description": "<p>James Boyle is 16 and has been building businesses since he was about 12. He started Kinetic Grid 3D when he was 15, creating custom 3D-printed trophies, plaques, and made-to-order pieces from our small shop in Norton, OH.</p>",
         "header_description_font_size": "fs-md",
         "item_bg_color": "bg-body",
         "item_bg_opacity": 100,
@@ -185,10 +162,10 @@
         "text_align": "text-center",
         "title": "Want to get in touch?!",
         "title_font_size": "h3",
-        "description": "<p>Please contact us anytime from Monday to Friday<\/p>",
+        "description": "<p>Please contact us anytime from Monday to Friday</p>",
         "description_font_size": "",
         "btn_primary_text": "Contact us",
-        "btn_primary_url": "shopify:\/\/pages\/contact-us",
+        "btn_primary_url": "shopify://pages/contact-us",
         "btn_primary_color": "btn-outline-primary",
         "btn_secondary_text": "",
         "btn_secondary_url": "",
